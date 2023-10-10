@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  static const Color _lightPrimaryColor = Color.fromRGBO(146, 180, 236, 1.0);
-  static const Color _lightPrimaryVariantColor = Colors.red;
-  static const Color _lightOnPrimaryColor = Colors.white;
-  static const Color _lightTextColorPrimary = Colors.white;
-  static const Color _appbarColorLight = Color.fromRGBO(146, 180, 236, 1.0);
+  static const Color _lightPrimaryColor = Color(0xfff2c335);
+  static const Color _lightPrimaryVariantColor =  Color(0xff6f3df4);
+  static const Color _lightOnPrimaryColor = Color(0xfffafafa);
+  static const Color _lightTextColorPrimary = _lightPrimaryColor;
+  static const Color _appbarColorLight = Color(0xff191641);
 
   static final Color _darkPrimaryColor = Colors.grey[850]!;
   static const Color _darkPrimaryVariantColor = Colors.black;
-  static const Color _darkOnPrimaryColor = Color.fromRGBO(112, 184, 73, 1.0);
-  static const Color _darkTextColorPrimary = Color.fromRGBO(112, 184, 73, 1.0);
+  static const Color _darkOnPrimaryColor = Color(0xfff2c335);
+  static const Color _darkTextColorPrimary = Color(0xfff2c335);
   static final Color _appbarColorDark = Colors.grey[850]!;
 
   static const Color _iconColor = Colors.white;
@@ -35,8 +35,8 @@ class AppTheme {
   );
 
   static const TextTheme _lightTextTheme = TextTheme(
-    headline1: _lightHeadingText,
-    bodyText1: _lightBodyText,
+    displayLarge: _lightHeadingText,
+    bodyLarge: _lightBodyText,
   );
 
   static final TextStyle _darkThemeHeadingTextStyle =
@@ -49,9 +49,11 @@ class AppTheme {
   );
 
   static final TextTheme _darkTextTheme = TextTheme(
-    headline1: _darkThemeHeadingTextStyle,
-    bodyText1: _darkThemeBodyeTextStyle,
+    displayLarge: _darkThemeHeadingTextStyle,
+    bodyLarge: _darkThemeBodyeTextStyle,
   );
+
+  
 
   static final InputDecorationTheme _inputDecorationTheme =
       InputDecorationTheme(
@@ -76,7 +78,7 @@ class AppTheme {
       color: _appbarColorLight,
       iconTheme: IconThemeData(color: _iconColor),
     ),
-    bottomAppBarColor: _appbarColorLight,
+    bottomAppBarTheme: const BottomAppBarTheme(color: _appbarColorLight),
     colorScheme: const ColorScheme.light(
       primary: _lightPrimaryColor,
       onPrimary: _lightOnPrimaryColor,
@@ -96,7 +98,7 @@ class AppTheme {
       color: _appbarColorDark,
       iconTheme: const IconThemeData(color: _iconColor),
     ),
-    bottomAppBarColor: _appbarColorDark,
+    bottomAppBarTheme: BottomAppBarTheme(color: _appbarColorDark),
     colorScheme: ColorScheme.dark(
       primary: _darkPrimaryColor,
       secondary: _accentColorDark,
