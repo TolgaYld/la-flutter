@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:locall_app/presentation/widgets/custom_text_form_field_widget.dart';
 import '../application/auth_mode/auth_mode_cubit.dart';
 
 enum ResetPasswordResult { fine, error }
@@ -112,22 +113,6 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
     _controllerHeight!.dispose();
     _controllerOpacity!.dispose();
 
-    _usernameController.dispose();
-    _emailSignInController.dispose();
-    _passwordSignInController.dispose();
-    _emailSignUpController.dispose();
-    _emailForgotPasswordController.dispose();
-    _repeatPasswordController.dispose();
-    _birthDateController.dispose();
-
-    _usernameFocusNode.dispose();
-    _emailSignInFocusNode.dispose();
-    _passwordSignInFocusNode.dispose();
-    _repeatPasswordFocusNode.dispose();
-    _emailSignUpFocusNode.dispose();
-    _emailForgotPasswordFocusNode.dispose();
-    _birthDateFocusNode.dispose();
-
     super.dispose();
   }
 
@@ -200,14 +185,12 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
         AppLocalizations.of(context)!.repeatPassword;
     final String hintBirthdate = AppLocalizations.of(context)!.birthdate;
     final String forgotPassword = AppLocalizations.of(context)!.forgotPassword;
-    final String backToLoginText =
-        AppLocalizations.of(context)!.backToLogin;
+    final String backToLoginText = AppLocalizations.of(context)!.backToLogin;
     final String loginText = AppLocalizations.of(context)!.login;
     final String signUpText = AppLocalizations.of(context)!.signUp;
     final String forgotPasswordText =
         AppLocalizations.of(context)!.forgotPassword;
-    final String notAUserText =
-        AppLocalizations.of(context)!.notAUserYet;
+    final String notAUserText = AppLocalizations.of(context)!.notAUserYet;
     final String alreadyAUserYetText =
         AppLocalizations.of(context)!.alreadyAUserYet;
     final String registerText = AppLocalizations.of(context)!.register;
@@ -248,8 +231,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                           animationIsDone
                               ? FadeTransition(
                                   opacity: _opacityAnimation!,
-                                  child:Text("Oraligin amina koymaya geldik")
-                                )
+                                  child: Text("Oraligin amina koymaya geldik"))
                               : Container(),
                         ],
                       ),
@@ -268,7 +250,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                         children: [
                           if (state.runtimeType == AuthModeSignUp) ...[
                             //Username
-                            _textFormField(
+                            CustomTextformFieldWidget(
                               controller: _usernameController,
                               prefixIcon: _usernameIcon,
                               hintText: hintUsername,
@@ -287,7 +269,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                                 hoverColor: Colors.transparent,
                                 splashFactory: NoSplash.splashFactory,
                                 splashColor: Colors.transparent,
-                                child: _textFormField(
+                                child: CustomTextformFieldWidget(
                                   controller: _birthDateController,
                                   prefixIcon: _birthDateIcon,
                                   enabled: false,
@@ -299,7 +281,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                             ),
                           ],
                           //E-Mail
-                          _textFormField(
+                          CustomTextformFieldWidget(
                               controller: state.runtimeType == AuthModeLogin
                                   ? _emailSignInController
                                   : state.runtimeType == AuthModeSignUp
@@ -322,7 +304,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                           if (state.runtimeType == AuthModeLogin ||
                               state.runtimeType == AuthModeSignUp)
                             //Password
-                            _textFormField(
+                            CustomTextformFieldWidget(
                               controller: state.runtimeType == AuthModeLogin
                                   ? _passwordSignInController
                                   : _passwordSignUpController,
@@ -348,7 +330,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                             ),
                           if (state.runtimeType == AuthModeSignUp)
                             //Repeat Password
-                            _textFormField(
+                            CustomTextformFieldWidget(
                               controller: _repeatPasswordController,
                               focusNode: _repeatPasswordFocusNode,
                               obscureText: _obscureRepeatPw,
@@ -481,7 +463,6 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                                     : state.runtimeType == AuthModeSignUp
                                         ? signUpText
                                         : forgotPasswordText,
-                               
                               ),
                             ),
                           ),
@@ -504,7 +485,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                                     style: TextButton.styleFrom(
                                       splashFactory: NoSplash.splashFactory,
                                       tapTargetSize:
-                                          MaterialTapTargetSize.shrinkWrap,     
+                                          MaterialTapTargetSize.shrinkWrap,
                                     ),
                                     onPressed: () {
                                       if (state.runtimeType == AuthModeLogin) {
@@ -567,119 +548,6 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
               height * 0.046,
             ),
             shape: const CircleBorder()),
-      ),
-    );
-  }
-
-  Widget _textFormField({
-    required TextEditingController controller,
-    FocusNode? focusNode,
-    bool obscureText = false,
-    required Icon prefixIcon,
-    required String hintText,
-    TextInputType? textInputType,
-    required double marginTop,
-    String? Function(String?)? validator,
-    Icon? suffixIcon,
-    bool isPassword = false,
-    bool repeatPassword = false,
-    bool enabled = true,
-    bool usernameTextField = false,
-  }) {
-    double width = MediaQuery.of(context).size.width;
-
-    return Container(
-      margin: EdgeInsets.only(
-        left: width * 0.03,
-        right: width * 0.03,
-        top: marginTop,
-      ),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            25.0,
-          ),
-        ),
-      ),
-      // padding: EdgeInsets.only(left: width * 0.005),
-      child: TextFormField(
-        inputFormatters: usernameTextField
-            ? [
-                FilteringTextInputFormatter.deny(
-                  RegExp(
-                    "[ ]",
-                  ),
-                )
-              ]
-            : null,
-        enabled: enabled,
-        validator: validator,
-        controller: controller,
-        focusNode: focusNode,
-        keyboardType: textInputType,
-        decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 1),
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(width: 0.3),
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 0.3),
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: 0.3),
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 1.0,
-              color:
-                  Platform.isAndroid ? Colors.red : CupertinoColors.systemRed,
-            ),
-            borderRadius: BorderRadius.circular(25.0),
-          ),
-          hintText: hintText,
-          hintStyle: TextStyle(
-            color: Colors.black.withOpacity(
-              0.6,
-            ),
-          ),
-          prefixIcon: prefixIcon,
-          suffixIcon: isPassword
-              ? IconButton(
-                  splashRadius: 0.00000000000000001,
-                  onPressed: () {
-                    if (!repeatPassword) {
-                      if (!_obscurePw) {
-                        setState(() {
-                          _obscurePw = true;
-                        });
-                      } else {
-                        setState(() {
-                          _obscurePw = false;
-                        });
-                      }
-                    } else {
-                      if (!_obscureRepeatPw) {
-                        setState(() {
-                          _obscureRepeatPw = true;
-                        });
-                      } else {
-                        setState(() {
-                          _obscureRepeatPw = false;
-                        });
-                      }
-                    }
-                  },
-                  icon: suffixIcon!)
-              : null,
-        ),
-        obscureText: obscureText,
       ),
     );
   }

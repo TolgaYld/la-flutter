@@ -20,6 +20,7 @@ class AppTheme {
   static const Color _accentColorDark = Color.fromRGBO(253, 166, 41, 1.0);
 
   static const TextStyle _lightHeadingText = TextStyle(
+    
     color: _lightTextColorPrimary,
     fontFamily: "Josefin",
     fontSize: 20,
@@ -80,9 +81,12 @@ class AppTheme {
     ),
     bottomAppBarTheme: const BottomAppBarTheme(color: _appbarColorLight),
     colorScheme: const ColorScheme.light(
+      background: _lightOnPrimaryColor,
+      onBackground: _lightPrimaryColor,
+      onSecondary: _lightOnPrimaryColor,
       primary: _lightPrimaryColor,
       onPrimary: _lightOnPrimaryColor,
-      secondary: _accentColorDark,
+      secondary: _appbarColorLight,
       primaryContainer: _lightPrimaryVariantColor,
     ),
     textTheme: _lightTextTheme,
