@@ -10,10 +10,10 @@ class Enviroment {
   }
 
   static String get baseUrl {
-    return dotenv.get("BASE_URL");
+    return dotenv.get('BASE_URL');
   }
 
   static String get baseUrlWithoutV1 {
-    return dotenv.get("BASE_URL_WITHOUT_V1");
+    return dotenv.get('BASE_URL_WITHOUT_V1');
   }
 }

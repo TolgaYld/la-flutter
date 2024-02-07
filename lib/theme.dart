@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
-  static const Color _lightPrimaryColor = Color(0xfff2c335);
-  static const Color _lightPrimaryVariantColor =  Color(0xff6f3df4);
-  static const Color _lightOnPrimaryColor = Color(0xfffafafa);
-  static const Color _lightTextColorPrimary = _lightPrimaryColor;
+  static const Color _lightPrimaryColor = Color(0xffffffff);
+  static const Color _lightPrimaryVariantColor = Color(0xff272643);
+  static const Color _lightOnPrimaryColor = Color(0xff2c698d);
+  // static const Color _thirdColor = Color(0xffe3f6f5);
+  static const Color _fourthColor = Color(0xffbae8e8);
+  static const Color _lightTextColorPrimary = _lightOnPrimaryColor;
   static const Color _appbarColorLight = Color(0xff191641);
 
   static final Color _darkPrimaryColor = Colors.grey[850]!;
@@ -17,19 +19,18 @@ class AppTheme {
 
   static const Color _iconColor = Colors.white;
 
-  static const Color _accentColorDark = Color.fromRGBO(253, 166, 41, 1.0);
+  static const Color _accentColorDark = Color.fromRGBO(253, 166, 41, 1);
 
   static const TextStyle _lightHeadingText = TextStyle(
-    
     color: _lightTextColorPrimary,
-    fontFamily: "Josefin",
+    fontFamily: 'Josefin',
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle _lightBodyText = TextStyle(
     color: _lightTextColorPrimary,
-    fontFamily: "Yeseva",
+    fontFamily: 'Yeseva',
     fontStyle: FontStyle.italic,
     fontWeight: FontWeight.bold,
     fontSize: 16,
@@ -54,8 +55,6 @@ class AppTheme {
     bodyLarge: _darkThemeBodyeTextStyle,
   );
 
-  
-
   static final InputDecorationTheme _inputDecorationTheme =
       InputDecorationTheme(
     floatingLabelStyle: const TextStyle(color: _lightTextColorPrimary),
@@ -68,21 +67,30 @@ class AppTheme {
     ),
   );
 
+  static final ElevatedButtonThemeData _elevatedButtonTheme =
+      ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: _lightOnPrimaryColor,
+    ),
+  );
+
   static final ThemeData lightTheme = ThemeData(
-    fontFamily: "Yeseva",
+    elevatedButtonTheme: _elevatedButtonTheme,
+    fontFamily: 'Yeseva',
     useMaterial3: true,
     inputDecorationTheme: _inputDecorationTheme,
     textSelectionTheme:
         const TextSelectionThemeData(cursorColor: _lightTextColorPrimary),
     scaffoldBackgroundColor: _lightPrimaryColor,
     appBarTheme: const AppBarTheme(
-      color: _appbarColorLight,
+      color: _lightOnPrimaryColor,
       iconTheme: IconThemeData(color: _iconColor),
     ),
     bottomAppBarTheme: const BottomAppBarTheme(color: _appbarColorLight),
     colorScheme: const ColorScheme.light(
       background: _lightOnPrimaryColor,
-      onBackground: _lightPrimaryColor,
+      outline: _fourthColor,
+      onBackground: _lightOnPrimaryColor,
       onSecondary: _lightOnPrimaryColor,
       primary: _lightPrimaryColor,
       onPrimary: _lightOnPrimaryColor,
