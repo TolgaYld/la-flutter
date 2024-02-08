@@ -9,8 +9,8 @@ abstract class ThemeModeLocalDatasrc {
   Future<void> cacheUseSystemTheme({required bool useSystemTheme});
 }
 
-class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
-  ThemeModeLocalDatasrcImplementation(this._sharedPreferences);
+class ThemeModeLocalDatasrcImpl implements ThemeModeLocalDatasrc {
+  ThemeModeLocalDatasrcImpl(this._sharedPreferences);
   final SharedPreferences _sharedPreferences;
   @override
   Future<void> cacheThemeData({required bool mode}) async {
@@ -19,7 +19,6 @@ class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
     } catch (e) {
       throw const CacheException(
         message: 'Bool not setted',
-        statusCode: 500,
       );
     }
   }
@@ -34,7 +33,6 @@ class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
       } else {
         throw const CacheException(
           message: "Can't fetch theme mode",
-          statusCode: 500,
         );
       }
     } on CacheException {
@@ -42,7 +40,6 @@ class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
     } catch (e) {
       throw CacheException(
         message: e.toString(),
-        statusCode: 500,
       );
     }
   }
@@ -57,7 +54,6 @@ class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
       } else {
         throw const CacheException(
           message: "Can't get bool",
-          statusCode: 500,
         );
       }
     } on CacheException {
@@ -65,7 +61,6 @@ class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
     } catch (e) {
       throw CacheException(
         message: e.toString(),
-        statusCode: 500,
       );
     }
   }
@@ -77,7 +72,6 @@ class ThemeModeLocalDatasrcImplementation implements ThemeModeLocalDatasrc {
     } catch (e) {
       throw CacheException(
         message: e.toString(),
-        statusCode: 500,
       );
     }
   }
