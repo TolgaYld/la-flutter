@@ -14,6 +14,6 @@ class ServerException with _$ServerException implements Exception {
 class CacheException with _$CacheException implements Exception {
   const factory CacheException({
     required String message,
-    required int statusCode,
+    @Default(500) int statusCode,
   }) = _CacheException;
 }
