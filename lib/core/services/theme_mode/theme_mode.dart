@@ -33,6 +33,6 @@ Future<void> initThemeMode(GetIt sl) async {
 
     // Datasrc
     ..registerLazySingleton<ThemeModeLocalDatasrc>(
-      () => ThemeModeLocalDatasrcImplementation(prefs),
+      () => ThemeModeLocalDatasrcImpl(prefs),
     );
 }
