@@ -241,11 +241,12 @@ class __$$CacheExceptionImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CacheExceptionImpl implements _CacheException {
-  const _$CacheExceptionImpl({required this.message, required this.statusCode});
+  const _$CacheExceptionImpl({required this.message, this.statusCode = 500});
 
   @override
   final String message;
   @override
+  @JsonKey()
   final int statusCode;
 
   @override
@@ -277,7 +278,7 @@ class _$CacheExceptionImpl implements _CacheException {
 abstract class _CacheException implements CacheException {
   const factory _CacheException(
       {required final String message,
-      required final int statusCode}) = _$CacheExceptionImpl;
+      final int statusCode}) = _$CacheExceptionImpl;
 
   @override
   String get message;
