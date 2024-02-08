@@ -32,16 +32,22 @@ class ThemeModeServiceProviderImpl extends ChangeNotifier
   final SetUseSystemThemeUsecase _setUseSystemThemeUsecase;
 
   @override
-  late bool useSystemTheme;
+  bool useSystemTheme = false;
 
   @override
   bool isDarkModeOn = true;
 
   @override
-  Future<void> setTheme({required bool mode}) async {
+  Future<bool> setTheme({required bool mode}) async {
     isDarkModeOn = mode;
     notifyListeners();
-    await _setThemeModeUsecase(isDarkModeOn);
+    final cacheOrFailure = await _setThemeModeUsecase(isDarkModeOn);
+
+    // Returns true if caching was successful and false if it was unsuccessful
+    return cacheOrFailure.fold(
+      (failure) => false,
+      (_) => true,
+    );
   }
 
   @override
@@ -51,10 +57,15 @@ class ThemeModeServiceProviderImpl extends ChangeNotifier
   }
 
   @override
-  Future<void> setUseSystemTheme({required bool systemTheme}) async {
+  Future<bool> setUseSystemTheme({required bool systemTheme}) async {
     useSystemTheme = systemTheme;
     notifyListeners();
-    await _setUseSystemThemeUsecase(useSystemTheme);
+    final cacheOrFailure = await _setUseSystemThemeUsecase(useSystemTheme);
+
+    return cacheOrFailure.fold(
+      (failure) => false,
+      (_) => true,
+    );
   }
 
   @override
