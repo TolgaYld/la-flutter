@@ -11,8 +11,10 @@ abstract class AuthRepo {
     required String password,
   });
 
-  ResultFuture<User> authWithService({
-    AuthWithProvider authWithProvider,
+  ResultFuture<User> authWithProvider({
+    required AuthWithProvider provider,
+    required String providerId,
+    required String email,
   });
 
   ResultFuture<User> signIn({

@@ -75,21 +75,32 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.User>> authWithService(
-          {_i7.AuthWithProvider? authWithProvider}) =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.User>> authWithProvider({
+    required _i7.AuthWithProvider? provider,
+    required String? providerId,
+    required String? email,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #authWithService,
+          #authWithProvider,
           [],
-          {#authWithProvider: authWithProvider},
+          {
+            #provider: provider,
+            #providerId: providerId,
+            #email: email,
+          },
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.User>>.value(
             _FakeEither_0<_i5.Failure, _i6.User>(
           this,
           Invocation.method(
-            #authWithService,
+            #authWithProvider,
             [],
-            {#authWithProvider: authWithProvider},
+            {
+              #provider: provider,
+              #providerId: providerId,
+              #email: email,
+            },
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);
