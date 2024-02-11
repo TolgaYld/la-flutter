@@ -15,7 +15,7 @@ void main() {
     usecase = ForgotPasswordUsecase(repo);
   });
   group('ForgotPasswordUsecase', () {
-    final tEmail = 'test123@test.com';
+    const tEmail = 'test123@test.com';
     final tFailure =
         ServerFailure(message: "Couldn't Update User", statusCode: 400);
     test('should call [AuthRepo] and send [User] an Reset-Password-Email',
