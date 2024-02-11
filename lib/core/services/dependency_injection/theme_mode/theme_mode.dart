@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> initThemeMode(GetIt sl) async {
   final prefs = await SharedPreferences.getInstance();
+
   // Provider
   sl
     ..registerLazySingleton<ThemeModeServiceProvider>(
@@ -33,6 +34,9 @@ Future<void> initThemeMode(GetIt sl) async {
 
     // Datasrc
     ..registerLazySingleton<ThemeModeLocalDatasrc>(
-      () => ThemeModeLocalDatasrcImpl(prefs),
-    );
+      () => ThemeModeLocalDatasrcImpl(sl()),
+    )
+
+    // External
+    ..registerLazySingleton(() => prefs);
 }
