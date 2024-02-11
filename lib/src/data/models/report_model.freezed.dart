@@ -21,8 +21,6 @@ ReportModel _$ReportModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ReportModel {
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'reported_user', required: true)
-  UserModel get reportedUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_done', required: true)
   bool get isDone => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
@@ -31,6 +29,8 @@ mixin _$ReportModel {
   @JsonKey(name: 'created_at', required: true)
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get reason => throw _privateConstructorUsedError;
+  @JsonKey(name: 'reported_user')
+  UserModel? get reportedUser => throw _privateConstructorUsedError;
   PostModel? get post => throw _privateConstructorUsedError;
   CommentModel? get comment => throw _privateConstructorUsedError;
   ChannelModel? get channel => throw _privateConstructorUsedError;
@@ -52,13 +52,13 @@ abstract class $ReportModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'reported_user', required: true) UserModel reportedUser,
       @JsonKey(name: 'is_done', required: true) bool isDone,
       @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       DateTime createdAt,
       String reason,
+      @JsonKey(name: 'reported_user') UserModel? reportedUser,
       PostModel? post,
       CommentModel? comment,
       ChannelModel? channel,
@@ -66,8 +66,8 @@ abstract class $ReportModelCopyWith<$Res> {
       String? city,
       String? notesAboutReport});
 
-  $UserModelCopyWith<$Res> get reportedUser;
   $UserModelCopyWith<$Res> get createdBy;
+  $UserModelCopyWith<$Res>? get reportedUser;
   $PostModelCopyWith<$Res>? get post;
   $CommentModelCopyWith<$Res>? get comment;
   $ChannelModelCopyWith<$Res>? get channel;
@@ -88,11 +88,11 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
   @override
   $Res call({
     Object? id = null,
-    Object? reportedUser = null,
     Object? isDone = null,
     Object? createdBy = null,
     Object? createdAt = null,
     Object? reason = null,
+    Object? reportedUser = freezed,
     Object? post = freezed,
     Object? comment = freezed,
     Object? channel = freezed,
@@ -105,10 +105,6 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      reportedUser: null == reportedUser
-          ? _value.reportedUser
-          : reportedUser // ignore: cast_nullable_to_non_nullable
-              as UserModel,
       isDone: null == isDone
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
@@ -125,6 +121,10 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String,
+      reportedUser: freezed == reportedUser
+          ? _value.reportedUser
+          : reportedUser // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       post: freezed == post
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
@@ -154,17 +154,21 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get reportedUser {
-    return $UserModelCopyWith<$Res>(_value.reportedUser, (value) {
-      return _then(_value.copyWith(reportedUser: value) as $Val);
+  $UserModelCopyWith<$Res> get createdBy {
+    return $UserModelCopyWith<$Res>(_value.createdBy, (value) {
+      return _then(_value.copyWith(createdBy: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get createdBy {
-    return $UserModelCopyWith<$Res>(_value.createdBy, (value) {
-      return _then(_value.copyWith(createdBy: value) as $Val);
+  $UserModelCopyWith<$Res>? get reportedUser {
+    if (_value.reportedUser == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.reportedUser!, (value) {
+      return _then(_value.copyWith(reportedUser: value) as $Val);
     });
   }
 
@@ -227,13 +231,13 @@ abstract class _$$ReportModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'reported_user', required: true) UserModel reportedUser,
       @JsonKey(name: 'is_done', required: true) bool isDone,
       @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       DateTime createdAt,
       String reason,
+      @JsonKey(name: 'reported_user') UserModel? reportedUser,
       PostModel? post,
       CommentModel? comment,
       ChannelModel? channel,
@@ -242,9 +246,9 @@ abstract class _$$ReportModelImplCopyWith<$Res>
       String? notesAboutReport});
 
   @override
-  $UserModelCopyWith<$Res> get reportedUser;
-  @override
   $UserModelCopyWith<$Res> get createdBy;
+  @override
+  $UserModelCopyWith<$Res>? get reportedUser;
   @override
   $PostModelCopyWith<$Res>? get post;
   @override
@@ -267,11 +271,11 @@ class __$$ReportModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? reportedUser = null,
     Object? isDone = null,
     Object? createdBy = null,
     Object? createdAt = null,
     Object? reason = null,
+    Object? reportedUser = freezed,
     Object? post = freezed,
     Object? comment = freezed,
     Object? channel = freezed,
@@ -284,10 +288,6 @@ class __$$ReportModelImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      reportedUser: null == reportedUser
-          ? _value.reportedUser
-          : reportedUser // ignore: cast_nullable_to_non_nullable
-              as UserModel,
       isDone: null == isDone
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
@@ -304,6 +304,10 @@ class __$$ReportModelImplCopyWithImpl<$Res>
           ? _value.reason
           : reason // ignore: cast_nullable_to_non_nullable
               as String,
+      reportedUser: freezed == reportedUser
+          ? _value.reportedUser
+          : reportedUser // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       post: freezed == post
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
@@ -334,18 +338,17 @@ class __$$ReportModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ReportModelImpl implements _ReportModel {
   _$ReportModelImpl(
       {required this.id,
-      @JsonKey(name: 'reported_user', required: true)
-      required this.reportedUser,
       @JsonKey(name: 'is_done', required: true) required this.isDone,
       @JsonKey(name: 'created_by') required this.createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       required this.createdAt,
       required this.reason,
+      @JsonKey(name: 'reported_user') this.reportedUser,
       this.post,
       this.comment,
       this.channel,
@@ -359,9 +362,6 @@ class _$ReportModelImpl implements _ReportModel {
   @override
   final String id;
   @override
-  @JsonKey(name: 'reported_user', required: true)
-  final UserModel reportedUser;
-  @override
   @JsonKey(name: 'is_done', required: true)
   final bool isDone;
   @override
@@ -373,6 +373,9 @@ class _$ReportModelImpl implements _ReportModel {
   final DateTime createdAt;
   @override
   final String reason;
+  @override
+  @JsonKey(name: 'reported_user')
+  final UserModel? reportedUser;
   @override
   final PostModel? post;
   @override
@@ -388,7 +391,7 @@ class _$ReportModelImpl implements _ReportModel {
 
   @override
   String toString() {
-    return 'ReportModel(id: $id, reportedUser: $reportedUser, isDone: $isDone, createdBy: $createdBy, createdAt: $createdAt, reason: $reason, post: $post, comment: $comment, channel: $channel, story: $story, city: $city, notesAboutReport: $notesAboutReport)';
+    return 'ReportModel(id: $id, isDone: $isDone, createdBy: $createdBy, createdAt: $createdAt, reason: $reason, reportedUser: $reportedUser, post: $post, comment: $comment, channel: $channel, story: $story, city: $city, notesAboutReport: $notesAboutReport)';
   }
 
   @override
@@ -397,14 +400,14 @@ class _$ReportModelImpl implements _ReportModel {
         (other.runtimeType == runtimeType &&
             other is _$ReportModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.reportedUser, reportedUser) ||
-                other.reportedUser == reportedUser) &&
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.reason, reason) || other.reason == reason) &&
+            (identical(other.reportedUser, reportedUser) ||
+                other.reportedUser == reportedUser) &&
             (identical(other.post, post) || other.post == post) &&
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.channel, channel) || other.channel == channel) &&
@@ -419,11 +422,11 @@ class _$ReportModelImpl implements _ReportModel {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      reportedUser,
       isDone,
       createdBy,
       createdAt,
       reason,
+      reportedUser,
       post,
       comment,
       channel,
@@ -448,14 +451,13 @@ class _$ReportModelImpl implements _ReportModel {
 abstract class _ReportModel implements ReportModel {
   factory _ReportModel(
       {required final String id,
-      @JsonKey(name: 'reported_user', required: true)
-      required final UserModel reportedUser,
       @JsonKey(name: 'is_done', required: true) required final bool isDone,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       required final DateTime createdAt,
       required final String reason,
+      @JsonKey(name: 'reported_user') final UserModel? reportedUser,
       final PostModel? post,
       final CommentModel? comment,
       final ChannelModel? channel,
@@ -469,9 +471,6 @@ abstract class _ReportModel implements ReportModel {
   @override
   String get id;
   @override
-  @JsonKey(name: 'reported_user', required: true)
-  UserModel get reportedUser;
-  @override
   @JsonKey(name: 'is_done', required: true)
   bool get isDone;
   @override
@@ -483,6 +482,9 @@ abstract class _ReportModel implements ReportModel {
   DateTime get createdAt;
   @override
   String get reason;
+  @override
+  @JsonKey(name: 'reported_user')
+  UserModel? get reportedUser;
   @override
   PostModel? get post;
   @override

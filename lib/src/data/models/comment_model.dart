@@ -11,7 +11,7 @@ part 'comment_model.g.dart';
 
 @freezed
 class CommentModel extends Comment with _$CommentModel {
-  @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory CommentModel({
     required String id,
     @JsonKey(name: 'is_active', required: true) required bool isActive,
@@ -21,14 +21,27 @@ class CommentModel extends Comment with _$CommentModel {
     @JsonKey(name: 'created_at', required: true)
     required DateTime createdAt,
     required PostType type,
-    required List<UserModel> likes,
-    required List<UserModel> dislikes,
     required PostModel post,
+    List<UserModel>? likes,
+    List<UserModel>? dislikes,
     String? text,
     List<String>? media,
   }) = _CommentModel;
 
   factory CommentModel.fromJson(DataMap json) => _$CommentModelFromJson(json);
+
+  factory CommentModel.empty() => CommentModel(
+        id: 'empty',
+        isActive: true,
+        isDeleted: false,
+        createdBy: UserModel.empty(),
+        createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
+        type: PostType.public,
+        post: PostModel.empty(),
+        likes: [
+          UserModel.empty(),
+        ],
+      );
 
   factory CommentModel.fromEntity(Comment comment) => CommentModel(
         id: comment.id,
@@ -36,8 +49,8 @@ class CommentModel extends Comment with _$CommentModel {
         isDeleted: comment.isDeleted,
         createdAt: comment.createdAt,
         createdBy: UserModel.fromEntity(comment.createdBy),
-        dislikes: comment.dislikes.map(UserModel.fromEntity).toList(),
-        likes: comment.likes.map(UserModel.fromEntity).toList(),
+        dislikes: comment.dislikes?.map(UserModel.fromEntity).toList(),
+        likes: comment.likes?.map(UserModel.fromEntity).toList(),
         type: comment.type,
         media: comment.media,
         text: comment.text,

@@ -12,7 +12,7 @@ part 'post_model.g.dart';
 
 @freezed
 class PostModel extends Post with _$PostModel {
-  @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory PostModel({
     required String id,
     @JsonKey(name: 'is_active', required: true) required bool isActive,
@@ -23,9 +23,9 @@ class PostModel extends Post with _$PostModel {
     required DateTime createdAt,
     required List<double> coordinates,
     required PostType type,
-    required ChannelModel channel,
-    required List<UserModel> likes,
-    required List<UserModel> dislikes,
+    required List<ChannelModel> channels,
+    List<UserModel>? likes,
+    List<UserModel>? dislikes,
     String? text,
     List<String>? media,
     String? city,
@@ -34,18 +34,29 @@ class PostModel extends Post with _$PostModel {
 
   factory PostModel.fromJson(DataMap json) => _$PostModelFromJson(json);
 
+  factory PostModel.empty() => PostModel(
+        id: 'empty',
+        isActive: true,
+        isDeleted: false,
+        createdBy: UserModel.empty(),
+        createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
+        coordinates: [3.69, 3.69],
+        type: PostType.anonymous,
+        channels: [ChannelModel.empty()],
+      );
+
   factory PostModel.fromEntity(Post post) => PostModel(
         id: post.id,
         isActive: post.isActive,
         isDeleted: post.isDeleted,
         createdAt: post.createdAt,
         createdBy: UserModel.fromEntity(post.createdBy),
-        dislikes: post.dislikes.map(UserModel.fromEntity).toList(),
-        likes: post.likes.map(UserModel.fromEntity).toList(),
+        dislikes: post.dislikes?.map(UserModel.fromEntity).toList(),
+        likes: post.likes?.map(UserModel.fromEntity).toList(),
         type: post.type,
         media: post.media,
         text: post.text,
-        channel: ChannelModel.fromEntity(post.channel),
+        channels: post.channels.map(ChannelModel.fromEntity).toList(),
         coordinates: post.coordinates,
         city: post.city,
         comments: post.comments

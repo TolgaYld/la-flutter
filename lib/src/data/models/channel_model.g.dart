@@ -32,15 +32,25 @@ _$ChannelModelImpl _$$ChannelModelImplFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$$ChannelModelImplToJson(_$ChannelModelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'is_active': instance.isActive,
-      'is_deleted': instance.isDeleted,
-      'created_at': const DateTimeConverter().toJson(instance.createdAt),
-      'subscriptions': instance.subscriptions?.map((e) => e.toJson()).toList(),
-      'created_by': instance.createdBy?.toJson(),
-      'posts': instance.posts?.map((e) => e.toJson()).toList(),
-      'storys': instance.storys?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$$ChannelModelImplToJson(_$ChannelModelImpl instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'name': instance.name,
+    'is_active': instance.isActive,
+    'is_deleted': instance.isDeleted,
+    'created_at': const DateTimeConverter().toJson(instance.createdAt),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull(
+      'subscriptions', instance.subscriptions?.map((e) => e.toJson()).toList());
+  writeNotNull('created_by', instance.createdBy?.toJson());
+  writeNotNull('posts', instance.posts?.map((e) => e.toJson()).toList());
+  writeNotNull('storys', instance.storys?.map((e) => e.toJson()).toList());
+  return val;
+}

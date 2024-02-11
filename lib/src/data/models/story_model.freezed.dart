@@ -25,16 +25,16 @@ mixin _$StoryModel {
   bool get isActive => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_deleted', required: true)
   bool get isDeleted => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_by')
-  UserModel get createdBy => throw _privateConstructorUsedError;
   @DateTimeConverter()
   @JsonKey(name: 'created_at', required: true)
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  UserModel get createdBy => throw _privateConstructorUsedError;
   List<double> get coordinates => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
-  ChannelModel get channel => throw _privateConstructorUsedError;
-  List<UserModel> get likes => throw _privateConstructorUsedError;
-  List<UserModel> get dislikes => throw _privateConstructorUsedError;
+  List<ChannelModel> get channels => throw _privateConstructorUsedError;
+  List<UserModel>? get likes => throw _privateConstructorUsedError;
+  List<UserModel>? get dislikes => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   List<String>? get media => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
@@ -55,21 +55,20 @@ abstract class $StoryModelCopyWith<$Res> {
       {String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
-      @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       DateTime createdAt,
+      @JsonKey(name: 'created_by') UserModel createdBy,
       List<double> coordinates,
       PostType type,
-      ChannelModel channel,
-      List<UserModel> likes,
-      List<UserModel> dislikes,
+      List<ChannelModel> channels,
+      List<UserModel>? likes,
+      List<UserModel>? dislikes,
       String? text,
       List<String>? media,
       String? city});
 
   $UserModelCopyWith<$Res> get createdBy;
-  $ChannelModelCopyWith<$Res> get channel;
 }
 
 /// @nodoc
@@ -88,13 +87,13 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
     Object? id = null,
     Object? isActive = null,
     Object? isDeleted = null,
-    Object? createdBy = null,
     Object? createdAt = null,
+    Object? createdBy = null,
     Object? coordinates = null,
     Object? type = null,
-    Object? channel = null,
-    Object? likes = null,
-    Object? dislikes = null,
+    Object? channels = null,
+    Object? likes = freezed,
+    Object? dislikes = freezed,
     Object? text = freezed,
     Object? media = freezed,
     Object? city = freezed,
@@ -112,14 +111,14 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      createdBy: null == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as UserModel,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      createdBy: null == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as UserModel,
       coordinates: null == coordinates
           ? _value.coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
@@ -128,18 +127,18 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as PostType,
-      channel: null == channel
-          ? _value.channel
-          : channel // ignore: cast_nullable_to_non_nullable
-              as ChannelModel,
-      likes: null == likes
+      channels: null == channels
+          ? _value.channels
+          : channels // ignore: cast_nullable_to_non_nullable
+              as List<ChannelModel>,
+      likes: freezed == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      dislikes: null == dislikes
+              as List<UserModel>?,
+      dislikes: freezed == dislikes
           ? _value.dislikes
           : dislikes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
+              as List<UserModel>?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -162,14 +161,6 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
       return _then(_value.copyWith(createdBy: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ChannelModelCopyWith<$Res> get channel {
-    return $ChannelModelCopyWith<$Res>(_value.channel, (value) {
-      return _then(_value.copyWith(channel: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -184,23 +175,21 @@ abstract class _$$StoryModelImplCopyWith<$Res>
       {String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
-      @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       DateTime createdAt,
+      @JsonKey(name: 'created_by') UserModel createdBy,
       List<double> coordinates,
       PostType type,
-      ChannelModel channel,
-      List<UserModel> likes,
-      List<UserModel> dislikes,
+      List<ChannelModel> channels,
+      List<UserModel>? likes,
+      List<UserModel>? dislikes,
       String? text,
       List<String>? media,
       String? city});
 
   @override
   $UserModelCopyWith<$Res> get createdBy;
-  @override
-  $ChannelModelCopyWith<$Res> get channel;
 }
 
 /// @nodoc
@@ -217,13 +206,13 @@ class __$$StoryModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? isActive = null,
     Object? isDeleted = null,
-    Object? createdBy = null,
     Object? createdAt = null,
+    Object? createdBy = null,
     Object? coordinates = null,
     Object? type = null,
-    Object? channel = null,
-    Object? likes = null,
-    Object? dislikes = null,
+    Object? channels = null,
+    Object? likes = freezed,
+    Object? dislikes = freezed,
     Object? text = freezed,
     Object? media = freezed,
     Object? city = freezed,
@@ -241,14 +230,14 @@ class __$$StoryModelImplCopyWithImpl<$Res>
           ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      createdBy: null == createdBy
-          ? _value.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as UserModel,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      createdBy: null == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as UserModel,
       coordinates: null == coordinates
           ? _value._coordinates
           : coordinates // ignore: cast_nullable_to_non_nullable
@@ -257,18 +246,18 @@ class __$$StoryModelImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as PostType,
-      channel: null == channel
-          ? _value.channel
-          : channel // ignore: cast_nullable_to_non_nullable
-              as ChannelModel,
-      likes: null == likes
+      channels: null == channels
+          ? _value._channels
+          : channels // ignore: cast_nullable_to_non_nullable
+              as List<ChannelModel>,
+      likes: freezed == likes
           ? _value._likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      dislikes: null == dislikes
+              as List<UserModel>?,
+      dislikes: freezed == dislikes
           ? _value._dislikes
           : dislikes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
+              as List<UserModel>?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -287,25 +276,26 @@ class __$$StoryModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$StoryModelImpl implements _StoryModel {
   _$StoryModelImpl(
       {required this.id,
       @JsonKey(name: 'is_active', required: true) required this.isActive,
       @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
-      @JsonKey(name: 'created_by') required this.createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       required this.createdAt,
+      @JsonKey(name: 'created_by') required this.createdBy,
       required final List<double> coordinates,
       required this.type,
-      required this.channel,
-      required final List<UserModel> likes,
-      required final List<UserModel> dislikes,
+      required final List<ChannelModel> channels,
+      final List<UserModel>? likes,
+      final List<UserModel>? dislikes,
       this.text,
       final List<String>? media,
       this.city})
       : _coordinates = coordinates,
+        _channels = channels,
         _likes = likes,
         _dislikes = dislikes,
         _media = media;
@@ -322,12 +312,12 @@ class _$StoryModelImpl implements _StoryModel {
   @JsonKey(name: 'is_deleted', required: true)
   final bool isDeleted;
   @override
-  @JsonKey(name: 'created_by')
-  final UserModel createdBy;
-  @override
   @DateTimeConverter()
   @JsonKey(name: 'created_at', required: true)
   final DateTime createdAt;
+  @override
+  @JsonKey(name: 'created_by')
+  final UserModel createdBy;
   final List<double> _coordinates;
   @override
   List<double> get coordinates {
@@ -338,22 +328,32 @@ class _$StoryModelImpl implements _StoryModel {
 
   @override
   final PostType type;
+  final List<ChannelModel> _channels;
   @override
-  final ChannelModel channel;
-  final List<UserModel> _likes;
-  @override
-  List<UserModel> get likes {
-    if (_likes is EqualUnmodifiableListView) return _likes;
+  List<ChannelModel> get channels {
+    if (_channels is EqualUnmodifiableListView) return _channels;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_likes);
+    return EqualUnmodifiableListView(_channels);
   }
 
-  final List<UserModel> _dislikes;
+  final List<UserModel>? _likes;
   @override
-  List<UserModel> get dislikes {
+  List<UserModel>? get likes {
+    final value = _likes;
+    if (value == null) return null;
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<UserModel>? _dislikes;
+  @override
+  List<UserModel>? get dislikes {
+    final value = _dislikes;
+    if (value == null) return null;
     if (_dislikes is EqualUnmodifiableListView) return _dislikes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dislikes);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -373,7 +373,7 @@ class _$StoryModelImpl implements _StoryModel {
 
   @override
   String toString() {
-    return 'StoryModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, coordinates: $coordinates, type: $type, channel: $channel, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city)';
+    return 'StoryModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdAt: $createdAt, createdBy: $createdBy, coordinates: $coordinates, type: $type, channels: $channels, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city)';
   }
 
   @override
@@ -386,14 +386,14 @@ class _$StoryModelImpl implements _StoryModel {
                 other.isActive == isActive) &&
             (identical(other.isDeleted, isDeleted) ||
                 other.isDeleted == isDeleted) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
             const DeepCollectionEquality()
                 .equals(other._coordinates, _coordinates) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.channel, channel) || other.channel == channel) &&
+            const DeepCollectionEquality().equals(other._channels, _channels) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
             const DeepCollectionEquality().equals(other._dislikes, _dislikes) &&
             (identical(other.text, text) || other.text == text) &&
@@ -408,11 +408,11 @@ class _$StoryModelImpl implements _StoryModel {
       id,
       isActive,
       isDeleted,
-      createdBy,
       createdAt,
+      createdBy,
       const DeepCollectionEquality().hash(_coordinates),
       type,
-      channel,
+      const DeepCollectionEquality().hash(_channels),
       const DeepCollectionEquality().hash(_likes),
       const DeepCollectionEquality().hash(_dislikes),
       text,
@@ -439,15 +439,15 @@ abstract class _StoryModel implements StoryModel {
       @JsonKey(name: 'is_active', required: true) required final bool isActive,
       @JsonKey(name: 'is_deleted', required: true)
       required final bool isDeleted,
-      @JsonKey(name: 'created_by') required final UserModel createdBy,
       @DateTimeConverter()
       @JsonKey(name: 'created_at', required: true)
       required final DateTime createdAt,
+      @JsonKey(name: 'created_by') required final UserModel createdBy,
       required final List<double> coordinates,
       required final PostType type,
-      required final ChannelModel channel,
-      required final List<UserModel> likes,
-      required final List<UserModel> dislikes,
+      required final List<ChannelModel> channels,
+      final List<UserModel>? likes,
+      final List<UserModel>? dislikes,
       final String? text,
       final List<String>? media,
       final String? city}) = _$StoryModelImpl;
@@ -464,22 +464,22 @@ abstract class _StoryModel implements StoryModel {
   @JsonKey(name: 'is_deleted', required: true)
   bool get isDeleted;
   @override
-  @JsonKey(name: 'created_by')
-  UserModel get createdBy;
-  @override
   @DateTimeConverter()
   @JsonKey(name: 'created_at', required: true)
   DateTime get createdAt;
+  @override
+  @JsonKey(name: 'created_by')
+  UserModel get createdBy;
   @override
   List<double> get coordinates;
   @override
   PostType get type;
   @override
-  ChannelModel get channel;
+  List<ChannelModel> get channels;
   @override
-  List<UserModel> get likes;
+  List<UserModel>? get likes;
   @override
-  List<UserModel> get dislikes;
+  List<UserModel>? get dislikes;
   @override
   String? get text;
   @override

@@ -21,12 +21,14 @@ _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) {
         .map((e) => (e as num).toDouble())
         .toList(),
     type: $enumDecode(_$PostTypeEnumMap, json['type']),
-    channel: ChannelModel.fromJson(json['channel'] as Map<String, dynamic>),
-    likes: (json['likes'] as List<dynamic>)
-        .map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+    channels: (json['channels'] as List<dynamic>)
+        .map((e) => ChannelModel.fromJson(e as Map<String, dynamic>))
         .toList(),
-    dislikes: (json['dislikes'] as List<dynamic>)
-        .map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+    likes: (json['likes'] as List<dynamic>?)
+        ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    dislikes: (json['dislikes'] as List<dynamic>?)
+        ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
         .toList(),
     text: json['text'] as String?,
     media: (json['media'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -37,23 +39,32 @@ _$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'is_active': instance.isActive,
-      'is_deleted': instance.isDeleted,
-      'created_by': instance.createdBy.toJson(),
-      'created_at': const DateTimeConverter().toJson(instance.createdAt),
-      'coordinates': instance.coordinates,
-      'type': _$PostTypeEnumMap[instance.type]!,
-      'channel': instance.channel.toJson(),
-      'likes': instance.likes.map((e) => e.toJson()).toList(),
-      'dislikes': instance.dislikes.map((e) => e.toJson()).toList(),
-      'text': instance.text,
-      'media': instance.media,
-      'city': instance.city,
-      'comments': instance.comments?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'is_active': instance.isActive,
+    'is_deleted': instance.isDeleted,
+    'created_by': instance.createdBy.toJson(),
+    'created_at': const DateTimeConverter().toJson(instance.createdAt),
+    'coordinates': instance.coordinates,
+    'type': _$PostTypeEnumMap[instance.type]!,
+    'channels': instance.channels.map((e) => e.toJson()).toList(),
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('likes', instance.likes?.map((e) => e.toJson()).toList());
+  writeNotNull('dislikes', instance.dislikes?.map((e) => e.toJson()).toList());
+  writeNotNull('text', instance.text);
+  writeNotNull('media', instance.media);
+  writeNotNull('city', instance.city);
+  writeNotNull('comments', instance.comments?.map((e) => e.toJson()).toList());
+  return val;
+}
 
 const _$PostTypeEnumMap = {
   PostType.public: 'PUBLIC',

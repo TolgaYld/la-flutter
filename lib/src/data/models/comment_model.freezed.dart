@@ -31,9 +31,9 @@ mixin _$CommentModel {
   @JsonKey(name: 'created_at', required: true)
   DateTime get createdAt => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
-  List<UserModel> get likes => throw _privateConstructorUsedError;
-  List<UserModel> get dislikes => throw _privateConstructorUsedError;
   PostModel get post => throw _privateConstructorUsedError;
+  List<UserModel>? get likes => throw _privateConstructorUsedError;
+  List<UserModel>? get dislikes => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   List<String>? get media => throw _privateConstructorUsedError;
 
@@ -58,9 +58,9 @@ abstract class $CommentModelCopyWith<$Res> {
       @JsonKey(name: 'created_at', required: true)
       DateTime createdAt,
       PostType type,
-      List<UserModel> likes,
-      List<UserModel> dislikes,
       PostModel post,
+      List<UserModel>? likes,
+      List<UserModel>? dislikes,
       String? text,
       List<String>? media});
 
@@ -87,9 +87,9 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
     Object? createdBy = null,
     Object? createdAt = null,
     Object? type = null,
-    Object? likes = null,
-    Object? dislikes = null,
     Object? post = null,
+    Object? likes = freezed,
+    Object? dislikes = freezed,
     Object? text = freezed,
     Object? media = freezed,
   }) {
@@ -118,18 +118,18 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as PostType,
-      likes: null == likes
-          ? _value.likes
-          : likes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      dislikes: null == dislikes
-          ? _value.dislikes
-          : dislikes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
       post: null == post
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
               as PostModel,
+      likes: freezed == likes
+          ? _value.likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<UserModel>?,
+      dislikes: freezed == dislikes
+          ? _value.dislikes
+          : dislikes // ignore: cast_nullable_to_non_nullable
+              as List<UserModel>?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -175,9 +175,9 @@ abstract class _$$CommentModelImplCopyWith<$Res>
       @JsonKey(name: 'created_at', required: true)
       DateTime createdAt,
       PostType type,
-      List<UserModel> likes,
-      List<UserModel> dislikes,
       PostModel post,
+      List<UserModel>? likes,
+      List<UserModel>? dislikes,
       String? text,
       List<String>? media});
 
@@ -204,9 +204,9 @@ class __$$CommentModelImplCopyWithImpl<$Res>
     Object? createdBy = null,
     Object? createdAt = null,
     Object? type = null,
-    Object? likes = null,
-    Object? dislikes = null,
     Object? post = null,
+    Object? likes = freezed,
+    Object? dislikes = freezed,
     Object? text = freezed,
     Object? media = freezed,
   }) {
@@ -235,18 +235,18 @@ class __$$CommentModelImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as PostType,
-      likes: null == likes
-          ? _value._likes
-          : likes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      dislikes: null == dislikes
-          ? _value._dislikes
-          : dislikes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
       post: null == post
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
               as PostModel,
+      likes: freezed == likes
+          ? _value._likes
+          : likes // ignore: cast_nullable_to_non_nullable
+              as List<UserModel>?,
+      dislikes: freezed == dislikes
+          ? _value._dislikes
+          : dislikes // ignore: cast_nullable_to_non_nullable
+              as List<UserModel>?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -261,7 +261,7 @@ class __$$CommentModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$CommentModelImpl implements _CommentModel {
   _$CommentModelImpl(
       {required this.id,
@@ -272,9 +272,9 @@ class _$CommentModelImpl implements _CommentModel {
       @JsonKey(name: 'created_at', required: true)
       required this.createdAt,
       required this.type,
-      required final List<UserModel> likes,
-      required final List<UserModel> dislikes,
       required this.post,
+      final List<UserModel>? likes,
+      final List<UserModel>? dislikes,
       this.text,
       final List<String>? media})
       : _likes = likes,
@@ -301,24 +301,28 @@ class _$CommentModelImpl implements _CommentModel {
   final DateTime createdAt;
   @override
   final PostType type;
-  final List<UserModel> _likes;
-  @override
-  List<UserModel> get likes {
-    if (_likes is EqualUnmodifiableListView) return _likes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_likes);
-  }
-
-  final List<UserModel> _dislikes;
-  @override
-  List<UserModel> get dislikes {
-    if (_dislikes is EqualUnmodifiableListView) return _dislikes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dislikes);
-  }
-
   @override
   final PostModel post;
+  final List<UserModel>? _likes;
+  @override
+  List<UserModel>? get likes {
+    final value = _likes;
+    if (value == null) return null;
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<UserModel>? _dislikes;
+  @override
+  List<UserModel>? get dislikes {
+    final value = _dislikes;
+    if (value == null) return null;
+    if (_dislikes is EqualUnmodifiableListView) return _dislikes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final String? text;
   final List<String>? _media;
@@ -333,7 +337,7 @@ class _$CommentModelImpl implements _CommentModel {
 
   @override
   String toString() {
-    return 'CommentModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, type: $type, likes: $likes, dislikes: $dislikes, post: $post, text: $text, media: $media)';
+    return 'CommentModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, type: $type, post: $post, likes: $likes, dislikes: $dislikes, text: $text, media: $media)';
   }
 
   @override
@@ -351,9 +355,9 @@ class _$CommentModelImpl implements _CommentModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.post, post) || other.post == post) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
             const DeepCollectionEquality().equals(other._dislikes, _dislikes) &&
-            (identical(other.post, post) || other.post == post) &&
             (identical(other.text, text) || other.text == text) &&
             const DeepCollectionEquality().equals(other._media, _media));
   }
@@ -368,9 +372,9 @@ class _$CommentModelImpl implements _CommentModel {
       createdBy,
       createdAt,
       type,
+      post,
       const DeepCollectionEquality().hash(_likes),
       const DeepCollectionEquality().hash(_dislikes),
-      post,
       text,
       const DeepCollectionEquality().hash(_media));
 
@@ -399,9 +403,9 @@ abstract class _CommentModel implements CommentModel {
       @JsonKey(name: 'created_at', required: true)
       required final DateTime createdAt,
       required final PostType type,
-      required final List<UserModel> likes,
-      required final List<UserModel> dislikes,
       required final PostModel post,
+      final List<UserModel>? likes,
+      final List<UserModel>? dislikes,
       final String? text,
       final List<String>? media}) = _$CommentModelImpl;
 
@@ -426,11 +430,11 @@ abstract class _CommentModel implements CommentModel {
   @override
   PostType get type;
   @override
-  List<UserModel> get likes;
-  @override
-  List<UserModel> get dislikes;
-  @override
   PostModel get post;
+  @override
+  List<UserModel>? get likes;
+  @override
+  List<UserModel>? get dislikes;
   @override
   String? get text;
   @override

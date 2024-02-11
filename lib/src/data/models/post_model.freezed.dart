@@ -32,9 +32,9 @@ mixin _$PostModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   List<double> get coordinates => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
-  ChannelModel get channel => throw _privateConstructorUsedError;
-  List<UserModel> get likes => throw _privateConstructorUsedError;
-  List<UserModel> get dislikes => throw _privateConstructorUsedError;
+  List<ChannelModel> get channels => throw _privateConstructorUsedError;
+  List<UserModel>? get likes => throw _privateConstructorUsedError;
+  List<UserModel>? get dislikes => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   List<String>? get media => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
@@ -61,16 +61,15 @@ abstract class $PostModelCopyWith<$Res> {
       DateTime createdAt,
       List<double> coordinates,
       PostType type,
-      ChannelModel channel,
-      List<UserModel> likes,
-      List<UserModel> dislikes,
+      List<ChannelModel> channels,
+      List<UserModel>? likes,
+      List<UserModel>? dislikes,
       String? text,
       List<String>? media,
       String? city,
       List<CommentModel>? comments});
 
   $UserModelCopyWith<$Res> get createdBy;
-  $ChannelModelCopyWith<$Res> get channel;
 }
 
 /// @nodoc
@@ -93,9 +92,9 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
     Object? createdAt = null,
     Object? coordinates = null,
     Object? type = null,
-    Object? channel = null,
-    Object? likes = null,
-    Object? dislikes = null,
+    Object? channels = null,
+    Object? likes = freezed,
+    Object? dislikes = freezed,
     Object? text = freezed,
     Object? media = freezed,
     Object? city = freezed,
@@ -130,18 +129,18 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as PostType,
-      channel: null == channel
-          ? _value.channel
-          : channel // ignore: cast_nullable_to_non_nullable
-              as ChannelModel,
-      likes: null == likes
+      channels: null == channels
+          ? _value.channels
+          : channels // ignore: cast_nullable_to_non_nullable
+              as List<ChannelModel>,
+      likes: freezed == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      dislikes: null == dislikes
+              as List<UserModel>?,
+      dislikes: freezed == dislikes
           ? _value.dislikes
           : dislikes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
+              as List<UserModel>?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -168,14 +167,6 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
       return _then(_value.copyWith(createdBy: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ChannelModelCopyWith<$Res> get channel {
-    return $ChannelModelCopyWith<$Res>(_value.channel, (value) {
-      return _then(_value.copyWith(channel: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -196,9 +187,9 @@ abstract class _$$PostModelImplCopyWith<$Res>
       DateTime createdAt,
       List<double> coordinates,
       PostType type,
-      ChannelModel channel,
-      List<UserModel> likes,
-      List<UserModel> dislikes,
+      List<ChannelModel> channels,
+      List<UserModel>? likes,
+      List<UserModel>? dislikes,
       String? text,
       List<String>? media,
       String? city,
@@ -206,8 +197,6 @@ abstract class _$$PostModelImplCopyWith<$Res>
 
   @override
   $UserModelCopyWith<$Res> get createdBy;
-  @override
-  $ChannelModelCopyWith<$Res> get channel;
 }
 
 /// @nodoc
@@ -228,9 +217,9 @@ class __$$PostModelImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? coordinates = null,
     Object? type = null,
-    Object? channel = null,
-    Object? likes = null,
-    Object? dislikes = null,
+    Object? channels = null,
+    Object? likes = freezed,
+    Object? dislikes = freezed,
     Object? text = freezed,
     Object? media = freezed,
     Object? city = freezed,
@@ -265,18 +254,18 @@ class __$$PostModelImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as PostType,
-      channel: null == channel
-          ? _value.channel
-          : channel // ignore: cast_nullable_to_non_nullable
-              as ChannelModel,
-      likes: null == likes
+      channels: null == channels
+          ? _value._channels
+          : channels // ignore: cast_nullable_to_non_nullable
+              as List<ChannelModel>,
+      likes: freezed == likes
           ? _value._likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
-      dislikes: null == dislikes
+              as List<UserModel>?,
+      dislikes: freezed == dislikes
           ? _value._dislikes
           : dislikes // ignore: cast_nullable_to_non_nullable
-              as List<UserModel>,
+              as List<UserModel>?,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
@@ -299,7 +288,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$PostModelImpl implements _PostModel {
   _$PostModelImpl(
       {required this.id,
@@ -311,14 +300,15 @@ class _$PostModelImpl implements _PostModel {
       required this.createdAt,
       required final List<double> coordinates,
       required this.type,
-      required this.channel,
-      required final List<UserModel> likes,
-      required final List<UserModel> dislikes,
+      required final List<ChannelModel> channels,
+      final List<UserModel>? likes,
+      final List<UserModel>? dislikes,
       this.text,
       final List<String>? media,
       this.city,
       final List<CommentModel>? comments})
       : _coordinates = coordinates,
+        _channels = channels,
         _likes = likes,
         _dislikes = dislikes,
         _media = media,
@@ -352,22 +342,32 @@ class _$PostModelImpl implements _PostModel {
 
   @override
   final PostType type;
+  final List<ChannelModel> _channels;
   @override
-  final ChannelModel channel;
-  final List<UserModel> _likes;
-  @override
-  List<UserModel> get likes {
-    if (_likes is EqualUnmodifiableListView) return _likes;
+  List<ChannelModel> get channels {
+    if (_channels is EqualUnmodifiableListView) return _channels;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_likes);
+    return EqualUnmodifiableListView(_channels);
   }
 
-  final List<UserModel> _dislikes;
+  final List<UserModel>? _likes;
   @override
-  List<UserModel> get dislikes {
+  List<UserModel>? get likes {
+    final value = _likes;
+    if (value == null) return null;
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<UserModel>? _dislikes;
+  @override
+  List<UserModel>? get dislikes {
+    final value = _dislikes;
+    if (value == null) return null;
     if (_dislikes is EqualUnmodifiableListView) return _dislikes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dislikes);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -396,7 +396,7 @@ class _$PostModelImpl implements _PostModel {
 
   @override
   String toString() {
-    return 'PostModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, coordinates: $coordinates, type: $type, channel: $channel, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city, comments: $comments)';
+    return 'PostModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, coordinates: $coordinates, type: $type, channels: $channels, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city, comments: $comments)';
   }
 
   @override
@@ -416,7 +416,7 @@ class _$PostModelImpl implements _PostModel {
             const DeepCollectionEquality()
                 .equals(other._coordinates, _coordinates) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.channel, channel) || other.channel == channel) &&
+            const DeepCollectionEquality().equals(other._channels, _channels) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
             const DeepCollectionEquality().equals(other._dislikes, _dislikes) &&
             (identical(other.text, text) || other.text == text) &&
@@ -436,7 +436,7 @@ class _$PostModelImpl implements _PostModel {
       createdAt,
       const DeepCollectionEquality().hash(_coordinates),
       type,
-      channel,
+      const DeepCollectionEquality().hash(_channels),
       const DeepCollectionEquality().hash(_likes),
       const DeepCollectionEquality().hash(_dislikes),
       text,
@@ -470,9 +470,9 @@ abstract class _PostModel implements PostModel {
       required final DateTime createdAt,
       required final List<double> coordinates,
       required final PostType type,
-      required final ChannelModel channel,
-      required final List<UserModel> likes,
-      required final List<UserModel> dislikes,
+      required final List<ChannelModel> channels,
+      final List<UserModel>? likes,
+      final List<UserModel>? dislikes,
       final String? text,
       final List<String>? media,
       final String? city,
@@ -501,11 +501,11 @@ abstract class _PostModel implements PostModel {
   @override
   PostType get type;
   @override
-  ChannelModel get channel;
+  List<ChannelModel> get channels;
   @override
-  List<UserModel> get likes;
+  List<UserModel>? get likes;
   @override
-  List<UserModel> get dislikes;
+  List<UserModel>? get dislikes;
   @override
   String? get text;
   @override

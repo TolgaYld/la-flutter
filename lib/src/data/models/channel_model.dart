@@ -11,7 +11,7 @@ part 'channel_model.g.dart';
 
 @freezed
 class ChannelModel extends Channel with _$ChannelModel {
-  @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory ChannelModel({
     required String id,
     required String name,
@@ -21,12 +21,24 @@ class ChannelModel extends Channel with _$ChannelModel {
     @JsonKey(name: 'created_at', required: true)
     required DateTime createdAt,
     List<UserModel>? subscriptions,
-    @JsonKey(name: 'created_by') UserModel? createdBy,
+    @JsonKey(
+      name: 'created_by',
+    )
+    UserModel? createdBy,
     List<PostModel>? posts,
     List<StoryModel>? storys,
   }) = _ChannelModel;
 
   factory ChannelModel.fromJson(DataMap json) => _$ChannelModelFromJson(json);
+
+  factory ChannelModel.empty() => ChannelModel(
+        id: 'empty',
+        name: 'empty',
+        isActive: true,
+        isDeleted: false,
+        createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
+        createdBy: UserModel.empty(),
+      );
 
   factory ChannelModel.fromEntity(Channel channel) => ChannelModel(
         id: channel.id,

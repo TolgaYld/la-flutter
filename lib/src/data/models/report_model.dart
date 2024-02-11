@@ -13,17 +13,16 @@ part 'report_model.g.dart';
 
 @freezed
 class ReportModel extends Report with _$ReportModel {
-  @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory ReportModel({
     required String id,
-    @JsonKey(name: 'reported_user', required: true)
-    required UserModel reportedUser,
     @JsonKey(name: 'is_done', required: true) required bool isDone,
     @JsonKey(name: 'created_by') required UserModel createdBy,
     @DateTimeConverter()
     @JsonKey(name: 'created_at', required: true)
     required DateTime createdAt,
     required String reason,
+    @JsonKey(name: 'reported_user') UserModel? reportedUser,
     PostModel? post,
     CommentModel? comment,
     ChannelModel? channel,
@@ -33,6 +32,15 @@ class ReportModel extends Report with _$ReportModel {
   }) = _ReportModel;
 
   factory ReportModel.fromJson(DataMap json) => _$ReportModelFromJson(json);
+
+  factory ReportModel.empty() => ReportModel(
+        id: 'empty',
+        reportedUser: UserModel.empty(),
+        isDone: false,
+        createdBy: UserModel.empty(),
+        createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
+        reason: 'empty',
+      );
 
   factory ReportModel.fromEntity(Report report) => ReportModel(
         id: report.id,
@@ -46,7 +54,11 @@ class ReportModel extends Report with _$ReportModel {
         city: report.city,
         isDone: report.isDone,
         reason: report.reason,
-        reportedUser: UserModel.fromEntity(report.reportedUser),
+        reportedUser: report.reportedUser != null
+            ? UserModel.fromEntity(
+                report.reportedUser!,
+              )
+            : null,
         comment: report.comment != null
             ? CommentModel.fromEntity(
                 report.comment!,

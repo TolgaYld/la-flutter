@@ -228,7 +228,7 @@ class __$$ChannelModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ChannelModelImpl implements _ChannelModel {
   _$ChannelModelImpl(
       {required this.id,
