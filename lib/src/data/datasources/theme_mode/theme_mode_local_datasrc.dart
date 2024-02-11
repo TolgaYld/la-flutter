@@ -1,5 +1,5 @@
+import 'package:locall_app/core/common/constants.dart';
 import 'package:locall_app/core/errors/exceptions.dart';
-import 'package:locall_app/core/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ThemeModeLocalDatasrc {

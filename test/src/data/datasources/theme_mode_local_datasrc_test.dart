@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:locall_app/core/common/constants.dart';
 import 'package:locall_app/core/errors/exceptions.dart';
-import 'package:locall_app/core/utils/constants.dart';
 import 'package:locall_app/src/data/datasources/theme_mode/theme_mode_local_datasrc.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
