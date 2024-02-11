@@ -1,0 +1,281 @@
+type Query {
+  user(id: ID!): User!
+  users: [User!]!
+  userWithUsername(username: String!): User
+  userWithEmail(email: String!): User
+  channel(id: ID!): Channel!
+  channels: [Channel!]
+  post(id: ID!): Post!
+  posts: [Post!]!
+  getNearContents(coordinates: [Float!]!): PostsAndStorys
+  comment(id: ID!): Comment!
+  comments: [Comment!]
+  story(id: ID!): Story!
+  storys: [Story!]
+  report(id: ID!): Report!
+  reports: [Report]!
+}
+
+type User {
+  _id: ID!
+  email: String!
+  username: String!
+  posts: [Post]
+  storys: [Story]
+  comments: [Comment]
+  reports: [Report]
+  reporteds: [Report]
+  channels: [Channel!]!
+  coordinates: [Float!]!
+  distance: Int!
+  points: Int!
+  auto_generated_username: Boolean!
+  username_change_counter: Int!
+  official: Boolean!
+  device_type: String
+  device_id: String
+  is_deleted: Boolean!
+  is_banned: Boolean!
+  is_admin: Boolean!
+  created_at: String
+  last_update_from_user: ID
+}
+
+type Channel {
+  _id: ID!
+  name: String!
+  subscriptions: [User]
+  posts: [Post]
+  storys: [Story]
+  created_by: User
+  is_active: Boolean!
+  is_deleted: Boolean!
+  created_at: String
+  last_update_from_user: ID
+}
+
+type Post {
+  _id: ID!
+  text: String
+  media: [String]
+  created_by: User!
+  coordinates: [Float!]!
+  city: String
+  channels: [Channel!]!
+  comments: [Comment]
+  type: String!
+  likes: [User!]
+  dislikes: [User!]
+  is_active: Boolean!
+  is_deleted: Boolean!
+  created_at: String!
+  last_update_from_user: ID
+}
+
+type PostsAndStorys {
+  posts: [Post!]
+  storys: [Story!]
+}
+
+type Comment {
+  _id: ID!
+  text: String
+  media: [String]
+  created_by: User!
+  post: Post!
+  type: String!
+  likes: [User!]!
+  dislikes: [User!]
+  is_active: Boolean
+  is_deleted: Boolean!
+  created_at: String!
+  last_update_from_user: ID
+}
+
+type Story {
+  _id: ID!
+  text: String
+  media: [String]
+  user: User!
+  coordinates: [Float!]!
+  city: String
+  channels: [Channel!]!
+  type: String!
+  likes: [User!]
+  dislikes: [User!]
+  is_active: Boolean!
+  is_deleted: Boolean!
+  created_at: String
+  last_update_from_user: ID
+}
+
+type Report {
+  _id: ID!
+  reason: String!
+  created_by: User!
+  reported_user: User!
+  post: Post
+  comment: Comment
+  channel: Channel
+  story: Story
+  is_done: Boolean!
+  notes_about_report: String
+  created_at: String!
+  last_update_from_user: ID
+}
+
+type Mutation {
+  signUpUser(data: CreateUserInput!): AuthUser!
+  signInUser(data: SignInUserInput!): AuthUser!
+  updateUser(data: UpdateUserInput): AuthUser!
+  resetPassword(email: String): User
+  updateUserPassword(data: String!): AuthUser!
+  deleteUser(id: ID!): User!
+  deleteUserFromDb(id: ID!): String!
+  createChannel(data: CreateChannelInput!): Channel!
+  entryOrLeaveChannel(id: ID!): Channel!
+  updateChannel(id: ID, data: UpdateChannelInput!): Channel!
+  deleteChannelFromDb(id: ID!): Channel!
+  createPost(data: CreatePostInput!): Post!
+  likeorDislikePost(id: ID!, like: Boolean!): Post!
+  updatePost(id: ID, data: UpdatePostInput!): Post!
+  deletePostFromDb(id: ID!): Post!
+  createComment(data: CreateCommentInput!): Comment!
+  likeorDislikeComment(id: ID!, like: Boolean!): Comment!
+  updateComment(id: ID, data: UpdateCommentInput!): Comment
+  deleteCommentFromDb(id: ID!): Comment!
+  createStory(data: CreateStoryInput!): Story!
+  likeorDislikeStory(story_id: ID!, like: Boolean!): Story!
+  updateStory(id: ID, data: UpdateStoryInput!): Story!
+  deleteStoryFromDb(id: ID!): Story!
+  createReport(data: CreateReportInput!): Report!
+  updateReport(id: ID!, data: UpdateReportInput): Report!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type AuthUser {
+  user: User
+  token: String!
+  refreshToken: String!
+}
+
+input SignInUserInput {
+  signInEmailOrUsername: String
+  password: String!
+}
+
+input UpdateUserInput {
+  email: String
+  username: String
+  coordinates: [Float!]!
+  distance: Int
+  official: Boolean
+  is_deleted: Boolean
+  is_banned: Boolean
+  email_confirmed: Boolean
+  is_admin: Boolean
+  last_update_from_user: ID
+}
+
+input CreateChannelInput {
+  name: String!
+}
+
+input UpdateChannelInput {
+  name: String!
+  is_active: Boolean
+  is_deleted: Boolean
+}
+
+input CreatePostInput {
+  coordinates: [Float!]!
+  text: String
+  media: [String]
+  type: String!
+  channels: [ID!]!
+}
+
+input UpdatePostInput {
+  text: String!
+  media: [String]
+  channels: [ID]
+  type: String
+  is_active: Boolean
+  is_deleted: Boolean
+}
+
+input CreateCommentInput {
+  text: String
+  media: [String]
+  post: ID!
+  type: String!
+  last_update_from_user: ID
+}
+
+input UpdateCommentInput {
+  text: String!
+  media: [String]
+  post: ID
+  type: String
+  is_active: Boolean
+  is_deleted: Boolean
+}
+
+input CreateStoryInput {
+  coordinates: [Float!]!
+  text: String
+  media: [String]
+  type: String
+  channels: [ID!]!
+}
+
+input UpdateStoryInput {
+  text: String!
+  media: [String]
+  channels: [ID]
+  type: String
+  is_active: Boolean
+  is_deleted: Boolean
+}
+
+input CreateReportInput {
+  reason: String!
+  reported_user: ID!
+  channel: ID
+  post: ID
+  comment: ID
+}
+
+input UpdateReportInput {
+  reason: String
+  created_by: ID
+  reported_user: ID
+  channel: ID
+  post: ID
+  comment: ID
+  story: ID
+  is_done: Boolean!
+  notes_about_report: String
+  is_deleted: Boolean
+}
+
+type Subscription {
+  user: User!
+  channel(device_id: ID): Channel!
+  post(device_id: ID): Post!
+  comment(device_id: ID): Comment!
+  story(device_id: ID): Story!
+  reportedUser(device_id: ID): Report!
+  reportedFrom(device_id: ID): Report!
+  report: Report!
+}
+
+type Token {
+  token: String!
+  refreshToken: String!
+}
