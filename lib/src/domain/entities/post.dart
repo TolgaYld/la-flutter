@@ -8,13 +8,13 @@ class Post {
     required this.id,
     required this.createdBy,
     required this.coordinates,
-    required this.channel,
+    required this.channels,
     required this.type,
-    required this.likes,
-    required this.dislikes,
     required this.isActive,
     required this.isDeleted,
     required this.createdAt,
+    this.likes,
+    this.dislikes,
     this.city,
     this.text,
     this.media,
@@ -24,10 +24,10 @@ class Post {
   final String id;
   final User createdBy;
   final List<double> coordinates;
-  final Channel channel;
+  final List<Channel> channels;
   final PostType type;
-  final List<User> likes;
-  final List<User> dislikes;
+  final List<User>? likes;
+  final List<User>? dislikes;
   final bool isActive;
   final bool isDeleted;
   final DateTime createdAt;

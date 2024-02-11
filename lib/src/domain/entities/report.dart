@@ -9,9 +9,9 @@ class Report {
     required this.id,
     required this.createdBy,
     required this.reason,
-    required this.reportedUser,
     required this.isDone,
     required this.createdAt,
+    this.reportedUser,
     this.post,
     this.comment,
     this.channel,
@@ -22,7 +22,7 @@ class Report {
   final String id;
   final User createdBy;
   final String reason;
-  final User reportedUser;
+  final User? reportedUser;
   final bool isDone;
   final DateTime createdAt;
   final Post? post;
