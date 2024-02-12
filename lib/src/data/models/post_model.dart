@@ -14,7 +14,7 @@ part 'post_model.g.dart';
 class PostModel extends Post with _$PostModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory PostModel({
-    required String id,
+    @JsonKey(name: '_id', required: true) required String id,
     @JsonKey(name: 'is_active', required: true) required bool isActive,
     @JsonKey(name: 'is_deleted', required: true) required bool isDeleted,
     @JsonKey(name: 'created_by') required UserModel createdBy,

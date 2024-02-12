@@ -20,6 +20,7 @@ ChannelModel _$ChannelModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ChannelModel {
+  @JsonKey(name: '_id', required: true)
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_active', required: true)
@@ -48,7 +49,7 @@ abstract class $ChannelModelCopyWith<$Res> {
       _$ChannelModelCopyWithImpl<$Res, ChannelModel>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       String name,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
@@ -148,7 +149,7 @@ abstract class _$$ChannelModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       String name,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
@@ -231,7 +232,7 @@ class __$$ChannelModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ChannelModelImpl implements _ChannelModel {
   _$ChannelModelImpl(
-      {required this.id,
+      {@JsonKey(name: '_id', required: true) required this.id,
       required this.name,
       @JsonKey(name: 'is_active', required: true) required this.isActive,
       @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
@@ -250,6 +251,7 @@ class _$ChannelModelImpl implements _ChannelModel {
       _$$ChannelModelImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id', required: true)
   final String id;
   @override
   final String name;
@@ -352,7 +354,7 @@ class _$ChannelModelImpl implements _ChannelModel {
 
 abstract class _ChannelModel implements ChannelModel {
   factory _ChannelModel(
-      {required final String id,
+      {@JsonKey(name: '_id', required: true) required final String id,
       required final String name,
       @JsonKey(name: 'is_active', required: true) required final bool isActive,
       @JsonKey(name: 'is_deleted', required: true)
@@ -369,6 +371,7 @@ abstract class _ChannelModel implements ChannelModel {
       _$ChannelModelImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id', required: true)
   String get id;
   @override
   String get name;

@@ -20,6 +20,7 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentModel {
+  @JsonKey(name: '_id', required: true)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_active', required: true)
   bool get isActive => throw _privateConstructorUsedError;
@@ -50,7 +51,7 @@ abstract class $CommentModelCopyWith<$Res> {
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
@@ -167,7 +168,7 @@ abstract class _$$CommentModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
@@ -264,7 +265,7 @@ class __$$CommentModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$CommentModelImpl implements _CommentModel {
   _$CommentModelImpl(
-      {required this.id,
+      {@JsonKey(name: '_id', required: true) required this.id,
       @JsonKey(name: 'is_active', required: true) required this.isActive,
       @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
       @JsonKey(name: 'created_by') required this.createdBy,
@@ -285,6 +286,7 @@ class _$CommentModelImpl implements _CommentModel {
       _$$CommentModelImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id', required: true)
   final String id;
   @override
   @JsonKey(name: 'is_active', required: true)
@@ -394,7 +396,7 @@ class _$CommentModelImpl implements _CommentModel {
 
 abstract class _CommentModel implements CommentModel {
   factory _CommentModel(
-      {required final String id,
+      {@JsonKey(name: '_id', required: true) required final String id,
       @JsonKey(name: 'is_active', required: true) required final bool isActive,
       @JsonKey(name: 'is_deleted', required: true)
       required final bool isDeleted,
@@ -413,6 +415,7 @@ abstract class _CommentModel implements CommentModel {
       _$CommentModelImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id', required: true)
   String get id;
   @override
   @JsonKey(name: 'is_active', required: true)

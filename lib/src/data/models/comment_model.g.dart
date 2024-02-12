@@ -9,10 +9,10 @@ part of 'comment_model.dart';
 _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['is_active', 'is_deleted', 'created_at'],
+    requiredKeys: const ['_id', 'is_active', 'is_deleted', 'created_at'],
   );
   return _$CommentModelImpl(
-    id: json['id'] as String,
+    id: json['_id'] as String,
     isActive: json['is_active'] as bool,
     isDeleted: json['is_deleted'] as bool,
     createdBy: UserModel.fromJson(json['created_by'] as Map<String, dynamic>),
@@ -32,7 +32,7 @@ _$CommentModelImpl _$$CommentModelImplFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$$CommentModelImplToJson(_$CommentModelImpl instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
+    '_id': instance.id,
     'is_active': instance.isActive,
     'is_deleted': instance.isDeleted,
     'created_by': instance.createdBy.toJson(),

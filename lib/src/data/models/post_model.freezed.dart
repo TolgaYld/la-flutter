@@ -20,6 +20,7 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
+  @JsonKey(name: '_id', required: true)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_active', required: true)
   bool get isActive => throw _privateConstructorUsedError;
@@ -52,7 +53,7 @@ abstract class $PostModelCopyWith<$Res> {
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
@@ -178,7 +179,7 @@ abstract class _$$PostModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
@@ -291,7 +292,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$PostModelImpl implements _PostModel {
   _$PostModelImpl(
-      {required this.id,
+      {@JsonKey(name: '_id', required: true) required this.id,
       @JsonKey(name: 'is_active', required: true) required this.isActive,
       @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
       @JsonKey(name: 'created_by') required this.createdBy,
@@ -318,6 +319,7 @@ class _$PostModelImpl implements _PostModel {
       _$$PostModelImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id', required: true)
   final String id;
   @override
   @JsonKey(name: 'is_active', required: true)
@@ -460,7 +462,7 @@ class _$PostModelImpl implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   factory _PostModel(
-      {required final String id,
+      {@JsonKey(name: '_id', required: true) required final String id,
       @JsonKey(name: 'is_active', required: true) required final bool isActive,
       @JsonKey(name: 'is_deleted', required: true)
       required final bool isDeleted,
@@ -482,6 +484,7 @@ abstract class _PostModel implements PostModel {
       _$PostModelImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id', required: true)
   String get id;
   @override
   @JsonKey(name: 'is_active', required: true)

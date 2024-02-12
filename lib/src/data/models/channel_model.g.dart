@@ -9,10 +9,10 @@ part of 'channel_model.dart';
 _$ChannelModelImpl _$$ChannelModelImplFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['is_active', 'is_deleted', 'created_at'],
+    requiredKeys: const ['_id', 'is_active', 'is_deleted', 'created_at'],
   );
   return _$ChannelModelImpl(
-    id: json['id'] as String,
+    id: json['_id'] as String,
     name: json['name'] as String,
     isActive: json['is_active'] as bool,
     isDeleted: json['is_deleted'] as bool,
@@ -34,7 +34,7 @@ _$ChannelModelImpl _$$ChannelModelImplFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$$ChannelModelImplToJson(_$ChannelModelImpl instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
+    '_id': instance.id,
     'name': instance.name,
     'is_active': instance.isActive,
     'is_deleted': instance.isDeleted,

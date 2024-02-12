@@ -15,7 +15,7 @@ part 'report_model.g.dart';
 class ReportModel extends Report with _$ReportModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory ReportModel({
-    required String id,
+    @JsonKey(name: '_id', required: true) required String id,
     @JsonKey(name: 'is_done', required: true) required bool isDone,
     @JsonKey(name: 'created_by') required UserModel createdBy,
     @DateTimeConverter()

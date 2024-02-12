@@ -20,6 +20,7 @@ StoryModel _$StoryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StoryModel {
+  @JsonKey(name: '_id', required: true)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_active', required: true)
   bool get isActive => throw _privateConstructorUsedError;
@@ -52,7 +53,7 @@ abstract class $StoryModelCopyWith<$Res> {
       _$StoryModelCopyWithImpl<$Res, StoryModel>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
       @DateTimeConverter()
@@ -172,7 +173,7 @@ abstract class _$$StoryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_active', required: true) bool isActive,
       @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
       @DateTimeConverter()
@@ -279,7 +280,7 @@ class __$$StoryModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$StoryModelImpl implements _StoryModel {
   _$StoryModelImpl(
-      {required this.id,
+      {@JsonKey(name: '_id', required: true) required this.id,
       @JsonKey(name: 'is_active', required: true) required this.isActive,
       @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
       @DateTimeConverter()
@@ -304,6 +305,7 @@ class _$StoryModelImpl implements _StoryModel {
       _$$StoryModelImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id', required: true)
   final String id;
   @override
   @JsonKey(name: 'is_active', required: true)
@@ -435,7 +437,7 @@ class _$StoryModelImpl implements _StoryModel {
 
 abstract class _StoryModel implements StoryModel {
   factory _StoryModel(
-      {required final String id,
+      {@JsonKey(name: '_id', required: true) required final String id,
       @JsonKey(name: 'is_active', required: true) required final bool isActive,
       @JsonKey(name: 'is_deleted', required: true)
       required final bool isDeleted,
@@ -456,6 +458,7 @@ abstract class _StoryModel implements StoryModel {
       _$StoryModelImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id', required: true)
   String get id;
   @override
   @JsonKey(name: 'is_active', required: true)

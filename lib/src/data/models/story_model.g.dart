@@ -9,10 +9,10 @@ part of 'story_model.dart';
 _$StoryModelImpl _$$StoryModelImplFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['is_active', 'is_deleted', 'created_at'],
+    requiredKeys: const ['_id', 'is_active', 'is_deleted', 'created_at'],
   );
   return _$StoryModelImpl(
-    id: json['id'] as String,
+    id: json['_id'] as String,
     isActive: json['is_active'] as bool,
     isDeleted: json['is_deleted'] as bool,
     createdAt: const DateTimeConverter().fromJson(json['created_at'] as String),
@@ -38,7 +38,7 @@ _$StoryModelImpl _$$StoryModelImplFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$$StoryModelImplToJson(_$StoryModelImpl instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
+    '_id': instance.id,
     'is_active': instance.isActive,
     'is_deleted': instance.isDeleted,
     'created_at': const DateTimeConverter().toJson(instance.createdAt),

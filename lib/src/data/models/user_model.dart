@@ -15,7 +15,7 @@ part 'user_model.g.dart';
 class UserModel extends User with _$UserModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory UserModel({
-    required String id,
+    @JsonKey(name: '_id', required: true) required String id,
     required String username,
     required String email,
     @JsonKey(name: 'is_banned', required: true) required bool isBanned,

@@ -9,10 +9,10 @@ part of 'report_model.dart';
 _$ReportModelImpl _$$ReportModelImplFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['is_done', 'created_at'],
+    requiredKeys: const ['_id', 'is_done', 'created_at'],
   );
   return _$ReportModelImpl(
-    id: json['id'] as String,
+    id: json['_id'] as String,
     isDone: json['is_done'] as bool,
     createdBy: UserModel.fromJson(json['created_by'] as Map<String, dynamic>),
     createdAt: const DateTimeConverter().fromJson(json['created_at'] as String),
@@ -39,7 +39,7 @@ _$ReportModelImpl _$$ReportModelImplFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$$ReportModelImplToJson(_$ReportModelImpl instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
+    '_id': instance.id,
     'is_done': instance.isDone,
     'created_by': instance.createdBy.toJson(),
     'created_at': const DateTimeConverter().toJson(instance.createdAt),

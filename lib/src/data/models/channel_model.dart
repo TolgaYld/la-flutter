@@ -13,7 +13,7 @@ part 'channel_model.g.dart';
 class ChannelModel extends Channel with _$ChannelModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory ChannelModel({
-    required String id,
+    @JsonKey(name: '_id', required: true) required String id,
     required String name,
     @JsonKey(name: 'is_active', required: true) required bool isActive,
     @JsonKey(name: 'is_deleted', required: true) required bool isDeleted,

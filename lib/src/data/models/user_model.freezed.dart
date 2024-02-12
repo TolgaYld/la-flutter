@@ -20,6 +20,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
+  @JsonKey(name: '_id', required: true)
   String get id => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -63,7 +64,7 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       String username,
       String email,
       @JsonKey(name: 'is_banned', required: true) bool isBanned,
@@ -223,7 +224,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       String username,
       String email,
       @JsonKey(name: 'is_banned', required: true) bool isBanned,
@@ -377,7 +378,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$UserModelImpl implements _UserModel {
   _$UserModelImpl(
-      {required this.id,
+      {@JsonKey(name: '_id', required: true) required this.id,
       required this.username,
       required this.email,
       @JsonKey(name: 'is_banned', required: true) required this.isBanned,
@@ -414,6 +415,7 @@ class _$UserModelImpl implements _UserModel {
       _$$UserModelImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id', required: true)
   final String id;
   @override
   final String username;
@@ -606,7 +608,7 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-      {required final String id,
+      {@JsonKey(name: '_id', required: true) required final String id,
       required final String username,
       required final String email,
       @JsonKey(name: 'is_banned', required: true) required final bool isBanned,
@@ -637,6 +639,7 @@ abstract class _UserModel implements UserModel {
       _$UserModelImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id', required: true)
   String get id;
   @override
   String get username;

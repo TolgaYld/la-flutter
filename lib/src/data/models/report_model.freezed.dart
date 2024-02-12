@@ -20,6 +20,7 @@ ReportModel _$ReportModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReportModel {
+  @JsonKey(name: '_id', required: true)
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_done', required: true)
   bool get isDone => throw _privateConstructorUsedError;
@@ -51,7 +52,7 @@ abstract class $ReportModelCopyWith<$Res> {
       _$ReportModelCopyWithImpl<$Res, ReportModel>;
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_done', required: true) bool isDone,
       @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter()
@@ -230,7 +231,7 @@ abstract class _$$ReportModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {@JsonKey(name: '_id', required: true) String id,
       @JsonKey(name: 'is_done', required: true) bool isDone,
       @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter()
@@ -341,7 +342,7 @@ class __$$ReportModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ReportModelImpl implements _ReportModel {
   _$ReportModelImpl(
-      {required this.id,
+      {@JsonKey(name: '_id', required: true) required this.id,
       @JsonKey(name: 'is_done', required: true) required this.isDone,
       @JsonKey(name: 'created_by') required this.createdBy,
       @DateTimeConverter()
@@ -360,6 +361,7 @@ class _$ReportModelImpl implements _ReportModel {
       _$$ReportModelImplFromJson(json);
 
   @override
+  @JsonKey(name: '_id', required: true)
   final String id;
   @override
   @JsonKey(name: 'is_done', required: true)
@@ -450,7 +452,7 @@ class _$ReportModelImpl implements _ReportModel {
 
 abstract class _ReportModel implements ReportModel {
   factory _ReportModel(
-      {required final String id,
+      {@JsonKey(name: '_id', required: true) required final String id,
       @JsonKey(name: 'is_done', required: true) required final bool isDone,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
       @DateTimeConverter()
@@ -469,6 +471,7 @@ abstract class _ReportModel implements ReportModel {
       _$ReportModelImpl.fromJson;
 
   @override
+  @JsonKey(name: '_id', required: true)
   String get id;
   @override
   @JsonKey(name: 'is_done', required: true)

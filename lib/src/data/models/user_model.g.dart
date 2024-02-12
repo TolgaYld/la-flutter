@@ -10,6 +10,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
     requiredKeys: const [
+      '_id',
       'is_banned',
       'is_deleted',
       'is_admin',
@@ -19,7 +20,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) {
     ],
   );
   return _$UserModelImpl(
-    id: json['id'] as String,
+    id: json['_id'] as String,
     username: json['username'] as String,
     email: json['email'] as String,
     isBanned: json['is_banned'] as bool,
@@ -60,7 +61,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
+    '_id': instance.id,
     'username': instance.username,
     'email': instance.email,
     'is_banned': instance.isBanned,

@@ -13,7 +13,7 @@ part 'story_model.g.dart';
 class StoryModel extends Story with _$StoryModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory StoryModel({
-    required String id,
+    @JsonKey(name: '_id', required: true) required String id,
     @JsonKey(name: 'is_active', required: true) required bool isActive,
     @JsonKey(name: 'is_deleted', required: true) required bool isDeleted,
     @DateTimeConverter()
