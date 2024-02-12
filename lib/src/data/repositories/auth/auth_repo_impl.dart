@@ -42,12 +42,12 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   ResultFuture<User> signIn({
-    required String email,
+    required String emailOrUsername,
     required String password,
   }) async {
     try {
       final result = await _remoteDatasrc.signIn(
-        email: email,
+        emailOrUsername: emailOrUsername,
         password: password,
       );
       return Right(result);
