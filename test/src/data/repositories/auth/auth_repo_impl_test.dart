@@ -7,6 +7,7 @@ import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 import 'package:locall_app/src/data/repositories/auth/auth_repo_impl.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
+import 'package:locall_app/src/domain/repositories/auth/auth_repo.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
@@ -15,7 +16,7 @@ import 'auth_repo_impl_test.mocks.dart';
 @GenerateMocks([AuthRemoteDatasrc])
 void main() {
   late MockAuthRemoteDatasrc remoteDatasrc;
-  late AuthRepoImpl repo;
+  late AuthRepo repo;
 
   setUp(() {
     remoteDatasrc = MockAuthRemoteDatasrc();
@@ -24,7 +25,7 @@ void main() {
 
   group('authWithProvider', () {
     final tUser = UserModel.empty();
-    const tException = ServerException(
+    const tException = ApiException(
       message: "Can't auth with provider",
       statusCode: 400,
     );
@@ -96,7 +97,7 @@ void main() {
   });
 
   group('forgotPassword', () {
-    const tException = ServerException(
+    const tException = ApiException(
       message: "Can't reset password",
       statusCode: 400,
     );
@@ -157,7 +158,7 @@ void main() {
 
   group('signIn', () {
     final tUser = UserModel.empty();
-    const tException = ServerException(
+    const tException = ApiException(
       message: "Can't sign in",
       statusCode: 400,
     );
@@ -223,7 +224,7 @@ void main() {
   });
 
   group('updatePassword', () {
-    const tException = ServerException(
+    const tException = ApiException(
       message: "Can't update password",
       statusCode: 400,
     );
@@ -290,7 +291,7 @@ void main() {
 
   group('signUp', () {
     final tUser = UserModel.empty();
-    const tException = ServerException(
+    const tException = ApiException(
       message: "Can't sign up",
       statusCode: 400,
     );
@@ -301,6 +302,8 @@ void main() {
           email: anyNamed('email'),
           password: anyNamed('password'),
           username: anyNamed('username'),
+          repeatPassword: anyNamed('repeatPassword'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer((_) async => tUser);
 
@@ -308,6 +311,8 @@ void main() {
         email: tUser.email,
         password: 'aaaaaaaaaaaa',
         username: tUser.username,
+        coordinates: tUser.coordinates,
+        repeatPassword: 'aaaaaaaaaaaa',
       );
 
       expect(result, Right<dynamic, User>(tUser));
@@ -317,6 +322,8 @@ void main() {
           email: tUser.email,
           password: 'aaaaaaaaaaaa',
           username: tUser.username,
+          coordinates: tUser.coordinates,
+          repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
 
@@ -331,6 +338,8 @@ void main() {
           email: anyNamed('email'),
           password: anyNamed('password'),
           username: anyNamed('username'),
+          repeatPassword: anyNamed('repeatPassword'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenThrow(tException);
 
@@ -338,6 +347,8 @@ void main() {
         email: tUser.email,
         password: 'aaaaaaaaaaaa',
         username: tUser.username,
+        coordinates: tUser.coordinates,
+        repeatPassword: 'aaaaaaaaaaaa',
       );
 
       expect(
@@ -354,6 +365,8 @@ void main() {
           email: tUser.email,
           password: 'aaaaaaaaaaaa',
           username: tUser.username,
+          coordinates: tUser.coordinates,
+          repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
 
@@ -363,7 +376,7 @@ void main() {
 
   group('updateUser', () {
     final tUser = UserModel.fromEntity(User.empty());
-    const tException = ServerException(
+    const tException = ApiException(
       message: "Can't update password",
       statusCode: 400,
     );

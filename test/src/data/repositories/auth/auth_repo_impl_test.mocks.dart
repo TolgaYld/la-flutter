@@ -114,6 +114,8 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
     required String? username,
     required String? email,
     required String? password,
+    required String? repeatPassword,
+    required List<double>? coordinates,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -123,6 +125,8 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             #username: username,
             #email: email,
             #password: password,
+            #repeatPassword: repeatPassword,
+            #coordinates: coordinates,
           },
         ),
         returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
@@ -134,6 +138,8 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
               #username: username,
               #email: email,
               #password: password,
+              #repeatPassword: repeatPassword,
+              #coordinates: coordinates,
             },
           ),
         )),
