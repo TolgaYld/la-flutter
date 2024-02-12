@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ServerException {
+mixin _$ApiException {
   String get message => throw _privateConstructorUsedError;
   int get statusCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ServerExceptionCopyWith<ServerException> get copyWith =>
+  $ApiExceptionCopyWith<ApiException> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ServerExceptionCopyWith<$Res> {
-  factory $ServerExceptionCopyWith(
-          ServerException value, $Res Function(ServerException) then) =
-      _$ServerExceptionCopyWithImpl<$Res, ServerException>;
+abstract class $ApiExceptionCopyWith<$Res> {
+  factory $ApiExceptionCopyWith(
+          ApiException value, $Res Function(ApiException) then) =
+      _$ApiExceptionCopyWithImpl<$Res, ApiException>;
   @useResult
   $Res call({String message, int statusCode});
 }
 
 /// @nodoc
-class _$ServerExceptionCopyWithImpl<$Res, $Val extends ServerException>
-    implements $ServerExceptionCopyWith<$Res> {
-  _$ServerExceptionCopyWithImpl(this._value, this._then);
+class _$ApiExceptionCopyWithImpl<$Res, $Val extends ApiException>
+    implements $ApiExceptionCopyWith<$Res> {
+  _$ApiExceptionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +63,22 @@ class _$ServerExceptionCopyWithImpl<$Res, $Val extends ServerException>
 }
 
 /// @nodoc
-abstract class _$$ServerExceptionImplCopyWith<$Res>
-    implements $ServerExceptionCopyWith<$Res> {
-  factory _$$ServerExceptionImplCopyWith(_$ServerExceptionImpl value,
-          $Res Function(_$ServerExceptionImpl) then) =
-      __$$ServerExceptionImplCopyWithImpl<$Res>;
+abstract class _$$ApiExceptionImplCopyWith<$Res>
+    implements $ApiExceptionCopyWith<$Res> {
+  factory _$$ApiExceptionImplCopyWith(
+          _$ApiExceptionImpl value, $Res Function(_$ApiExceptionImpl) then) =
+      __$$ApiExceptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int statusCode});
 }
 
 /// @nodoc
-class __$$ServerExceptionImplCopyWithImpl<$Res>
-    extends _$ServerExceptionCopyWithImpl<$Res, _$ServerExceptionImpl>
-    implements _$$ServerExceptionImplCopyWith<$Res> {
-  __$$ServerExceptionImplCopyWithImpl(
-      _$ServerExceptionImpl _value, $Res Function(_$ServerExceptionImpl) _then)
+class __$$ApiExceptionImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ApiExceptionImpl>
+    implements _$$ApiExceptionImplCopyWith<$Res> {
+  __$$ApiExceptionImplCopyWithImpl(
+      _$ApiExceptionImpl _value, $Res Function(_$ApiExceptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$ServerExceptionImplCopyWithImpl<$Res>
     Object? message = null,
     Object? statusCode = null,
   }) {
-    return _then(_$ServerExceptionImpl(
+    return _then(_$ApiExceptionImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -102,9 +102,8 @@ class __$$ServerExceptionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ServerExceptionImpl implements _ServerException {
-  const _$ServerExceptionImpl(
-      {required this.message, required this.statusCode});
+class _$ApiExceptionImpl implements _ApiException {
+  const _$ApiExceptionImpl({required this.message, required this.statusCode});
 
   @override
   final String message;
@@ -113,14 +112,14 @@ class _$ServerExceptionImpl implements _ServerException {
 
   @override
   String toString() {
-    return 'ServerException(message: $message, statusCode: $statusCode)';
+    return 'ApiException(message: $message, statusCode: $statusCode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServerExceptionImpl &&
+            other is _$ApiExceptionImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.statusCode, statusCode) ||
                 other.statusCode == statusCode));
@@ -132,15 +131,14 @@ class _$ServerExceptionImpl implements _ServerException {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServerExceptionImplCopyWith<_$ServerExceptionImpl> get copyWith =>
-      __$$ServerExceptionImplCopyWithImpl<_$ServerExceptionImpl>(
-          this, _$identity);
+  _$$ApiExceptionImplCopyWith<_$ApiExceptionImpl> get copyWith =>
+      __$$ApiExceptionImplCopyWithImpl<_$ApiExceptionImpl>(this, _$identity);
 }
 
-abstract class _ServerException implements ServerException {
-  const factory _ServerException(
+abstract class _ApiException implements ApiException {
+  const factory _ApiException(
       {required final String message,
-      required final int statusCode}) = _$ServerExceptionImpl;
+      required final int statusCode}) = _$ApiExceptionImpl;
 
   @override
   String get message;
@@ -148,7 +146,7 @@ abstract class _ServerException implements ServerException {
   int get statusCode;
   @override
   @JsonKey(ignore: true)
-  _$$ServerExceptionImplCopyWith<_$ServerExceptionImpl> get copyWith =>
+  _$$ApiExceptionImplCopyWith<_$ApiExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

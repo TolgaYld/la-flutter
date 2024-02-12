@@ -3,11 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'exceptions.freezed.dart';
 
 @freezed
-class ServerException with _$ServerException implements Exception {
-  const factory ServerException({
+class ApiException with _$ApiException implements Exception {
+  const factory ApiException({
     required String message,
     required int statusCode,
-  }) = _ServerException;
+  }) = _ApiException;
 }
 
 @freezed
