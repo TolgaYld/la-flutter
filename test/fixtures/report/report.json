@@ -1,7 +1,7 @@
 {
-    "id": "empty",
+    "_id": "empty",
     "reported_user": {
-        "id": "empty",
+        "_id": "empty",
         "username": "empty",
         "email": "test123@test.com",
         "is_admin": false,
@@ -19,7 +19,7 @@
         "username_change_counter": 1
     },
     "created_by": {
-        "id": "empty",
+        "_id": "empty",
         "username": "empty",
         "email": "test123@test.com",
         "is_admin": false,

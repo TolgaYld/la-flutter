@@ -1,5 +1,5 @@
 {
-    "id": "empty",
+    "_id": "empty",
     "username": "empty",
     "email": "test123@test.com",
     "is_admin": false,
