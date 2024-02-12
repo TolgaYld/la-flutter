@@ -113,7 +113,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
 
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.User>> signIn({
-    required String? email,
+    required String? emailOrUsername,
     required String? password,
   }) =>
       (super.noSuchMethod(
@@ -121,7 +121,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
           #signIn,
           [],
           {
-            #email: email,
+            #emailOrUsername: emailOrUsername,
             #password: password,
           },
         ),
@@ -132,7 +132,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             #signIn,
             [],
             {
-              #email: email,
+              #emailOrUsername: emailOrUsername,
               #password: password,
             },
           ),

@@ -166,13 +166,13 @@ void main() {
         () async {
       when(
         remoteDatasrc.signIn(
-          email: anyNamed('email'),
+          emailOrUsername: anyNamed('emailOrUsername'),
           password: anyNamed('password'),
         ),
       ).thenAnswer((_) async => tUser);
 
       final result = await repo.signIn(
-        email: 'test123@test.com',
+        emailOrUsername: 'test123@test.com',
         password: 'aaaaaaaaaaaa',
       );
 
@@ -180,7 +180,7 @@ void main() {
 
       verify(
         remoteDatasrc.signIn(
-          email: 'test123@test.com',
+          emailOrUsername: 'test123@test.com',
           password: 'aaaaaaaaaaaa',
         ),
       ).called(1);
@@ -193,13 +193,13 @@ void main() {
         ' unsuccessful', () async {
       when(
         remoteDatasrc.signIn(
-          email: anyNamed('email'),
+          emailOrUsername: anyNamed('emailOrUsername'),
           password: anyNamed('password'),
         ),
       ).thenThrow(tException);
 
       final result = await repo.signIn(
-        email: tUser.email,
+        emailOrUsername: tUser.email,
         password: 'aaaaaaaaaaaa',
       );
 
@@ -214,7 +214,7 @@ void main() {
 
       verify(
         remoteDatasrc.signIn(
-          email: tUser.email,
+          emailOrUsername: tUser.email,
           password: 'aaaaaaaaaaaa',
         ),
       ).called(1);
@@ -311,7 +311,7 @@ void main() {
         email: tUser.email,
         password: 'aaaaaaaaaaaa',
         username: tUser.username,
-        coordinates: tUser.coordinates,
+        coordinates: tUser.location.coordinates,
         repeatPassword: 'aaaaaaaaaaaa',
       );
 
@@ -322,7 +322,7 @@ void main() {
           email: tUser.email,
           password: 'aaaaaaaaaaaa',
           username: tUser.username,
-          coordinates: tUser.coordinates,
+          coordinates: tUser.location.coordinates,
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
@@ -347,7 +347,7 @@ void main() {
         email: tUser.email,
         password: 'aaaaaaaaaaaa',
         username: tUser.username,
-        coordinates: tUser.coordinates,
+        coordinates: tUser.location.coordinates,
         repeatPassword: 'aaaaaaaaaaaa',
       );
 
@@ -365,7 +365,7 @@ void main() {
           email: tUser.email,
           password: 'aaaaaaaaaaaa',
           username: tUser.username,
-          coordinates: tUser.coordinates,
+          coordinates: tUser.location.coordinates,
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);

@@ -26,7 +26,7 @@ void main() {
     test('should call [AuthRepo] and return a valid [User]', () async {
       when(
         repo.signIn(
-          email: anyNamed('email'),
+          emailOrUsername: anyNamed('emailOrUsername'),
           password: anyNamed('password'),
         ),
       ).thenAnswer(
@@ -39,7 +39,9 @@ void main() {
 
       expect(result, Right<dynamic, User>(tUser));
       verify(
-        repo.signIn(email: tParams.email, password: tParams.password),
+        repo.signIn(
+            emailOrUsername: tParams.emailOrUsername,
+            password: tParams.password),
       ).called(1);
       verifyNoMoreInteractions(repo);
     });
@@ -47,7 +49,7 @@ void main() {
     test('should call [AuthRepo] and return a [ApiFailure]', () async {
       when(
         repo.signIn(
-          email: anyNamed('email'),
+          emailOrUsername: anyNamed('emailOrUsername'),
           password: anyNamed('password'),
         ),
       ).thenAnswer(
@@ -60,7 +62,9 @@ void main() {
 
       expect(result, Left<Failure, dynamic>(tFailure));
       verify(
-        repo.signIn(email: tParams.email, password: tParams.password),
+        repo.signIn(
+            emailOrUsername: tParams.emailOrUsername,
+            password: tParams.password),
       ).called(1);
       verifyNoMoreInteractions(repo);
     });

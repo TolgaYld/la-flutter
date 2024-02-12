@@ -84,7 +84,7 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
 
   @override
   _i4.Future<_i2.UserModel> signIn({
-    required String? email,
+    required String? emailOrUsername,
     required String? password,
   }) =>
       (super.noSuchMethod(
@@ -92,7 +92,7 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
           #signIn,
           [],
           {
-            #email: email,
+            #emailOrUsername: emailOrUsername,
             #password: password,
           },
         ),
@@ -102,7 +102,7 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             #signIn,
             [],
             {
-              #email: email,
+              #emailOrUsername: emailOrUsername,
               #password: password,
             },
           ),
