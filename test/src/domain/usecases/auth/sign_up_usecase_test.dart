@@ -28,6 +28,8 @@ void main() {
           username: anyNamed('username'),
           email: anyNamed('email'),
           password: anyNamed('password'),
+          repeatPassword: anyNamed('repeatPassword'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer(
         (_) async => Right(tUser),
@@ -38,6 +40,8 @@ void main() {
           email: tUser.email,
           password: 'empty',
           username: tUser.username,
+          coordinates: tUser.coordinates,
+          repeatPassword: 'aaaaaaaaaaaa',
         ),
       );
 
@@ -48,6 +52,8 @@ void main() {
           username: tUser.username,
           email: tUser.email,
           password: 'empty',
+          coordinates: tUser.coordinates,
+          repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
 
@@ -60,6 +66,8 @@ void main() {
           username: anyNamed('username'),
           email: anyNamed('email'),
           password: anyNamed('password'),
+          repeatPassword: anyNamed('repeatPassword'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer(
         (_) async => Left(
@@ -75,6 +83,8 @@ void main() {
           email: tUser.email,
           password: 'empty',
           username: tUser.username,
+          coordinates: tUser.coordinates,
+          repeatPassword: 'aaaaaaaaaaaa',
         ),
       );
 
@@ -93,6 +103,8 @@ void main() {
           username: tUser.username,
           email: tUser.email,
           password: 'empty',
+          coordinates: tUser.coordinates,
+          repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
 

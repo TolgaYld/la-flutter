@@ -48,6 +48,8 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
     required String? username,
     required String? email,
     required String? password,
+    required String? repeatPassword,
+    required List<double>? coordinates,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -57,6 +59,8 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             #username: username,
             #email: email,
             #password: password,
+            #repeatPassword: repeatPassword,
+            #coordinates: coordinates,
           },
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.User>>.value(
@@ -69,6 +73,8 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
               #username: username,
               #email: email,
               #password: password,
+              #repeatPassword: repeatPassword,
+              #coordinates: coordinates,
             },
           ),
         )),
