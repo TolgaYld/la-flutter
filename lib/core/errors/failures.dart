@@ -27,9 +27,9 @@ class CacheFailure extends Failure {
       : this(message: exception.message, statusCode: exception.statusCode);
 }
 
-class ServerFailure extends Failure {
-  ServerFailure({required super.message, required super.statusCode});
+class ApiFailure extends Failure {
+  ApiFailure({required super.message, required super.statusCode});
 
-  ServerFailure.fromException(ApiException exception)
+  ApiFailure.fromException(ApiException exception)
       : this(message: exception.message, statusCode: exception.statusCode);
 }
