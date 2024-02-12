@@ -25,7 +25,7 @@ void main() {
     });
 
     test('should throw an [Error] when json is invalid', () {
-      final map = DataMap.from(tJson)..remove('id');
+      final map = DataMap.from(tJson)..remove('_id');
 
       const call = StoryModel.fromJson;
 
