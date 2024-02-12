@@ -16,6 +16,8 @@ abstract class AuthRemoteDatasrc {
     required String username,
     required String email,
     required String password,
+    required String repeatPassword,
+    required List<double> coordinates,
   });
 
   Future<void> updatePassword({
