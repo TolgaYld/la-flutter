@@ -1,8 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum AuthWithProvider {
-  @JsonValue('google')
+  @JsonValue('LOCAL')
+  local,
+  @JsonValue('GOOGLE')
   google,
-  @JsonValue('apple')
+  @JsonValue('APPLE')
   apple,
 }
