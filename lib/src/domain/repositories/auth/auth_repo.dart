@@ -5,12 +5,13 @@ import 'package:locall_app/src/domain/entities/user.dart';
 abstract class AuthRepo {
   const AuthRepo();
 
-  ResultFuture<User> signUp(
-      {required String username,
-      required String email,
-      required String password,
-      required String repeatPassword,
-      required List<double> coordinates});
+  ResultFuture<User> signUp({
+    required String username,
+    required String email,
+    required String password,
+    required String repeatPassword,
+    required List<double> coordinates,
+  });
 
   ResultFuture<User> authWithProvider({
     required AuthWithProvider provider,
