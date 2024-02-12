@@ -20,16 +20,16 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   UserModel get createdBy => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   List<double> get coordinates => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
@@ -53,13 +53,11 @@ abstract class $PostModelCopyWith<$Res> {
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       List<double> coordinates,
       PostType type,
       List<ChannelModel> channels,
@@ -179,13 +177,11 @@ abstract class _$$PostModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       List<double> coordinates,
       PostType type,
       List<ChannelModel> channels,
@@ -292,13 +288,11 @@ class __$$PostModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$PostModelImpl implements _PostModel {
   _$PostModelImpl(
-      {@JsonKey(name: '_id', required: true) required this.id,
-      @JsonKey(name: 'is_active', required: true) required this.isActive,
-      @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'is_active') required this.isActive,
+      @JsonKey(name: 'is_deleted') required this.isDeleted,
       @JsonKey(name: 'created_by') required this.createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      required this.createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
       required final List<double> coordinates,
       required this.type,
       required final List<ChannelModel> channels,
@@ -319,20 +313,20 @@ class _$PostModelImpl implements _PostModel {
       _$$PostModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   final String id;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   final bool isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @override
   @JsonKey(name: 'created_by')
   final UserModel createdBy;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   final List<double> _coordinates;
   @override
@@ -462,13 +456,12 @@ class _$PostModelImpl implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   factory _PostModel(
-      {@JsonKey(name: '_id', required: true) required final String id,
-      @JsonKey(name: 'is_active', required: true) required final bool isActive,
-      @JsonKey(name: 'is_deleted', required: true)
-      required final bool isDeleted,
+      {@JsonKey(name: '_id') required final String id,
+      @JsonKey(name: 'is_active') required final bool isActive,
+      @JsonKey(name: 'is_deleted') required final bool isDeleted,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
       @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
+      @JsonKey(name: 'created_at')
       required final DateTime createdAt,
       required final List<double> coordinates,
       required final PostType type,
@@ -484,20 +477,20 @@ abstract class _PostModel implements PostModel {
       _$PostModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted;
   @override
   @JsonKey(name: 'created_by')
   UserModel get createdBy;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
   List<double> get coordinates;

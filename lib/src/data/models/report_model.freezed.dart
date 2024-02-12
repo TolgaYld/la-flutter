@@ -20,14 +20,14 @@ ReportModel _$ReportModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReportModel {
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_done', required: true)
+  @JsonKey(name: 'is_done')
   bool get isDone => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   UserModel get createdBy => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get reason => throw _privateConstructorUsedError;
   @JsonKey(name: 'reported_user')
@@ -52,12 +52,10 @@ abstract class $ReportModelCopyWith<$Res> {
       _$ReportModelCopyWithImpl<$Res, ReportModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_done', required: true) bool isDone,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_done') bool isDone,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       String reason,
       @JsonKey(name: 'reported_user') UserModel? reportedUser,
       PostModel? post,
@@ -231,12 +229,10 @@ abstract class _$$ReportModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_done', required: true) bool isDone,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_done') bool isDone,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       String reason,
       @JsonKey(name: 'reported_user') UserModel? reportedUser,
       PostModel? post,
@@ -342,12 +338,10 @@ class __$$ReportModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ReportModelImpl implements _ReportModel {
   _$ReportModelImpl(
-      {@JsonKey(name: '_id', required: true) required this.id,
-      @JsonKey(name: 'is_done', required: true) required this.isDone,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'is_done') required this.isDone,
       @JsonKey(name: 'created_by') required this.createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      required this.createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
       required this.reason,
       @JsonKey(name: 'reported_user') this.reportedUser,
       this.post,
@@ -361,17 +355,17 @@ class _$ReportModelImpl implements _ReportModel {
       _$$ReportModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   final String id;
   @override
-  @JsonKey(name: 'is_done', required: true)
+  @JsonKey(name: 'is_done')
   final bool isDone;
   @override
   @JsonKey(name: 'created_by')
   final UserModel createdBy;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
   final String reason;
@@ -452,11 +446,11 @@ class _$ReportModelImpl implements _ReportModel {
 
 abstract class _ReportModel implements ReportModel {
   factory _ReportModel(
-      {@JsonKey(name: '_id', required: true) required final String id,
-      @JsonKey(name: 'is_done', required: true) required final bool isDone,
+      {@JsonKey(name: '_id') required final String id,
+      @JsonKey(name: 'is_done') required final bool isDone,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
       @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
+      @JsonKey(name: 'created_at')
       required final DateTime createdAt,
       required final String reason,
       @JsonKey(name: 'reported_user') final UserModel? reportedUser,
@@ -471,17 +465,17 @@ abstract class _ReportModel implements ReportModel {
       _$ReportModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id;
   @override
-  @JsonKey(name: 'is_done', required: true)
+  @JsonKey(name: 'is_done')
   bool get isDone;
   @override
   @JsonKey(name: 'created_by')
   UserModel get createdBy;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
   String get reason;

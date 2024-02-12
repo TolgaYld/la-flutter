@@ -20,14 +20,14 @@ StoryModel _$StoryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StoryModel {
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   UserModel get createdBy => throw _privateConstructorUsedError;
@@ -53,12 +53,10 @@ abstract class $StoryModelCopyWith<$Res> {
       _$StoryModelCopyWithImpl<$Res, StoryModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') UserModel createdBy,
       List<double> coordinates,
       PostType type,
@@ -173,12 +171,10 @@ abstract class _$$StoryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') UserModel createdBy,
       List<double> coordinates,
       PostType type,
@@ -280,12 +276,10 @@ class __$$StoryModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$StoryModelImpl implements _StoryModel {
   _$StoryModelImpl(
-      {@JsonKey(name: '_id', required: true) required this.id,
-      @JsonKey(name: 'is_active', required: true) required this.isActive,
-      @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      required this.createdAt,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'is_active') required this.isActive,
+      @JsonKey(name: 'is_deleted') required this.isDeleted,
+      @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_by') required this.createdBy,
       required final List<double> coordinates,
       required this.type,
@@ -305,17 +299,17 @@ class _$StoryModelImpl implements _StoryModel {
       _$$StoryModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   final String id;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   final bool isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
   @JsonKey(name: 'created_by')
@@ -437,12 +431,11 @@ class _$StoryModelImpl implements _StoryModel {
 
 abstract class _StoryModel implements StoryModel {
   factory _StoryModel(
-      {@JsonKey(name: '_id', required: true) required final String id,
-      @JsonKey(name: 'is_active', required: true) required final bool isActive,
-      @JsonKey(name: 'is_deleted', required: true)
-      required final bool isDeleted,
+      {@JsonKey(name: '_id') required final String id,
+      @JsonKey(name: 'is_active') required final bool isActive,
+      @JsonKey(name: 'is_deleted') required final bool isDeleted,
       @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
+      @JsonKey(name: 'created_at')
       required final DateTime createdAt,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
       required final List<double> coordinates,
@@ -458,17 +451,17 @@ abstract class _StoryModel implements StoryModel {
       _$StoryModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
   @JsonKey(name: 'created_by')

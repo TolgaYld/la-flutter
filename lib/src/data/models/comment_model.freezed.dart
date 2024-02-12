@@ -20,16 +20,16 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentModel {
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   UserModel get createdBy => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
   PostModel get post => throw _privateConstructorUsedError;
@@ -51,13 +51,11 @@ abstract class $CommentModelCopyWith<$Res> {
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       PostType type,
       PostModel post,
       List<UserModel>? likes,
@@ -168,13 +166,11 @@ abstract class _$$CommentModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       PostType type,
       PostModel post,
       List<UserModel>? likes,
@@ -265,13 +261,11 @@ class __$$CommentModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$CommentModelImpl implements _CommentModel {
   _$CommentModelImpl(
-      {@JsonKey(name: '_id', required: true) required this.id,
-      @JsonKey(name: 'is_active', required: true) required this.isActive,
-      @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'is_active') required this.isActive,
+      @JsonKey(name: 'is_deleted') required this.isDeleted,
       @JsonKey(name: 'created_by') required this.createdBy,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      required this.createdAt,
+      @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
       required this.type,
       required this.post,
       final List<UserModel>? likes,
@@ -286,20 +280,20 @@ class _$CommentModelImpl implements _CommentModel {
       _$$CommentModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   final String id;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   final bool isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @override
   @JsonKey(name: 'created_by')
   final UserModel createdBy;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
   final PostType type;
@@ -396,13 +390,12 @@ class _$CommentModelImpl implements _CommentModel {
 
 abstract class _CommentModel implements CommentModel {
   factory _CommentModel(
-      {@JsonKey(name: '_id', required: true) required final String id,
-      @JsonKey(name: 'is_active', required: true) required final bool isActive,
-      @JsonKey(name: 'is_deleted', required: true)
-      required final bool isDeleted,
+      {@JsonKey(name: '_id') required final String id,
+      @JsonKey(name: 'is_active') required final bool isActive,
+      @JsonKey(name: 'is_deleted') required final bool isDeleted,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
       @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
+      @JsonKey(name: 'created_at')
       required final DateTime createdAt,
       required final PostType type,
       required final PostModel post,
@@ -415,20 +408,20 @@ abstract class _CommentModel implements CommentModel {
       _$CommentModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted;
   @override
   @JsonKey(name: 'created_by')
   UserModel get createdBy;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
   PostType get type;

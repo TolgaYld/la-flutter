@@ -13,12 +13,12 @@ part 'channel_model.g.dart';
 class ChannelModel extends Channel with _$ChannelModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory ChannelModel({
-    @JsonKey(name: '_id', required: true) required String id,
+    @JsonKey(name: '_id') required String id,
     required String name,
-    @JsonKey(name: 'is_active', required: true) required bool isActive,
-    @JsonKey(name: 'is_deleted', required: true) required bool isDeleted,
+    @JsonKey(name: 'is_active') required bool isActive,
+    @JsonKey(name: 'is_deleted') required bool isDeleted,
     @DateTimeConverter()
-    @JsonKey(name: 'created_at', required: true)
+    @JsonKey(name: 'created_at')
     required DateTime createdAt,
     List<UserModel>? subscriptions,
     @JsonKey(

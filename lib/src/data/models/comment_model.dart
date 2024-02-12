@@ -13,12 +13,12 @@ part 'comment_model.g.dart';
 class CommentModel extends Comment with _$CommentModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory CommentModel({
-    @JsonKey(name: '_id', required: true) required String id,
-    @JsonKey(name: 'is_active', required: true) required bool isActive,
-    @JsonKey(name: 'is_deleted', required: true) required bool isDeleted,
+    @JsonKey(name: '_id') required String id,
+    @JsonKey(name: 'is_active') required bool isActive,
+    @JsonKey(name: 'is_deleted') required bool isDeleted,
     @JsonKey(name: 'created_by') required UserModel createdBy,
     @DateTimeConverter()
-    @JsonKey(name: 'created_at', required: true)
+    @JsonKey(name: 'created_at')
     required DateTime createdAt,
     required PostType type,
     required PostModel post,

@@ -6,38 +6,35 @@ part of 'post_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['_id', 'is_active', 'is_deleted', 'created_at'],
-  );
-  return _$PostModelImpl(
-    id: json['_id'] as String,
-    isActive: json['is_active'] as bool,
-    isDeleted: json['is_deleted'] as bool,
-    createdBy: UserModel.fromJson(json['created_by'] as Map<String, dynamic>),
-    createdAt: const DateTimeConverter().fromJson(json['created_at'] as String),
-    coordinates: (json['coordinates'] as List<dynamic>)
-        .map((e) => (e as num).toDouble())
-        .toList(),
-    type: $enumDecode(_$PostTypeEnumMap, json['type']),
-    channels: (json['channels'] as List<dynamic>)
-        .map((e) => ChannelModel.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    likes: (json['likes'] as List<dynamic>?)
-        ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    dislikes: (json['dislikes'] as List<dynamic>?)
-        ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    text: json['text'] as String?,
-    media: (json['media'] as List<dynamic>?)?.map((e) => e as String).toList(),
-    city: json['city'] as String?,
-    comments: (json['comments'] as List<dynamic>?)
-        ?.map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+_$PostModelImpl _$$PostModelImplFromJson(Map<String, dynamic> json) =>
+    _$PostModelImpl(
+      id: json['_id'] as String,
+      isActive: json['is_active'] as bool,
+      isDeleted: json['is_deleted'] as bool,
+      createdBy: UserModel.fromJson(json['created_by'] as Map<String, dynamic>),
+      createdAt:
+          const DateTimeConverter().fromJson(json['created_at'] as String),
+      coordinates: (json['coordinates'] as List<dynamic>)
+          .map((e) => (e as num).toDouble())
+          .toList(),
+      type: $enumDecode(_$PostTypeEnumMap, json['type']),
+      channels: (json['channels'] as List<dynamic>)
+          .map((e) => ChannelModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      likes: (json['likes'] as List<dynamic>?)
+          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      dislikes: (json['dislikes'] as List<dynamic>?)
+          ?.map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      text: json['text'] as String?,
+      media:
+          (json['media'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      city: json['city'] as String?,
+      comments: (json['comments'] as List<dynamic>?)
+          ?.map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$$PostModelImplToJson(_$PostModelImpl instance) {
   final val = <String, dynamic>{

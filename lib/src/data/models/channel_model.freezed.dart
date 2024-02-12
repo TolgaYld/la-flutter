@@ -20,15 +20,15 @@ ChannelModel _$ChannelModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ChannelModel {
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted => throw _privateConstructorUsedError;
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
   List<UserModel>? get subscriptions => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
@@ -49,13 +49,11 @@ abstract class $ChannelModelCopyWith<$Res> {
       _$ChannelModelCopyWithImpl<$Res, ChannelModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
+      {@JsonKey(name: '_id') String id,
       String name,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       List<UserModel>? subscriptions,
       @JsonKey(name: 'created_by') UserModel? createdBy,
       List<PostModel>? posts,
@@ -149,13 +147,11 @@ abstract class _$$ChannelModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '_id', required: true) String id,
+      {@JsonKey(name: '_id') String id,
       String name,
-      @JsonKey(name: 'is_active', required: true) bool isActive,
-      @JsonKey(name: 'is_deleted', required: true) bool isDeleted,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      DateTime createdAt,
+      @JsonKey(name: 'is_active') bool isActive,
+      @JsonKey(name: 'is_deleted') bool isDeleted,
+      @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       List<UserModel>? subscriptions,
       @JsonKey(name: 'created_by') UserModel? createdBy,
       List<PostModel>? posts,
@@ -232,13 +228,11 @@ class __$$ChannelModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$ChannelModelImpl implements _ChannelModel {
   _$ChannelModelImpl(
-      {@JsonKey(name: '_id', required: true) required this.id,
+      {@JsonKey(name: '_id') required this.id,
       required this.name,
-      @JsonKey(name: 'is_active', required: true) required this.isActive,
-      @JsonKey(name: 'is_deleted', required: true) required this.isDeleted,
-      @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
-      required this.createdAt,
+      @JsonKey(name: 'is_active') required this.isActive,
+      @JsonKey(name: 'is_deleted') required this.isDeleted,
+      @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
       final List<UserModel>? subscriptions,
       @JsonKey(name: 'created_by') this.createdBy,
       final List<PostModel>? posts,
@@ -251,19 +245,19 @@ class _$ChannelModelImpl implements _ChannelModel {
       _$$ChannelModelImplFromJson(json);
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   final String id;
   @override
   final String name;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   final bool isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   final bool isDeleted;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   final List<UserModel>? _subscriptions;
   @override
@@ -354,13 +348,12 @@ class _$ChannelModelImpl implements _ChannelModel {
 
 abstract class _ChannelModel implements ChannelModel {
   factory _ChannelModel(
-      {@JsonKey(name: '_id', required: true) required final String id,
+      {@JsonKey(name: '_id') required final String id,
       required final String name,
-      @JsonKey(name: 'is_active', required: true) required final bool isActive,
-      @JsonKey(name: 'is_deleted', required: true)
-      required final bool isDeleted,
+      @JsonKey(name: 'is_active') required final bool isActive,
+      @JsonKey(name: 'is_deleted') required final bool isDeleted,
       @DateTimeConverter()
-      @JsonKey(name: 'created_at', required: true)
+      @JsonKey(name: 'created_at')
       required final DateTime createdAt,
       final List<UserModel>? subscriptions,
       @JsonKey(name: 'created_by') final UserModel? createdBy,
@@ -371,19 +364,19 @@ abstract class _ChannelModel implements ChannelModel {
       _$ChannelModelImpl.fromJson;
 
   @override
-  @JsonKey(name: '_id', required: true)
+  @JsonKey(name: '_id')
   String get id;
   @override
   String get name;
   @override
-  @JsonKey(name: 'is_active', required: true)
+  @JsonKey(name: 'is_active')
   bool get isActive;
   @override
-  @JsonKey(name: 'is_deleted', required: true)
+  @JsonKey(name: 'is_deleted')
   bool get isDeleted;
   @override
   @DateTimeConverter()
-  @JsonKey(name: 'created_at', required: true)
+  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
   List<UserModel>? get subscriptions;

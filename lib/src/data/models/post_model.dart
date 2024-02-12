@@ -14,12 +14,12 @@ part 'post_model.g.dart';
 class PostModel extends Post with _$PostModel {
   @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory PostModel({
-    @JsonKey(name: '_id', required: true) required String id,
-    @JsonKey(name: 'is_active', required: true) required bool isActive,
-    @JsonKey(name: 'is_deleted', required: true) required bool isDeleted,
+    @JsonKey(name: '_id') required String id,
+    @JsonKey(name: 'is_active') required bool isActive,
+    @JsonKey(name: 'is_deleted') required bool isDeleted,
     @JsonKey(name: 'created_by') required UserModel createdBy,
     @DateTimeConverter()
-    @JsonKey(name: 'created_at', required: true)
+    @JsonKey(name: 'created_at')
     required DateTime createdAt,
     required List<double> coordinates,
     required PostType type,
