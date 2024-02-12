@@ -59,7 +59,7 @@ void main() {
     });
 
     test(
-        'should return [ServerFailure] when call to remote source is'
+        'should return [ApiFailure] when call to remote source is'
         ' unsuccessful', () async {
       when(
         remoteDatasrc.authWithProvider(
@@ -78,7 +78,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure.fromException(
+          ApiFailure.fromException(
             tException,
           ),
         ),
@@ -125,7 +125,7 @@ void main() {
     });
 
     test(
-        'should return [ServerFailure] when call to remote source is'
+        'should return [ApiFailure] when call to remote source is'
         ' unsuccessful', () async {
       when(
         remoteDatasrc.forgotPassword(
@@ -140,7 +140,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure.fromException(
+          ApiFailure.fromException(
             tException,
           ),
         ),
@@ -189,7 +189,7 @@ void main() {
     });
 
     test(
-        'should return [ServerFailure] when call to remote source is'
+        'should return [ApiFailure] when call to remote source is'
         ' unsuccessful', () async {
       when(
         remoteDatasrc.signIn(
@@ -206,7 +206,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure.fromException(
+          ApiFailure.fromException(
             tException,
           ),
         ),
@@ -255,7 +255,7 @@ void main() {
     });
 
     test(
-        'should return [ServerFailure] when call to remote source is'
+        'should return [ApiFailure] when call to remote source is'
         ' unsuccessful', () async {
       when(
         remoteDatasrc.updatePassword(
@@ -272,7 +272,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure.fromException(
+          ApiFailure.fromException(
             tException,
           ),
         ),
@@ -331,7 +331,7 @@ void main() {
     });
 
     test(
-        'should return [ServerFailure] when call to remote source is'
+        'should return [ApiFailure] when call to remote source is'
         ' unsuccessful', () async {
       when(
         remoteDatasrc.signUp(
@@ -354,7 +354,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure.fromException(
+          ApiFailure.fromException(
             tException,
           ),
         ),
@@ -404,7 +404,7 @@ void main() {
     });
 
     test(
-        'should return [ServerFailure] when call to remote source is'
+        'should return [ApiFailure] when call to remote source is'
         ' unsuccessful', () async {
       when(
         remoteDatasrc.updateUser(
@@ -419,7 +419,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure.fromException(
+          ApiFailure.fromException(
             tException,
           ),
         ),

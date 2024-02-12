@@ -71,7 +71,7 @@ void main() {
         ),
       ).thenAnswer(
         (_) async => Left(
-          ServerFailure(
+          ApiFailure(
             message: "Couldn't Sign Up",
             statusCode: 400,
           ),
@@ -91,7 +91,7 @@ void main() {
       expect(
         result,
         Left<Failure, dynamic>(
-          ServerFailure(
+          ApiFailure(
             message: "Couldn't Sign Up",
             statusCode: 400,
           ),

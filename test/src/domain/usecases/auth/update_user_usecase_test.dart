@@ -18,7 +18,7 @@ void main() {
   group('UpdateUserUsecase', () {
     final tUser = User.empty();
     final tFailure =
-        ServerFailure(message: "Couldn't Update User", statusCode: 400);
+        ApiFailure(message: "Couldn't Update User", statusCode: 400);
     test('should call [AuthRepo] and update [User]', () async {
       when(
         repo.updateUser(
@@ -37,7 +37,7 @@ void main() {
       verifyNoMoreInteractions(repo);
     });
 
-    test('should call [AuthRepo] and return a [ServerFailure]', () async {
+    test('should call [AuthRepo] and return a [ApiFailure]', () async {
       when(
         repo.updateUser(
           any,

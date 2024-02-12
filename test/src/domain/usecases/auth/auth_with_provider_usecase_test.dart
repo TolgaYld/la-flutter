@@ -17,7 +17,7 @@ void main() {
   });
 
   final tUser = User.empty();
-  final tFailure = ServerFailure(message: "Couldn't Sign Up", statusCode: 400);
+  final tFailure = ApiFailure(message: "Couldn't Sign Up", statusCode: 400);
   final tParams = AuthWithProviderParams.empty();
 
   group('AuthWithProviderUsecase', () {

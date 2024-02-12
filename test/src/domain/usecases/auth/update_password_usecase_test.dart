@@ -17,7 +17,7 @@ void main() {
   group('UpdatePasswordUsecase', () {
     const tParams = UpdatePasswordParams.empty();
     final tFailure =
-        ServerFailure(message: "Couldn't Update Password", statusCode: 400);
+        ApiFailure(message: "Couldn't Update Password", statusCode: 400);
     test('should call [AuthRepo] and  update [User]-password', () async {
       when(
         repo.updatePassword(
@@ -38,7 +38,7 @@ void main() {
       verifyNoMoreInteractions(repo);
     });
 
-    test('should call [AuthRepo] and return a [ServerFailure]', () async {
+    test('should call [AuthRepo] and return a [ApiFailure]', () async {
       when(
         repo.updatePassword(
           password: anyNamed('password'),

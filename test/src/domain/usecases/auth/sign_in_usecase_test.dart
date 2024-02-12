@@ -19,7 +19,7 @@ void main() {
   group('SignInUsecase', () {
     final tUser = User.empty();
     final tParams = SignInParams.empty();
-    final tFailure = ServerFailure(
+    final tFailure = ApiFailure(
       message: "Couldn't Sign In",
       statusCode: 400,
     );
@@ -44,7 +44,7 @@ void main() {
       verifyNoMoreInteractions(repo);
     });
 
-    test('should call [AuthRepo] and return a [ServerFailure]', () async {
+    test('should call [AuthRepo] and return a [ApiFailure]', () async {
       when(
         repo.signIn(
           email: anyNamed('email'),
