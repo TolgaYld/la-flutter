@@ -19,6 +19,16 @@ class Report {
     this.city,
     this.notesAboutReport,
   });
+
+  Report.empty()
+      : this(
+          id: 'empty',
+          createdBy: User.empty(),
+          isDone: true,
+          reason: 'empty',
+          createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
+        );
+
   final String id;
   final User createdBy;
   final String reason;

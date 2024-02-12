@@ -16,6 +16,18 @@ class Comment {
     this.text,
     this.media,
   });
+
+  Comment.empty()
+      : this(
+          id: 'empty',
+          post: Post.empty(),
+          createdBy: User.empty(),
+          type: PostType.public,
+          isActive: true,
+          isDeleted: false,
+          createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
+        );
+
   final String id;
   final Post post;
   final User createdBy;
