@@ -12,7 +12,7 @@ migrate_working_dir/
 
 # .env files
 **.env.development
-**.env.prodduction
+**.env.production
 
 # FVM
 .fvm/flutter_sdk
