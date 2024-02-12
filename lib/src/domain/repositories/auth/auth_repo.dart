@@ -20,7 +20,7 @@ abstract class AuthRepo {
   });
 
   ResultFuture<User> signIn({
-    required String email,
+    required String emailOrUsername,
     required String password,
   });
 

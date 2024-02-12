@@ -9,16 +9,16 @@ class SignInUsecase extends UsecaseWithParams<User, SignInParams> {
   final AuthRepo _repo;
   @override
   ResultFuture<User> call(SignInParams params) => _repo.signIn(
-        email: params.email,
+        emailOrUsername: params.emailOrUsername,
         password: params.password,
       );
 }
 
 class SignInParams {
-  const SignInParams({required this.email, required this.password});
+  const SignInParams({required this.emailOrUsername, required this.password});
 
-  SignInParams.empty() : this(email: 'empty', password: 'empty');
+  SignInParams.empty() : this(emailOrUsername: 'empty', password: 'empty');
 
-  final String email;
+  final String emailOrUsername;
   final String password;
 }
