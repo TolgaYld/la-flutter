@@ -25,7 +25,7 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       return Right(result);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
   }
@@ -35,7 +35,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await _remoteDatasrc.forgotPassword(email);
       return const Right(null);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
   }
@@ -51,7 +51,7 @@ class AuthRepoImpl implements AuthRepo {
         password: password,
       );
       return Right(result);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
   }
@@ -61,15 +61,19 @@ class AuthRepoImpl implements AuthRepo {
     required String username,
     required String email,
     required String password,
+    required String repeatPassword,
+    required List<double> coordinates,
   }) async {
     try {
       final result = await _remoteDatasrc.signUp(
         username: username,
         email: email,
         password: password,
+        repeatPassword: repeatPassword,
+        coordinates: coordinates,
       );
       return Right(result);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
   }
@@ -86,7 +90,7 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       return const Right(null);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
   }
@@ -96,7 +100,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await _remoteDatasrc.updateUser(UserModel.fromEntity(updateUser));
       return const Right(null);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
   }
