@@ -9,8 +9,10 @@
 .history
 .svn/
 migrate_working_dir/
-lib/core/.env.development
-lib/core/.env.prodduction
+
+# .env files
+*.env.development
+*.env.prodduction
 
 # FVM
 .fvm/flutter_sdk
