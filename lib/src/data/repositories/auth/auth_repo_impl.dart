@@ -26,7 +26,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return Right(result);
     } on ApiException catch (e) {
-      return Left(ServerFailure.fromException(e));
+      return Left(ApiFailure.fromException(e));
     }
   }
 
@@ -36,7 +36,7 @@ class AuthRepoImpl implements AuthRepo {
       await _remoteDatasrc.forgotPassword(email);
       return const Right(null);
     } on ApiException catch (e) {
-      return Left(ServerFailure.fromException(e));
+      return Left(ApiFailure.fromException(e));
     }
   }
 
@@ -52,7 +52,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       return Right(result);
     } on ApiException catch (e) {
-      return Left(ServerFailure.fromException(e));
+      return Left(ApiFailure.fromException(e));
     }
   }
 
@@ -74,7 +74,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       return Right(result);
     } on ApiException catch (e) {
-      return Left(ServerFailure.fromException(e));
+      return Left(ApiFailure.fromException(e));
     }
   }
 
@@ -91,7 +91,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return const Right(null);
     } on ApiException catch (e) {
-      return Left(ServerFailure.fromException(e));
+      return Left(ApiFailure.fromException(e));
     }
   }
 
@@ -101,7 +101,7 @@ class AuthRepoImpl implements AuthRepo {
       await _remoteDatasrc.updateUser(UserModel.fromEntity(updateUser));
       return const Right(null);
     } on ApiException catch (e) {
-      return Left(ServerFailure.fromException(e));
+      return Left(ApiFailure.fromException(e));
     }
   }
 }
