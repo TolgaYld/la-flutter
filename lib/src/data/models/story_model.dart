@@ -3,6 +3,7 @@ import 'package:locall_app/core/types/post_type.dart';
 import 'package:locall_app/core/utils/datetime_converter.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/data/models/channel_model.dart';
+import 'package:locall_app/src/data/models/location_model.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 import 'package:locall_app/src/domain/entities/story.dart';
 
@@ -20,7 +21,7 @@ class StoryModel extends Story with _$StoryModel {
     @JsonKey(name: 'created_at')
     required DateTime createdAt,
     @JsonKey(name: 'created_by') required UserModel createdBy,
-    required List<double> coordinates,
+    @JsonLiteral('location') required LocationModel location,
     required PostType type,
     required List<ChannelModel> channels,
     List<UserModel>? likes,
@@ -38,7 +39,7 @@ class StoryModel extends Story with _$StoryModel {
         isDeleted: false,
         createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
         createdBy: UserModel.empty(),
-        coordinates: [3.69, 3.69],
+        location: LocationModel.empty(),
         type: PostType.public,
         channels: [ChannelModel.empty()],
       );
@@ -55,7 +56,7 @@ class StoryModel extends Story with _$StoryModel {
         media: story.media,
         text: story.text,
         channels: story.channels.map(ChannelModel.fromEntity).toList(),
-        coordinates: story.coordinates,
+        location: LocationModel.fromEntity(story.location),
         city: story.city,
       );
 }

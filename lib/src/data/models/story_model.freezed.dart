@@ -31,7 +31,8 @@ mixin _$StoryModel {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   UserModel get createdBy => throw _privateConstructorUsedError;
-  List<double> get coordinates => throw _privateConstructorUsedError;
+  @JsonLiteral('location')
+  LocationModel get location => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
   List<ChannelModel> get channels => throw _privateConstructorUsedError;
   List<UserModel>? get likes => throw _privateConstructorUsedError;
@@ -58,7 +59,7 @@ abstract class $StoryModelCopyWith<$Res> {
       @JsonKey(name: 'is_deleted') bool isDeleted,
       @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      List<double> coordinates,
+      @JsonLiteral('location') LocationModel location,
       PostType type,
       List<ChannelModel> channels,
       List<UserModel>? likes,
@@ -68,6 +69,7 @@ abstract class $StoryModelCopyWith<$Res> {
       String? city});
 
   $UserModelCopyWith<$Res> get createdBy;
+  $LocationModelCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -88,7 +90,7 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
     Object? isDeleted = null,
     Object? createdAt = null,
     Object? createdBy = null,
-    Object? coordinates = null,
+    Object? location = null,
     Object? type = null,
     Object? channels = null,
     Object? likes = freezed,
@@ -118,10 +120,10 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      coordinates: null == coordinates
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<double>,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LocationModel,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -160,6 +162,14 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
       return _then(_value.copyWith(createdBy: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationModelCopyWith<$Res> get location {
+    return $LocationModelCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -176,7 +186,7 @@ abstract class _$$StoryModelImplCopyWith<$Res>
       @JsonKey(name: 'is_deleted') bool isDeleted,
       @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') UserModel createdBy,
-      List<double> coordinates,
+      @JsonLiteral('location') LocationModel location,
       PostType type,
       List<ChannelModel> channels,
       List<UserModel>? likes,
@@ -187,6 +197,8 @@ abstract class _$$StoryModelImplCopyWith<$Res>
 
   @override
   $UserModelCopyWith<$Res> get createdBy;
+  @override
+  $LocationModelCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -205,7 +217,7 @@ class __$$StoryModelImplCopyWithImpl<$Res>
     Object? isDeleted = null,
     Object? createdAt = null,
     Object? createdBy = null,
-    Object? coordinates = null,
+    Object? location = null,
     Object? type = null,
     Object? channels = null,
     Object? likes = freezed,
@@ -235,10 +247,10 @@ class __$$StoryModelImplCopyWithImpl<$Res>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      coordinates: null == coordinates
-          ? _value._coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<double>,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LocationModel,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -281,7 +293,7 @@ class _$StoryModelImpl implements _StoryModel {
       @JsonKey(name: 'is_deleted') required this.isDeleted,
       @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_by') required this.createdBy,
-      required final List<double> coordinates,
+      @JsonLiteral('location') required this.location,
       required this.type,
       required final List<ChannelModel> channels,
       final List<UserModel>? likes,
@@ -289,8 +301,7 @@ class _$StoryModelImpl implements _StoryModel {
       this.text,
       final List<String>? media,
       this.city})
-      : _coordinates = coordinates,
-        _channels = channels,
+      : _channels = channels,
         _likes = likes,
         _dislikes = dislikes,
         _media = media;
@@ -314,14 +325,9 @@ class _$StoryModelImpl implements _StoryModel {
   @override
   @JsonKey(name: 'created_by')
   final UserModel createdBy;
-  final List<double> _coordinates;
   @override
-  List<double> get coordinates {
-    if (_coordinates is EqualUnmodifiableListView) return _coordinates;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_coordinates);
-  }
-
+  @JsonLiteral('location')
+  final LocationModel location;
   @override
   final PostType type;
   final List<ChannelModel> _channels;
@@ -369,7 +375,7 @@ class _$StoryModelImpl implements _StoryModel {
 
   @override
   String toString() {
-    return 'StoryModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdAt: $createdAt, createdBy: $createdBy, coordinates: $coordinates, type: $type, channels: $channels, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city)';
+    return 'StoryModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdAt: $createdAt, createdBy: $createdBy, location: $location, type: $type, channels: $channels, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city)';
   }
 
   @override
@@ -386,8 +392,8 @@ class _$StoryModelImpl implements _StoryModel {
                 other.createdAt == createdAt) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
-            const DeepCollectionEquality()
-                .equals(other._coordinates, _coordinates) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._channels, _channels) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
@@ -406,7 +412,7 @@ class _$StoryModelImpl implements _StoryModel {
       isDeleted,
       createdAt,
       createdBy,
-      const DeepCollectionEquality().hash(_coordinates),
+      location,
       type,
       const DeepCollectionEquality().hash(_channels),
       const DeepCollectionEquality().hash(_likes),
@@ -438,7 +444,7 @@ abstract class _StoryModel implements StoryModel {
       @JsonKey(name: 'created_at')
       required final DateTime createdAt,
       @JsonKey(name: 'created_by') required final UserModel createdBy,
-      required final List<double> coordinates,
+      @JsonLiteral('location') required final LocationModel location,
       required final PostType type,
       required final List<ChannelModel> channels,
       final List<UserModel>? likes,
@@ -467,7 +473,8 @@ abstract class _StoryModel implements StoryModel {
   @JsonKey(name: 'created_by')
   UserModel get createdBy;
   @override
-  List<double> get coordinates;
+  @JsonLiteral('location')
+  LocationModel get location;
   @override
   PostType get type;
   @override

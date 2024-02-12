@@ -4,6 +4,7 @@ import 'package:locall_app/core/utils/datetime_converter.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/data/models/channel_model.dart';
 import 'package:locall_app/src/data/models/comment_model.dart';
+import 'package:locall_app/src/data/models/location_model.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 import 'package:locall_app/src/domain/entities/post.dart';
 
@@ -21,7 +22,7 @@ class PostModel extends Post with _$PostModel {
     @DateTimeConverter()
     @JsonKey(name: 'created_at')
     required DateTime createdAt,
-    required List<double> coordinates,
+    required LocationModel location,
     required PostType type,
     required List<ChannelModel> channels,
     List<UserModel>? likes,
@@ -40,7 +41,7 @@ class PostModel extends Post with _$PostModel {
         isDeleted: false,
         createdBy: UserModel.empty(),
         createdAt: DateTime.parse('2024-02-10T14:38:36.936Z'),
-        coordinates: [3.69, 3.69],
+        location: LocationModel.empty(),
         type: PostType.anonymous,
         channels: [ChannelModel.empty()],
       );
@@ -57,7 +58,7 @@ class PostModel extends Post with _$PostModel {
         media: post.media,
         text: post.text,
         channels: post.channels.map(ChannelModel.fromEntity).toList(),
-        coordinates: post.coordinates,
+        location: LocationModel.fromEntity(post.location),
         city: post.city,
         comments: post.comments
             ?.map(

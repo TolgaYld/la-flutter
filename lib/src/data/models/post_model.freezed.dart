@@ -31,7 +31,7 @@ mixin _$PostModel {
   @DateTimeConverter()
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
-  List<double> get coordinates => throw _privateConstructorUsedError;
+  LocationModel get location => throw _privateConstructorUsedError;
   PostType get type => throw _privateConstructorUsedError;
   List<ChannelModel> get channels => throw _privateConstructorUsedError;
   List<UserModel>? get likes => throw _privateConstructorUsedError;
@@ -58,7 +58,7 @@ abstract class $PostModelCopyWith<$Res> {
       @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
-      List<double> coordinates,
+      LocationModel location,
       PostType type,
       List<ChannelModel> channels,
       List<UserModel>? likes,
@@ -69,6 +69,7 @@ abstract class $PostModelCopyWith<$Res> {
       List<CommentModel>? comments});
 
   $UserModelCopyWith<$Res> get createdBy;
+  $LocationModelCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -89,7 +90,7 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
     Object? isDeleted = null,
     Object? createdBy = null,
     Object? createdAt = null,
-    Object? coordinates = null,
+    Object? location = null,
     Object? type = null,
     Object? channels = null,
     Object? likes = freezed,
@@ -120,10 +121,10 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      coordinates: null == coordinates
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<double>,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LocationModel,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -166,6 +167,14 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
       return _then(_value.copyWith(createdBy: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocationModelCopyWith<$Res> get location {
+    return $LocationModelCopyWith<$Res>(_value.location, (value) {
+      return _then(_value.copyWith(location: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -182,7 +191,7 @@ abstract class _$$PostModelImplCopyWith<$Res>
       @JsonKey(name: 'is_deleted') bool isDeleted,
       @JsonKey(name: 'created_by') UserModel createdBy,
       @DateTimeConverter() @JsonKey(name: 'created_at') DateTime createdAt,
-      List<double> coordinates,
+      LocationModel location,
       PostType type,
       List<ChannelModel> channels,
       List<UserModel>? likes,
@@ -194,6 +203,8 @@ abstract class _$$PostModelImplCopyWith<$Res>
 
   @override
   $UserModelCopyWith<$Res> get createdBy;
+  @override
+  $LocationModelCopyWith<$Res> get location;
 }
 
 /// @nodoc
@@ -212,7 +223,7 @@ class __$$PostModelImplCopyWithImpl<$Res>
     Object? isDeleted = null,
     Object? createdBy = null,
     Object? createdAt = null,
-    Object? coordinates = null,
+    Object? location = null,
     Object? type = null,
     Object? channels = null,
     Object? likes = freezed,
@@ -243,10 +254,10 @@ class __$$PostModelImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      coordinates: null == coordinates
-          ? _value._coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
-              as List<double>,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as LocationModel,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -293,7 +304,7 @@ class _$PostModelImpl implements _PostModel {
       @JsonKey(name: 'is_deleted') required this.isDeleted,
       @JsonKey(name: 'created_by') required this.createdBy,
       @DateTimeConverter() @JsonKey(name: 'created_at') required this.createdAt,
-      required final List<double> coordinates,
+      required this.location,
       required this.type,
       required final List<ChannelModel> channels,
       final List<UserModel>? likes,
@@ -302,8 +313,7 @@ class _$PostModelImpl implements _PostModel {
       final List<String>? media,
       this.city,
       final List<CommentModel>? comments})
-      : _coordinates = coordinates,
-        _channels = channels,
+      : _channels = channels,
         _likes = likes,
         _dislikes = dislikes,
         _media = media,
@@ -328,14 +338,8 @@ class _$PostModelImpl implements _PostModel {
   @DateTimeConverter()
   @JsonKey(name: 'created_at')
   final DateTime createdAt;
-  final List<double> _coordinates;
   @override
-  List<double> get coordinates {
-    if (_coordinates is EqualUnmodifiableListView) return _coordinates;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_coordinates);
-  }
-
+  final LocationModel location;
   @override
   final PostType type;
   final List<ChannelModel> _channels;
@@ -392,7 +396,7 @@ class _$PostModelImpl implements _PostModel {
 
   @override
   String toString() {
-    return 'PostModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, coordinates: $coordinates, type: $type, channels: $channels, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city, comments: $comments)';
+    return 'PostModel(id: $id, isActive: $isActive, isDeleted: $isDeleted, createdBy: $createdBy, createdAt: $createdAt, location: $location, type: $type, channels: $channels, likes: $likes, dislikes: $dislikes, text: $text, media: $media, city: $city, comments: $comments)';
   }
 
   @override
@@ -409,8 +413,8 @@ class _$PostModelImpl implements _PostModel {
                 other.createdBy == createdBy) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            const DeepCollectionEquality()
-                .equals(other._coordinates, _coordinates) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._channels, _channels) &&
             const DeepCollectionEquality().equals(other._likes, _likes) &&
@@ -430,7 +434,7 @@ class _$PostModelImpl implements _PostModel {
       isDeleted,
       createdBy,
       createdAt,
-      const DeepCollectionEquality().hash(_coordinates),
+      location,
       type,
       const DeepCollectionEquality().hash(_channels),
       const DeepCollectionEquality().hash(_likes),
@@ -463,7 +467,7 @@ abstract class _PostModel implements PostModel {
       @DateTimeConverter()
       @JsonKey(name: 'created_at')
       required final DateTime createdAt,
-      required final List<double> coordinates,
+      required final LocationModel location,
       required final PostType type,
       required final List<ChannelModel> channels,
       final List<UserModel>? likes,
@@ -493,7 +497,7 @@ abstract class _PostModel implements PostModel {
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
-  List<double> get coordinates;
+  LocationModel get location;
   @override
   PostType get type;
   @override

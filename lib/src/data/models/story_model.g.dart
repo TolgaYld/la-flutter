@@ -14,9 +14,8 @@ _$StoryModelImpl _$$StoryModelImplFromJson(Map<String, dynamic> json) =>
       createdAt:
           const DateTimeConverter().fromJson(json['created_at'] as String),
       createdBy: UserModel.fromJson(json['created_by'] as Map<String, dynamic>),
-      coordinates: (json['coordinates'] as List<dynamic>)
-          .map((e) => (e as num).toDouble())
-          .toList(),
+      location:
+          LocationModel.fromJson(json['location'] as Map<String, dynamic>),
       type: $enumDecode(_$PostTypeEnumMap, json['type']),
       channels: (json['channels'] as List<dynamic>)
           .map((e) => ChannelModel.fromJson(e as Map<String, dynamic>))
@@ -40,7 +39,7 @@ Map<String, dynamic> _$$StoryModelImplToJson(_$StoryModelImpl instance) {
     'is_deleted': instance.isDeleted,
     'created_at': const DateTimeConverter().toJson(instance.createdAt),
     'created_by': instance.createdBy.toJson(),
-    'coordinates': instance.coordinates,
+    'location': instance.location.toJson(),
     'type': _$PostTypeEnumMap[instance.type]!,
     'channels': instance.channels.map((e) => e.toJson()).toList(),
   };
