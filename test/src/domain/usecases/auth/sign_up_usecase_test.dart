@@ -40,7 +40,7 @@ void main() {
           email: tUser.email,
           password: 'empty',
           username: tUser.username,
-          coordinates: tUser.coordinates,
+          coordinates: tUser.location.coordinates,
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       );
@@ -52,7 +52,7 @@ void main() {
           username: tUser.username,
           email: tUser.email,
           password: 'empty',
-          coordinates: tUser.coordinates,
+          coordinates: tUser.location.coordinates,
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
@@ -83,7 +83,7 @@ void main() {
           email: tUser.email,
           password: 'empty',
           username: tUser.username,
-          coordinates: tUser.coordinates,
+          coordinates: tUser.location.coordinates,
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       );
@@ -103,7 +103,7 @@ void main() {
           username: tUser.username,
           email: tUser.email,
           password: 'empty',
-          coordinates: tUser.coordinates,
+          coordinates: tUser.location.coordinates,
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
