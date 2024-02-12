@@ -11,8 +11,8 @@
 migrate_working_dir/
 
 # .env files
-*.env.development
-*.env.prodduction
+**.env.development
+**.env.prodduction
 
 # FVM
 .fvm/flutter_sdk
