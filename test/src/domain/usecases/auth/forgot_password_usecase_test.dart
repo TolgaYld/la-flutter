@@ -16,8 +16,7 @@ void main() {
   });
   group('ForgotPasswordUsecase', () {
     const tEmail = 'test123@test.com';
-    final tFailure =
-        ApiFailure(message: "Couldn't Update User", statusCode: 400);
+    const tFailure = ApiFailure(message: "Couldn't Update User");
     test('should call [AuthRepo] and send [User] an Reset-Password-Email',
         () async {
       when(
@@ -42,11 +41,11 @@ void main() {
         repo.forgotPassword(
           any,
         ),
-      ).thenAnswer((_) async => Left(tFailure));
+      ).thenAnswer((_) async => const Left(tFailure));
 
       final result = await usecase(tEmail);
 
-      expect(result, Left<Failure, dynamic>(tFailure));
+      expect(result, const Left<Failure, dynamic>(tFailure));
       verify(
         repo.forgotPassword(
           tEmail,

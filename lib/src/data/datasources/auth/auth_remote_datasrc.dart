@@ -1,4 +1,8 @@
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:locall_app/core/errors/exceptions.dart';
 import 'package:locall_app/core/types/auth_with_provider.dart';
+import 'package:locall_app/core/utils/graphql/auth/gql_mutations.dart';
+import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 
 abstract class AuthRemoteDatasrc {
@@ -10,8 +14,10 @@ abstract class AuthRemoteDatasrc {
 
   Future<void> forgotPassword(String email);
 
-  Future<UserModel> signIn(
-      {required String emailOrUsername, required String password});
+  Future<UserModel> signIn({
+    required String emailOrUsername,
+    required String password,
+  });
 
   Future<UserModel> signUp({
     required String username,
@@ -30,6 +36,9 @@ abstract class AuthRemoteDatasrc {
 }
 
 class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
+  const AuthRemoteDatasrcImpl(this._client);
+
+  final GraphQLClient _client;
   @override
   Future<UserModel> authWithProvider({
     required AuthWithProvider provider,
@@ -46,8 +55,10 @@ class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
   }
 
   @override
-  Future<UserModel> signIn(
-      {required String emailOrUsername, required String password}) {
+  Future<UserModel> signIn({
+    required String emailOrUsername,
+    required String password,
+  }) {
     // TODO: implement signIn
     throw UnimplementedError();
   }
@@ -59,9 +70,36 @@ class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
     required String password,
     required String repeatPassword,
     required List<double> coordinates,
-  }) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  }) async {
+    try {
+      final response = await _client.mutate(
+        MutationOptions(
+          document: gql(GqlMutation.signUpMutation),
+          variables: {
+            'username': username,
+            'email': email,
+            'password': password,
+            'repeatPassword': repeatPassword,
+            'coordinates': coordinates,
+          },
+        ),
+      );
+      if (response.hasException) {
+        throw ApiException(
+          message: response.exception!.graphqlErrors.first.message,
+        );
+      } else {
+        return UserModel.fromJson(
+          (response.data!['signUpUser'] as DataMap)['user'] as DataMap,
+        );
+      }
+    } on ApiException {
+      rethrow;
+    } catch (e) {
+      throw ApiException(
+        message: e.toString(),
+      );
+    }
   }
 
   @override

@@ -27,7 +27,6 @@ void main() {
     final tUser = UserModel.empty();
     const tException = ApiException(
       message: "Can't auth with provider",
-      statusCode: 400,
     );
     test('should return [User] when call to remote source is successful',
         () async {
@@ -99,7 +98,6 @@ void main() {
   group('forgotPassword', () {
     const tException = ApiException(
       message: "Can't reset password",
-      statusCode: 400,
     );
     test('should return [void] when call to remote source is successful',
         () async {
@@ -160,7 +158,6 @@ void main() {
     final tUser = UserModel.empty();
     const tException = ApiException(
       message: "Can't sign in",
-      statusCode: 400,
     );
     test('should return [User] when call to remote source is successful',
         () async {
@@ -226,7 +223,6 @@ void main() {
   group('updatePassword', () {
     const tException = ApiException(
       message: "Can't update password",
-      statusCode: 400,
     );
     test('should return [void] when call to remote source is successful',
         () async {
@@ -293,7 +289,6 @@ void main() {
     final tUser = UserModel.empty();
     const tException = ApiException(
       message: "Can't sign up",
-      statusCode: 400,
     );
     test('should return [User] when call to remote source is successful',
         () async {
@@ -378,7 +373,6 @@ void main() {
     final tUser = UserModel.fromEntity(User.empty());
     const tException = ApiException(
       message: "Can't update password",
-      statusCode: 400,
     );
     test('should return [void] when call to remote source is successful',
         () async {

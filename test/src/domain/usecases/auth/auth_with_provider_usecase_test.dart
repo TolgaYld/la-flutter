@@ -17,7 +17,7 @@ void main() {
   });
 
   final tUser = User.empty();
-  final tFailure = ApiFailure(message: "Couldn't Sign Up", statusCode: 400);
+  const tFailure = ApiFailure(message: "Couldn't Sign Up");
   final tParams = AuthWithProviderParams.empty();
 
   group('AuthWithProviderUsecase', () {
@@ -50,11 +50,11 @@ void main() {
           email: anyNamed('email'),
           providerId: anyNamed('providerId'),
         ),
-      ).thenAnswer((_) async => Left(tFailure));
+      ).thenAnswer((_) async => const Left(tFailure));
 
       final result = await usecase(tParams);
 
-      expect(result, Left<Failure, dynamic>(tFailure));
+      expect(result, const Left<Failure, dynamic>(tFailure));
       verify(
         repo.authWithProvider(
           provider: tParams.provider,

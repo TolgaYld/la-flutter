@@ -70,11 +70,8 @@ void main() {
           coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer(
-        (_) async => Left(
-          ApiFailure(
-            message: "Couldn't Sign Up",
-            statusCode: 400,
-          ),
+        (_) async => const Left(
+          ApiFailure(message: "Couldn't Sign Up"),
         ),
       );
 
@@ -90,11 +87,8 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
-          ApiFailure(
-            message: "Couldn't Sign Up",
-            statusCode: 400,
-          ),
+        const Left<Failure, dynamic>(
+          ApiFailure(message: "Couldn't Sign Up"),
         ),
       );
 

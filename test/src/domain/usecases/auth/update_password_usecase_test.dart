@@ -16,8 +16,7 @@ void main() {
   });
   group('UpdatePasswordUsecase', () {
     const tParams = UpdatePasswordParams.empty();
-    final tFailure =
-        ApiFailure(message: "Couldn't Update Password", statusCode: 400);
+    const tFailure = ApiFailure(message: "Couldn't Update Password");
     test('should call [AuthRepo] and  update [User]-password', () async {
       when(
         repo.updatePassword(
@@ -44,11 +43,11 @@ void main() {
           password: anyNamed('password'),
           repeatPassword: anyNamed('repeatPassword'),
         ),
-      ).thenAnswer((_) async => Left(tFailure));
+      ).thenAnswer((_) async => const Left(tFailure));
 
       final result = await usecase(tParams);
 
-      expect(result, Left<Failure, dynamic>(tFailure));
+      expect(result, const Left<Failure, dynamic>(tFailure));
       verify(
         repo.updatePassword(
           password: tParams.password,

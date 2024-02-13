@@ -6,7 +6,6 @@ part 'exceptions.freezed.dart';
 class ApiException with _$ApiException implements Exception {
   const factory ApiException({
     required String message,
-    required int statusCode,
   }) = _ApiException;
 }
 

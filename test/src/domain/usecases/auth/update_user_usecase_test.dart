@@ -17,8 +17,7 @@ void main() {
   });
   group('UpdateUserUsecase', () {
     final tUser = User.empty();
-    final tFailure =
-        ApiFailure(message: "Couldn't Update User", statusCode: 400);
+    const tFailure = ApiFailure(message: "Couldn't Update User");
     test('should call [AuthRepo] and update [User]', () async {
       when(
         repo.updateUser(
@@ -42,11 +41,11 @@ void main() {
         repo.updateUser(
           any,
         ),
-      ).thenAnswer((_) async => Left(tFailure));
+      ).thenAnswer((_) async => const Left(tFailure));
 
       final result = await usecase(tUser);
 
-      expect(result, Left<Failure, dynamic>(tFailure));
+      expect(result, const Left<Failure, dynamic>(tFailure));
       verify(
         repo.updateUser(
           tUser,

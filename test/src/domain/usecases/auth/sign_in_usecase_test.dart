@@ -19,10 +19,7 @@ void main() {
   group('SignInUsecase', () {
     final tUser = User.empty();
     final tParams = SignInParams.empty();
-    final tFailure = ApiFailure(
-      message: "Couldn't Sign In",
-      statusCode: 400,
-    );
+    const tFailure = ApiFailure(message: "Couldn't Sign In");
     test('should call [AuthRepo] and return a valid [User]', () async {
       when(
         repo.signIn(
@@ -40,8 +37,9 @@ void main() {
       expect(result, Right<dynamic, User>(tUser));
       verify(
         repo.signIn(
-            emailOrUsername: tParams.emailOrUsername,
-            password: tParams.password),
+          emailOrUsername: tParams.emailOrUsername,
+          password: tParams.password,
+        ),
       ).called(1);
       verifyNoMoreInteractions(repo);
     });
@@ -53,18 +51,19 @@ void main() {
           password: anyNamed('password'),
         ),
       ).thenAnswer(
-        (_) async => Left(tFailure),
+        (_) async => const Left(tFailure),
       );
 
       final result = await usecase(
         tParams,
       );
 
-      expect(result, Left<Failure, dynamic>(tFailure));
+      expect(result, const Left<Failure, dynamic>(tFailure));
       verify(
         repo.signIn(
-            emailOrUsername: tParams.emailOrUsername,
-            password: tParams.password),
+          emailOrUsername: tParams.emailOrUsername,
+          password: tParams.password,
+        ),
       ).called(1);
       verifyNoMoreInteractions(repo);
     });
