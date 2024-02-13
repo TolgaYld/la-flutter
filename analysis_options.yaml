@@ -10,5 +10,6 @@ analyzer:
     - "**.freezed.dart"
     - "**.gql.g.dart"
     - "**.gql.dart"
+    - "lib/core/utils/graphql/**"
   errors:
     invalid_annotation_target: ignore
