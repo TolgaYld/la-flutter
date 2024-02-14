@@ -8,6 +8,7 @@ import 'package:locall_app/src/data/models/location_model.dart';
 import 'package:locall_app/src/data/models/post_model.dart';
 import 'package:locall_app/src/data/models/report_model.dart';
 import 'package:locall_app/src/data/models/story_model.dart';
+import 'package:locall_app/src/data/models/token_model.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
 
 part 'user_model.freezed.dart';
@@ -44,6 +45,7 @@ class UserModel extends User with _$UserModel {
     List<CommentModel>? comments,
     List<ReportModel>? reports,
     List<ReportModel>? reporteds,
+    TokenModel? tokens,
   }) = _UserModel;
 
   factory UserModel.fromJson(DataMap json) => _$UserModelFromJson(json);

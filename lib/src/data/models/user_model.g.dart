@@ -45,6 +45,9 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       reporteds: (json['reporteds'] as List<dynamic>?)
           ?.map((e) => ReportModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      tokens: json['tokens'] == null
+          ? null
+          : TokenModel.fromJson(json['tokens'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) {
@@ -84,6 +87,7 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) {
   writeNotNull('reports', instance.reports?.map((e) => e.toJson()).toList());
   writeNotNull(
       'reporteds', instance.reporteds?.map((e) => e.toJson()).toList());
+  writeNotNull('tokens', instance.tokens?.toJson());
   return val;
 }
 
