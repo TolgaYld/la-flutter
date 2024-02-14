@@ -15,7 +15,7 @@ class ThemeModeLocalDatasrcImpl implements ThemeModeLocalDatasrc {
   @override
   Future<void> cacheThemeData({required bool mode}) async {
     try {
-      await _sharedPreferences.setBool(kCachedThemeMode, mode);
+      await _sharedPreferences.setBool(kCachedThemeModeKey, mode);
     } catch (e) {
       throw const CacheException(
         message: 'Bool not setted',
@@ -26,7 +26,7 @@ class ThemeModeLocalDatasrcImpl implements ThemeModeLocalDatasrc {
   @override
   Future<bool> getCachedThemeData() async {
     try {
-      final modeBool = _sharedPreferences.getBool(kCachedThemeMode);
+      final modeBool = _sharedPreferences.getBool(kCachedThemeModeKey);
 
       if (modeBool != null) {
         return await Future.value(modeBool);
@@ -47,7 +47,9 @@ class ThemeModeLocalDatasrcImpl implements ThemeModeLocalDatasrc {
   @override
   Future<bool> getUseSystemTheme() async {
     try {
-      final useSystemTheme = _sharedPreferences.getBool(kCachedUseSystemTheme);
+      final useSystemTheme = _sharedPreferences.getBool(
+        kCachedUseSystemThemeKey,
+      );
 
       if (useSystemTheme != null) {
         return await Future.value(useSystemTheme);
@@ -68,7 +70,10 @@ class ThemeModeLocalDatasrcImpl implements ThemeModeLocalDatasrc {
   @override
   Future<void> cacheUseSystemTheme({required bool useSystemTheme}) async {
     try {
-      await _sharedPreferences.setBool(kCachedUseSystemTheme, useSystemTheme);
+      await _sharedPreferences.setBool(
+        kCachedUseSystemThemeKey,
+        useSystemTheme,
+      );
     } catch (e) {
       throw CacheException(
         message: e.toString(),
