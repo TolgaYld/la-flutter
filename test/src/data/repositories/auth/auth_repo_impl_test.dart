@@ -35,13 +35,15 @@ void main() {
     const tException = ApiException(
       message: "Can't auth with provider",
     );
-    test('should return [User] when call to remote source is successful',
-        () async {
+    test(
+        'should store the tokens and return [User] when call to remote source '
+        'is successful', () async {
       when(
         remoteDatasrc.authWithProvider(
           provider: anyNamed('provider'),
           providerId: anyNamed('providerId'),
           email: anyNamed('email'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer((_) async => tUser);
 
@@ -56,6 +58,7 @@ void main() {
         provider: AuthWithProvider.google,
         providerId: 'emptyId',
         email: 'test123@test.com',
+        coordinates: [3.69, 3.69],
       );
 
       verify(
@@ -72,6 +75,7 @@ void main() {
           provider: AuthWithProvider.google,
           providerId: 'emptyId',
           email: 'test123@test.com',
+          coordinates: [3.69, 3.69],
         ),
       ).called(1);
       verifyNoMoreInteractions(localDatasrc);
@@ -86,6 +90,7 @@ void main() {
           provider: anyNamed('provider'),
           providerId: anyNamed('providerId'),
           email: anyNamed('email'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenThrow(tException);
 
@@ -93,6 +98,7 @@ void main() {
         provider: AuthWithProvider.google,
         providerId: 'emptyId',
         email: 'test123@test.com',
+        coordinates: [3.69, 3.69],
       );
 
       expect(
@@ -109,6 +115,7 @@ void main() {
           provider: AuthWithProvider.google,
           providerId: 'emptyId',
           email: 'test123@test.com',
+          coordinates: [3.69, 3.69],
         ),
       ).called(1);
 
@@ -180,8 +187,9 @@ void main() {
     const tException = ApiException(
       message: "Can't sign in",
     );
-    test('should return [User] when call to remote source is successful',
-        () async {
+    test(
+        'should store the tokens and return [User] when call to remote source '
+        'is successful', () async {
       when(
         remoteDatasrc.signIn(
           emailOrUsername: anyNamed('emailOrUsername'),
@@ -325,8 +333,9 @@ void main() {
     const tException = ApiException(
       message: "Can't sign up",
     );
-    test('should return [User] when call to remote source is successful',
-        () async {
+    test(
+        'should store the tokens and return [User] when call to remote source '
+        'is successful', () async {
       when(
         remoteDatasrc.signUp(
           email: anyNamed('email'),

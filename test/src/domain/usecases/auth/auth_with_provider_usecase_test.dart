@@ -27,6 +27,7 @@ void main() {
           provider: anyNamed('provider'),
           email: anyNamed('email'),
           providerId: anyNamed('providerId'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer((_) async => Right(tUser));
 
@@ -38,6 +39,7 @@ void main() {
           provider: tParams.provider,
           providerId: tParams.providerId,
           email: tParams.email,
+          coordinates: tParams.coordinates,
         ),
       ).called(1);
       verifyNoMoreInteractions(repo);
@@ -49,6 +51,7 @@ void main() {
           provider: anyNamed('provider'),
           email: anyNamed('email'),
           providerId: anyNamed('providerId'),
+          coordinates: anyNamed('coordinates'),
         ),
       ).thenAnswer((_) async => const Left(tFailure));
 
@@ -60,6 +63,7 @@ void main() {
           provider: tParams.provider,
           providerId: tParams.providerId,
           email: tParams.email,
+          coordinates: tParams.coordinates,
         ),
       ).called(1);
       verifyNoMoreInteractions(repo);

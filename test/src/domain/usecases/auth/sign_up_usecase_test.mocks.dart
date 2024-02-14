@@ -85,6 +85,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
     required _i7.AuthWithProvider? provider,
     required String? providerId,
     required String? email,
+    required List<double>? coordinates,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -94,6 +95,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
             #provider: provider,
             #providerId: providerId,
             #email: email,
+            #coordinates: coordinates,
           },
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.User>>.value(
@@ -106,6 +108,7 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
               #provider: provider,
               #providerId: providerId,
               #email: email,
+              #coordinates: coordinates,
             },
           ),
         )),
