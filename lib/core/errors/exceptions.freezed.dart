@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ApiException {
   String get message => throw _privateConstructorUsedError;
+  int? get statusCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApiExceptionCopyWith<ApiException> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $ApiExceptionCopyWith<$Res> {
           ApiException value, $Res Function(ApiException) then) =
       _$ApiExceptionCopyWithImpl<$Res, ApiException>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, int? statusCode});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$ApiExceptionCopyWithImpl<$Res, $Val extends ApiException>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = freezed,
   }) {
     return _then(_value.copyWith(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$ApiExceptionImplCopyWith<$Res>
       __$$ApiExceptionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message});
+  $Res call({String message, int? statusCode});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$ApiExceptionImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? statusCode = freezed,
   }) {
     return _then(_$ApiExceptionImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -92,14 +103,16 @@ class __$$ApiExceptionImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ApiExceptionImpl implements _ApiException {
-  const _$ApiExceptionImpl({required this.message});
+  const _$ApiExceptionImpl({required this.message, this.statusCode});
 
   @override
   final String message;
+  @override
+  final int? statusCode;
 
   @override
   String toString() {
-    return 'ApiException(message: $message)';
+    return 'ApiException(message: $message, statusCode: $statusCode)';
   }
 
   @override
@@ -107,11 +120,13 @@ class _$ApiExceptionImpl implements _ApiException {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiExceptionImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
 
   @JsonKey(ignore: true)
   @override
@@ -121,11 +136,14 @@ class _$ApiExceptionImpl implements _ApiException {
 }
 
 abstract class _ApiException implements ApiException {
-  const factory _ApiException({required final String message}) =
-      _$ApiExceptionImpl;
+  const factory _ApiException(
+      {required final String message,
+      final int? statusCode}) = _$ApiExceptionImpl;
 
   @override
   String get message;
+  @override
+  int? get statusCode;
   @override
   @JsonKey(ignore: true)
   _$$ApiExceptionImplCopyWith<_$ApiExceptionImpl> get copyWith =>
