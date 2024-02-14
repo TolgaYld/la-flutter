@@ -3,14 +3,22 @@ import 'package:locall_app/core/errors/exceptions.dart';
 import 'package:locall_app/core/errors/failures.dart';
 import 'package:locall_app/core/types/auth_with_provider.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
+import 'package:locall_app/src/data/datasources/auth/auth_local_datasrc.dart';
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
 import 'package:locall_app/src/domain/repositories/auth/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  const AuthRepoImpl(this._remoteDatasrc);
+  const AuthRepoImpl({
+    required AuthRemoteDatasrc remoteDatasrc,
+    required AuthLocalDatasrc localDatasrc,
+  })  : _remoteDatasrc = remoteDatasrc,
+        _localDatasrc = localDatasrc;
+
   final AuthRemoteDatasrc _remoteDatasrc;
+  final AuthLocalDatasrc _localDatasrc;
+
   @override
   ResultFuture<User> authWithProvider({
     required AuthWithProvider provider,
@@ -24,7 +32,12 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
       );
 
-      return Right(result);
+      await _localDatasrc.setTokens(
+        token: result.tokens!.token,
+        refreshToken: result.tokens!.refreshToken,
+      );
+
+      return Right(result.copyWith(tokens: null));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
@@ -50,7 +63,13 @@ class AuthRepoImpl implements AuthRepo {
         emailOrUsername: emailOrUsername,
         password: password,
       );
-      return Right(result);
+
+      await _localDatasrc.setTokens(
+        token: result.tokens!.token,
+        refreshToken: result.tokens!.refreshToken,
+      );
+
+      return Right(result.copyWith(tokens: null));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
@@ -72,7 +91,12 @@ class AuthRepoImpl implements AuthRepo {
         repeatPassword: repeatPassword,
         coordinates: coordinates,
       );
-      return Right(result);
+      await _localDatasrc.setTokens(
+        token: result.tokens!.token,
+        refreshToken: result.tokens!.refreshToken,
+      );
+
+      return Right(result.copyWith(tokens: null));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
