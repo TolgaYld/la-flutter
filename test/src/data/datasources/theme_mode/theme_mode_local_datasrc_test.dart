@@ -27,7 +27,7 @@ void main() {
 
       verify(
         sharedPreferences.setBool(
-          kCachedThemeMode,
+          kCachedThemeModeKey,
           true,
         ),
       ).called(1);
@@ -51,7 +51,7 @@ void main() {
 
       verify(
         sharedPreferences.setBool(
-          kCachedThemeMode,
+          kCachedThemeModeKey,
           true,
         ),
       ).called(1);
@@ -68,7 +68,7 @@ void main() {
 
       expect(result, true);
       verify(
-        sharedPreferences.getBool(kCachedThemeMode),
+        sharedPreferences.getBool(kCachedThemeModeKey),
       ).called(1);
       verifyNoMoreInteractions(sharedPreferences);
     });
@@ -89,7 +89,7 @@ void main() {
       );
 
       verify(
-        sharedPreferences.getBool(kCachedThemeMode),
+        sharedPreferences.getBool(kCachedThemeModeKey),
       ).called(1);
       verifyNoMoreInteractions(sharedPreferences);
     });
@@ -104,7 +104,7 @@ void main() {
 
       expect(result, false);
       verify(
-        sharedPreferences.getBool(kCachedUseSystemTheme),
+        sharedPreferences.getBool(kCachedUseSystemThemeKey),
       ).called(1);
       verifyNoMoreInteractions(sharedPreferences);
     });
@@ -125,7 +125,7 @@ void main() {
       );
 
       verify(
-        sharedPreferences.getBool(kCachedUseSystemTheme),
+        sharedPreferences.getBool(kCachedUseSystemThemeKey),
       ).called(1);
       verifyNoMoreInteractions(sharedPreferences);
     });
@@ -140,7 +140,7 @@ void main() {
 
       verify(
         sharedPreferences.setBool(
-          kCachedUseSystemTheme,
+          kCachedUseSystemThemeKey,
           true,
         ),
       ).called(1);
@@ -164,7 +164,7 @@ void main() {
 
       verify(
         sharedPreferences.setBool(
-          kCachedUseSystemTheme,
+          kCachedUseSystemThemeKey,
           false,
         ),
       ).called(1);
