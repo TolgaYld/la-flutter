@@ -3,7 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:locall_app/core/errors/exceptions.dart';
 import 'package:locall_app/core/errors/failures.dart';
 import 'package:locall_app/core/types/auth_with_provider.dart';
+import 'package:locall_app/src/data/datasources/auth/auth_local_datasrc.dart';
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart';
+import 'package:locall_app/src/data/models/token_model.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 import 'package:locall_app/src/data/repositories/auth/auth_repo_impl.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
@@ -13,18 +15,23 @@ import 'package:mockito/mockito.dart';
 
 import 'auth_repo_impl_test.mocks.dart';
 
-@GenerateMocks([AuthRemoteDatasrc])
+@GenerateMocks([AuthRemoteDatasrc, AuthLocalDatasrc])
 void main() {
   late MockAuthRemoteDatasrc remoteDatasrc;
+  late MockAuthLocalDatasrc localDatasrc;
   late AuthRepo repo;
 
   setUp(() {
     remoteDatasrc = MockAuthRemoteDatasrc();
-    repo = AuthRepoImpl(remoteDatasrc);
+    localDatasrc = MockAuthLocalDatasrc();
+    repo = AuthRepoImpl(
+      remoteDatasrc: remoteDatasrc,
+      localDatasrc: localDatasrc,
+    );
   });
 
   group('authWithProvider', () {
-    final tUser = UserModel.empty();
+    final tUser = UserModel.empty().copyWith(tokens: TokenModel.empty());
     const tException = ApiException(
       message: "Can't auth with provider",
     );
@@ -38,13 +45,27 @@ void main() {
         ),
       ).thenAnswer((_) async => tUser);
 
+      when(
+        localDatasrc.setTokens(
+          token: anyNamed('token'),
+          refreshToken: anyNamed('refreshToken'),
+        ),
+      ).thenAnswer((_) async => Future.value());
+
       final result = await repo.authWithProvider(
         provider: AuthWithProvider.google,
         providerId: 'emptyId',
         email: 'test123@test.com',
       );
 
-      expect(result, Right<dynamic, User>(tUser));
+      verify(
+        localDatasrc.setTokens(
+          token: tUser.tokens!.token,
+          refreshToken: tUser.tokens!.refreshToken,
+        ),
+      ).called(1);
+
+      expect(result, Right<dynamic, User>(tUser.copyWith(tokens: null)));
 
       verify(
         remoteDatasrc.authWithProvider(
@@ -53,7 +74,7 @@ void main() {
           email: 'test123@test.com',
         ),
       ).called(1);
-
+      verifyNoMoreInteractions(localDatasrc);
       verifyNoMoreInteractions(remoteDatasrc);
     });
 
@@ -155,7 +176,7 @@ void main() {
   });
 
   group('signIn', () {
-    final tUser = UserModel.empty();
+    final tUser = UserModel.empty().copyWith(tokens: TokenModel.empty());
     const tException = ApiException(
       message: "Can't sign in",
     );
@@ -168,12 +189,19 @@ void main() {
         ),
       ).thenAnswer((_) async => tUser);
 
+      when(
+        localDatasrc.setTokens(
+          token: anyNamed('token'),
+          refreshToken: anyNamed('refreshToken'),
+        ),
+      ).thenAnswer((_) async => Future.value());
+
       final result = await repo.signIn(
         emailOrUsername: 'test123@test.com',
         password: 'aaaaaaaaaaaa',
       );
 
-      expect(result, Right<dynamic, User>(tUser));
+      expect(result, Right<dynamic, User>(tUser.copyWith(tokens: null)));
 
       verify(
         remoteDatasrc.signIn(
@@ -182,6 +210,13 @@ void main() {
         ),
       ).called(1);
 
+      verify(
+        localDatasrc.setTokens(
+          token: tUser.tokens!.token,
+          refreshToken: tUser.tokens!.refreshToken,
+        ),
+      ).called(1);
+      verifyNoMoreInteractions(localDatasrc);
       verifyNoMoreInteractions(remoteDatasrc);
     });
 
@@ -286,7 +321,7 @@ void main() {
   });
 
   group('signUp', () {
-    final tUser = UserModel.empty();
+    final tUser = UserModel.empty().copyWith(tokens: TokenModel.empty());
     const tException = ApiException(
       message: "Can't sign up",
     );
@@ -302,6 +337,13 @@ void main() {
         ),
       ).thenAnswer((_) async => tUser);
 
+      when(
+        localDatasrc.setTokens(
+          token: anyNamed('token'),
+          refreshToken: anyNamed('refreshToken'),
+        ),
+      ).thenAnswer((_) async => Future.value());
+
       final result = await repo.signUp(
         email: tUser.email,
         password: 'aaaaaaaaaaaa',
@@ -310,7 +352,7 @@ void main() {
         repeatPassword: 'aaaaaaaaaaaa',
       );
 
-      expect(result, Right<dynamic, User>(tUser));
+      expect(result, Right<dynamic, User>(tUser.copyWith(tokens: null)));
 
       verify(
         remoteDatasrc.signUp(
@@ -321,6 +363,14 @@ void main() {
           repeatPassword: 'aaaaaaaaaaaa',
         ),
       ).called(1);
+
+      verify(
+        localDatasrc.setTokens(
+          token: tUser.tokens!.token,
+          refreshToken: tUser.tokens!.refreshToken,
+        ),
+      ).called(1);
+      verifyNoMoreInteractions(localDatasrc);
 
       verifyNoMoreInteractions(remoteDatasrc);
     });

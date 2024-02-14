@@ -6,6 +6,8 @@
 import 'dart:async' as _i4;
 
 import 'package:locall_app/core/types/auth_with_provider.dart' as _i5;
+import 'package:locall_app/src/data/datasources/auth/auth_local_datasrc.dart'
+    as _i6;
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart'
     as _i3;
 import 'package:locall_app/src/data/models/user_model.dart' as _i2;
@@ -168,6 +170,33 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
         Invocation.method(
           #updateUser,
           [user],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+}
+
+/// A class which mocks [AuthLocalDatasrc].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAuthLocalDatasrc extends _i1.Mock implements _i6.AuthLocalDatasrc {
+  MockAuthLocalDatasrc() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<void> setTokens({
+    required String? token,
+    required String? refreshToken,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setTokens,
+          [],
+          {
+            #token: token,
+            #refreshToken: refreshToken,
+          },
         ),
         returnValue: _i4.Future<void>.value(),
         returnValueForMissingStub: _i4.Future<void>.value(),
