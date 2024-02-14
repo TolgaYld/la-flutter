@@ -3,13 +3,14 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
-import 'package:locall_app/core/types/auth_with_provider.dart' as _i5;
+import 'package:locall_app/core/types/auth_with_provider.dart' as _i6;
 import 'package:locall_app/src/data/datasources/auth/auth_local_datasrc.dart'
-    as _i6;
+    as _i7;
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart'
-    as _i3;
+    as _i4;
+import 'package:locall_app/src/data/models/token_model.dart' as _i3;
 import 'package:locall_app/src/data/models/user_model.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -36,17 +37,27 @@ class _FakeUserModel_0 extends _i1.SmartFake implements _i2.UserModel {
         );
 }
 
+class _FakeTokenModel_1 extends _i1.SmartFake implements _i3.TokenModel {
+  _FakeTokenModel_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AuthRemoteDatasrc].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
+class MockAuthRemoteDatasrc extends _i1.Mock implements _i4.AuthRemoteDatasrc {
   MockAuthRemoteDatasrc() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.UserModel> authWithProvider({
-    required _i5.AuthWithProvider? provider,
+  _i5.Future<_i2.UserModel> authWithProvider({
+    required _i6.AuthWithProvider? provider,
     required String? providerId,
     required String? email,
     required List<double>? coordinates,
@@ -62,7 +73,7 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             #coordinates: coordinates,
           },
         ),
-        returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
+        returnValue: _i5.Future<_i2.UserModel>.value(_FakeUserModel_0(
           this,
           Invocation.method(
             #authWithProvider,
@@ -75,20 +86,20 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             },
           ),
         )),
-      ) as _i4.Future<_i2.UserModel>);
+      ) as _i5.Future<_i2.UserModel>);
 
   @override
-  _i4.Future<void> forgotPassword(String? email) => (super.noSuchMethod(
+  _i5.Future<void> forgotPassword(String? email) => (super.noSuchMethod(
         Invocation.method(
           #forgotPassword,
           [email],
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 
   @override
-  _i4.Future<_i2.UserModel> signIn({
+  _i5.Future<_i2.UserModel> signIn({
     required String? emailOrUsername,
     required String? password,
   }) =>
@@ -101,7 +112,7 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             #password: password,
           },
         ),
-        returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
+        returnValue: _i5.Future<_i2.UserModel>.value(_FakeUserModel_0(
           this,
           Invocation.method(
             #signIn,
@@ -112,10 +123,10 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             },
           ),
         )),
-      ) as _i4.Future<_i2.UserModel>);
+      ) as _i5.Future<_i2.UserModel>);
 
   @override
-  _i4.Future<_i2.UserModel> signUp({
+  _i5.Future<_i2.UserModel> signUp({
     required String? username,
     required String? email,
     required String? password,
@@ -134,7 +145,7 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             #coordinates: coordinates,
           },
         ),
-        returnValue: _i4.Future<_i2.UserModel>.value(_FakeUserModel_0(
+        returnValue: _i5.Future<_i2.UserModel>.value(_FakeUserModel_0(
           this,
           Invocation.method(
             #signUp,
@@ -148,10 +159,10 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             },
           ),
         )),
-      ) as _i4.Future<_i2.UserModel>);
+      ) as _i5.Future<_i2.UserModel>);
 
   @override
-  _i4.Future<void> updatePassword({
+  _i5.Future<_i3.TokenModel> updatePassword({
     required String? password,
     required String? repeatPassword,
   }) =>
@@ -164,31 +175,40 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i3.AuthRemoteDatasrc {
             #repeatPassword: repeatPassword,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i5.Future<_i3.TokenModel>.value(_FakeTokenModel_1(
+          this,
+          Invocation.method(
+            #updatePassword,
+            [],
+            {
+              #password: password,
+              #repeatPassword: repeatPassword,
+            },
+          ),
+        )),
+      ) as _i5.Future<_i3.TokenModel>);
 
   @override
-  _i4.Future<void> updateUser(_i2.UserModel? user) => (super.noSuchMethod(
+  _i5.Future<void> updateUser(_i2.UserModel? user) => (super.noSuchMethod(
         Invocation.method(
           #updateUser,
           [user],
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }
 
 /// A class which mocks [AuthLocalDatasrc].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthLocalDatasrc extends _i1.Mock implements _i6.AuthLocalDatasrc {
+class MockAuthLocalDatasrc extends _i1.Mock implements _i7.AuthLocalDatasrc {
   MockAuthLocalDatasrc() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<void> setTokens({
+  _i5.Future<void> setTokens({
     required String? token,
     required String? refreshToken,
   }) =>
@@ -201,7 +221,7 @@ class MockAuthLocalDatasrc extends _i1.Mock implements _i6.AuthLocalDatasrc {
             #refreshToken: refreshToken,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }
