@@ -40,6 +40,8 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       return Right(result.copyWith(tokens: null));
+    } on CacheException catch (e) {
+      return Left(CacheFailure.fromException(e));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
@@ -72,6 +74,8 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       return Right(result.copyWith(tokens: null));
+    } on CacheException catch (e) {
+      return Left(CacheFailure.fromException(e));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
@@ -99,6 +103,8 @@ class AuthRepoImpl implements AuthRepo {
       );
 
       return Right(result.copyWith(tokens: null));
+    } on CacheException catch (e) {
+      return Left(CacheFailure.fromException(e));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
@@ -110,12 +116,19 @@ class AuthRepoImpl implements AuthRepo {
     required String repeatPassword,
   }) async {
     try {
-      await _remoteDatasrc.updatePassword(
+      final result = await _remoteDatasrc.updatePassword(
         password: password,
         repeatPassword: repeatPassword,
       );
 
+      await _localDatasrc.setTokens(
+        token: result.token,
+        refreshToken: result.refreshToken,
+      );
+
       return const Right(null);
+    } on CacheException catch (e) {
+      return Left(CacheFailure.fromException(e));
     } on ApiException catch (e) {
       return Left(ApiFailure.fromException(e));
     }
