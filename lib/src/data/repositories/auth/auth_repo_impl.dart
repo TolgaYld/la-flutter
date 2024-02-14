@@ -24,12 +24,14 @@ class AuthRepoImpl implements AuthRepo {
     required AuthWithProvider provider,
     required String providerId,
     required String email,
+    required List<double> coordinates,
   }) async {
     try {
       final result = await _remoteDatasrc.authWithProvider(
         provider: provider,
         providerId: providerId,
         email: email,
+        coordinates: coordinates,
       );
 
       await _localDatasrc.setTokens(

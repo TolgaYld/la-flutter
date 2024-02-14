@@ -16,6 +16,7 @@ class AuthWithProviderUsecase
         provider: params.provider,
         providerId: params.providerId,
         email: params.email,
+        coordinates: params.coordinates,
       );
 }
 
@@ -24,15 +25,18 @@ class AuthWithProviderParams {
     required this.provider,
     required this.providerId,
     required this.email,
+    required this.coordinates,
   });
 
   factory AuthWithProviderParams.empty() => const AuthWithProviderParams(
         provider: AuthWithProvider.google,
         email: 'empty',
         providerId: 'empty',
+        coordinates: [3.69, 3.69],
       );
 
   final AuthWithProvider provider;
   final String email;
   final String providerId;
+  final List<double> coordinates;
 }
