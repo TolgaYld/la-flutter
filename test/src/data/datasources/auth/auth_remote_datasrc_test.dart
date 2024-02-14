@@ -7,6 +7,7 @@ import 'package:locall_app/core/types/auth_with_provider.dart';
 import 'package:locall_app/core/utils/graphql/auth/gql_mutations.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart';
+import 'package:locall_app/src/data/models/token_model.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -27,8 +28,8 @@ void main() {
 
   group('signUp', () {
     final data = jsonDecode(
-            fixture('user/sign_up/user_raw_with_tokens_from_server.json'))
-        as DataMap;
+      fixture('user/sign_up/user_raw_with_tokens_from_server.json'),
+    ) as DataMap;
     test('should return [User] when call to remote source is successful',
         () async {
       final options = MutationOptions(
@@ -38,7 +39,7 @@ void main() {
           'email': tUserModel.email,
           'coordinates': tUserModel.location.coordinates,
           'password': '',
-          'repeatPassword': '',
+          'repeat_password': '',
         },
       );
       when(client.mutate<dynamic>(any)).thenAnswer(
@@ -74,7 +75,7 @@ void main() {
           'email': tUserModel.email,
           'coordinates': tUserModel.location.coordinates,
           'password': '',
-          'repeatPassword': '',
+          'repeat_password': '',
         },
       );
       when(client.mutate<dynamic>(any)).thenThrow(
@@ -104,8 +105,8 @@ void main() {
 
   group('signIn', () {
     final data = jsonDecode(
-            fixture('user/sign_in/user_raw_with_tokens_from_server.json'))
-        as DataMap;
+      fixture('user/sign_in/user_raw_with_tokens_from_server.json'),
+    ) as DataMap;
     test(
         'should return [User] when call to remote source is'
         ' successful', () async {
@@ -298,6 +299,150 @@ void main() {
 
       expect(
         () => methodCall(tUserModel.email),
+        throwsA(
+          const ApiException(message: "Couldn't reset password"),
+        ),
+      );
+
+      verify(client.mutate(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+  });
+
+  group('updatePassword', () {
+    final data = jsonDecode(
+      fixture('user/update_password/user_raw_with_tokens_from_server.json'),
+    ) as DataMap;
+
+    final tTokenModel = TokenModel.empty();
+    test(
+        'should execute a successful call to datasource and return '
+        '[TokenModel]', () async {
+      final options = MutationOptions(
+        document: gql(GqlMutation.updatePasswordMutation),
+        variables: const {
+          'password': '',
+          'repeat_password': '',
+        },
+      );
+      when(client.mutate<dynamic>(any)).thenAnswer(
+        (_) async => QueryResult(
+          data: data,
+          options: options,
+          source: QueryResultSource.network,
+        ),
+      );
+
+      final result = await datasrc.updatePassword(
+        password: '',
+        repeatPassword: '',
+      );
+
+      expect(result, tTokenModel);
+
+      verify(client.mutate(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+
+    test(
+        'should throw an [ApiException] when call to remote source is '
+        'unsuccessful', () async {
+      final options = MutationOptions(
+        document: gql(GqlMutation.updatePasswordMutation),
+        variables: const {
+          'password': '',
+          'repeat_password': '',
+        },
+      );
+      when(client.mutate<dynamic>(any)).thenThrow(
+        const ApiException(message: "Couldn't change password"),
+      );
+
+      final methodCall = datasrc.updatePassword;
+
+      expect(
+        () => methodCall(
+          password: '',
+          repeatPassword: '',
+        ),
+        throwsA(
+          const ApiException(message: "Couldn't change password"),
+        ),
+      );
+
+      verify(client.mutate(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+  });
+
+  group('updateUser', () {
+    final data = jsonDecode(
+      fixture(
+        'user/update_user/user_raw_with_tokens_from_server.json',
+      ),
+    ) as DataMap;
+
+    test('should execute a successful call to remote source', () async {
+      final options = MutationOptions(
+        document: gql(GqlMutation.updateUserMutation),
+        variables: {
+          'coordinates': tUserModel.location
+              .copyWith(coordinates: [9.36, 9.36]).coordinates,
+          'username': tUserModel.username,
+        },
+      );
+      when(client.mutate<dynamic>(any)).thenAnswer(
+        (_) async => QueryResult(
+          data: data,
+          options: options,
+          source: QueryResultSource.network,
+        ),
+      );
+
+      final methodCall = datasrc.updateUser;
+
+      expect(
+        methodCall(
+          tUserModel.copyWith(
+            location: tUserModel.location.copyWith(
+              coordinates: [9.36, 9.36],
+            ),
+          ),
+        ),
+        completes,
+      );
+
+      verify(client.mutate(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+
+    test(
+        'should throw an [ApiException] when call to remote source is '
+        'unsuccessful', () async {
+      final options = MutationOptions(
+        document: gql(GqlMutation.updateUserMutation),
+        variables: {
+          'coordinates': tUserModel.location
+              .copyWith(coordinates: [9.36, 9.36]).coordinates,
+          'username': tUserModel.username,
+        },
+      );
+      when(client.mutate<dynamic>(any)).thenThrow(
+        const ApiException(message: "Couldn't reset password"),
+      );
+
+      final methodCall = datasrc.updateUser;
+
+      expect(
+        () => methodCall(
+          tUserModel.copyWith(
+            location: tUserModel.location.copyWith(coordinates: [9.36, 9.36]),
+          ),
+        ),
         throwsA(
           const ApiException(message: "Couldn't reset password"),
         ),
