@@ -26,9 +26,9 @@ void main() {
   final tUserModel = UserModel.empty();
 
   group('signUp', () {
-    final data =
-        jsonDecode(fixture('user/signUp/userRawWithTokensFromServer.json'))
-            as DataMap;
+    final data = jsonDecode(
+            fixture('user/sign_up/user_raw_with_tokens_from_server.json'))
+        as DataMap;
     test('should return [User] when call to remote source is successful',
         () async {
       final options = MutationOptions(
@@ -103,9 +103,9 @@ void main() {
   });
 
   group('signIn', () {
-    final data =
-        jsonDecode(fixture('user/signIn/userRawWithTokensFromServer.json'))
-            as DataMap;
+    final data = jsonDecode(
+            fixture('user/sign_in/user_raw_with_tokens_from_server.json'))
+        as DataMap;
     test(
         'should return [User] when call to remote source is'
         ' successful', () async {
@@ -170,7 +170,7 @@ void main() {
 
   group('authWithProvider', () {
     final data = jsonDecode(
-      fixture('user/authWithProvider/userRawWithTokensFromServer.json'),
+      fixture('user/auth_with_provider/user_raw_with_tokens_from_server.json'),
     ) as DataMap;
     test(
         'should return [User] when call to remote source is'
@@ -252,7 +252,7 @@ void main() {
   group('forgotPassword', () {
     final data = jsonDecode(
       fixture(
-        'user/forgotPassword/forgotPasswordRawResponseFromServer.json',
+        'user/forgot_password/forgot_password_raw_response_from_server.json',
       ),
     ) as DataMap;
     test(
