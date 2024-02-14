@@ -3,6 +3,7 @@ import 'package:locall_app/core/errors/exceptions.dart';
 import 'package:locall_app/core/types/auth_with_provider.dart';
 import 'package:locall_app/core/utils/graphql/auth/gql_mutations.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
+import 'package:locall_app/src/data/models/token_model.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
 
 abstract class AuthRemoteDatasrc {
@@ -28,7 +29,7 @@ abstract class AuthRemoteDatasrc {
     required List<double> coordinates,
   });
 
-  Future<void> updatePassword({
+  Future<TokenModel> updatePassword({
     required String password,
     required String repeatPassword,
   });
@@ -147,7 +148,7 @@ class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
             'username': username,
             'email': email,
             'password': password,
-            'repeatPassword': repeatPassword,
+            'repeat_password': repeatPassword,
             'coordinates': coordinates,
           },
         ),
@@ -171,17 +172,59 @@ class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
   }
 
   @override
-  Future<void> updatePassword({
+  Future<TokenModel> updatePassword({
     required String password,
     required String repeatPassword,
-  }) {
-    // TODO: implement updatePassword
-    throw UnimplementedError();
+  }) async {
+    try {
+      final response = await _client.mutate(
+        MutationOptions(
+          document: gql(GqlMutation.updatePasswordMutation),
+          variables: {
+            'password': password,
+            'repeat_password': repeatPassword,
+          },
+        ),
+      );
+      if (!response.hasException) {
+        return TokenModel.fromJson(
+          (response.data!['updateUserPassword'] as DataMap)['tokens']
+              as DataMap,
+        );
+      } else {
+        throw ApiException(
+          message: response.exception!.graphqlErrors.first.message,
+        );
+      }
+    } on ApiException {
+      rethrow;
+    } catch (e) {
+      throw ApiException(message: e.toString());
+    }
   }
 
   @override
-  Future<void> updateUser(UserModel user) {
-    // TODO: implement updateUser
-    throw UnimplementedError();
+  Future<void> updateUser(UserModel user) async {
+    try {
+      final response = await _client.mutate(
+        MutationOptions(
+          document: gql(GqlMutation.updateUserMutation),
+          variables: {
+            'coordinates': user.location.coordinates,
+            'username': user.username,
+          },
+        ),
+      );
+
+      if (response.hasException) {
+        throw ApiException(
+          message: response.exception!.graphqlErrors.first.message,
+        );
+      }
+    } on ApiException {
+      rethrow;
+    } catch (e) {
+      throw ApiException(message: e.toString());
+    }
   }
 }
