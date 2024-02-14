@@ -4,8 +4,8 @@ class AppTheme {
   AppTheme._();
 
   static const Color _lightPrimaryColor = Color(0xffffffff);
-  static const Color _lightPrimaryVariantColor = Color(0xff272643);
-  static const Color _lightOnPrimaryColor = Color(0xff2c698d);
+  static const Color _lightPrimaryVariantColor = Color(0xfff4b41a);
+  static const Color _lightOnPrimaryColor = Color(0xff143d59);
   // static const Color _thirdColor = Color(0xffe3f6f5);
   static const Color _fourthColor = Color(0xffbae8e8);
   static const Color _lightTextColorPrimary = _lightOnPrimaryColor;
