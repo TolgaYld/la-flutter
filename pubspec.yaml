@@ -43,7 +43,7 @@ flutter:
   generate: true
   uses-material-design: true
   assets:
-    - lib/core/
+    - lib/core/common/env/
   fonts:
     - family: Josefin
       fonts:
