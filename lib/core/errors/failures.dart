@@ -1,31 +1,36 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:locall_app/core/errors/exceptions.dart';
 
-sealed class Failure extends Equatable {
+part 'failures.freezed.dart';
+
+sealed class Failure {
   const Failure({required this.message, this.statusCode});
 
   final String message;
-  final dynamic statusCode;
-
-  @override
-  List<dynamic> get props => [message];
+  final int? statusCode;
 }
 
-class CacheFailure extends Failure {
-  CacheFailure({
-    required super.message,
-    super.statusCode = 500,
-  }) : assert(
-          statusCode is String || statusCode is int,
-          'StatusCode cannot be a ${statusCode.runtimeType}',
-        );
-  CacheFailure.fromException(CacheException exception)
-      : this(message: exception.message, statusCode: exception.statusCode);
+@freezed
+class CacheFailure extends Failure with _$CacheFailure {
+  const factory CacheFailure({
+    required String message,
+    @Default(500) int? statusCode,
+  }) = _CacheFailure;
+  factory CacheFailure.fromException(CacheException exception) => CacheFailure(
+        message: exception.message,
+        statusCode: exception.statusCode,
+      );
 }
 
-class ApiFailure extends Failure {
-  const ApiFailure({required super.message, super.statusCode});
+@freezed
+class ApiFailure extends Failure with _$ApiFailure {
+  const factory ApiFailure({
+    required String message,
+    int? statusCode,
+  }) = _ApiFailure;
 
-  ApiFailure.fromException(ApiException exception)
-      : this(message: exception.message, statusCode: exception.statusCode);
+  factory ApiFailure.fromException(ApiException exception) => ApiFailure(
+        message: exception.message,
+        statusCode: exception.statusCode,
+      );
 }
