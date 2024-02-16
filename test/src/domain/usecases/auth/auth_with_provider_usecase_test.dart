@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:locall_app/core/errors/failures.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
 import 'package:locall_app/src/domain/usecases/auth/auth_with_provider_usecase.dart';
+import 'package:locall_app/src/domain/usecases/auth/params/auth_with_provider_params.dart';
 import 'package:mockito/mockito.dart';
 
 import 'sign_up_usecase_test.mocks.dart';

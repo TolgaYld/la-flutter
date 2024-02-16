@@ -2,6 +2,7 @@ import 'package:locall_app/core/usecases/usecases.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
 import 'package:locall_app/src/domain/repositories/auth/auth_repo.dart';
+import 'package:locall_app/src/domain/usecases/auth/params/sign_up_params.dart';
 
 class SignUpUsecase extends UsecaseWithParams<User, SignUpParams> {
   const SignUpUsecase(this._repo);
@@ -16,29 +17,4 @@ class SignUpUsecase extends UsecaseWithParams<User, SignUpParams> {
         repeatPassword: params.repeatPassword,
         coordinates: params.coordinates,
       );
-}
-
-class SignUpParams {
-  const SignUpParams({
-    required this.email,
-    required this.password,
-    required this.repeatPassword,
-    required this.username,
-    required this.coordinates,
-  });
-
-  SignUpParams.empty()
-      : this(
-          email: '',
-          password: '',
-          username: '',
-          repeatPassword: '',
-          coordinates: [3.69, 3.69],
-        );
-
-  final String email;
-  final String password;
-  final String repeatPassword;
-  final String username;
-  final List<double> coordinates;
 }

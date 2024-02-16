@@ -1,6 +1,7 @@
 import 'package:locall_app/core/usecases/usecases.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/domain/repositories/auth/auth_repo.dart';
+import 'package:locall_app/src/domain/usecases/auth/params/update_password_params.dart';
 
 class UpdatePasswordUsecase
     extends UsecaseWithParams<void, UpdatePasswordParams> {
@@ -12,20 +13,4 @@ class UpdatePasswordUsecase
         password: params.password,
         repeatPassword: params.repeatPassword,
       );
-}
-
-class UpdatePasswordParams {
-  const UpdatePasswordParams({
-    required this.password,
-    required this.repeatPassword,
-  });
-
-  const UpdatePasswordParams.empty()
-      : this(
-          password: 'password',
-          repeatPassword: 'password',
-        );
-
-  final String password;
-  final String repeatPassword;
 }

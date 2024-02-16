@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:locall_app/core/errors/failures.dart';
+import 'package:locall_app/src/domain/usecases/auth/params/update_password_params.dart';
 import 'package:locall_app/src/domain/usecases/auth/update_password_usecase.dart';
 import 'package:mockito/mockito.dart';
 
@@ -15,7 +16,7 @@ void main() {
     usecase = UpdatePasswordUsecase(repo);
   });
   group('UpdatePasswordUsecase', () {
-    const tParams = UpdatePasswordParams.empty();
+    final tParams = UpdatePasswordParams.empty();
     const tFailure = ApiFailure(message: "Couldn't Update Password");
     test('should call [AuthRepo] and  update [User]-password', () async {
       when(

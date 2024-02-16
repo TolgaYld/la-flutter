@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:locall_app/core/errors/failures.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
+import 'package:locall_app/src/domain/usecases/auth/params/sign_in_params.dart';
 import 'package:locall_app/src/domain/usecases/auth/sign_in_usecase.dart';
 import 'package:mockito/mockito.dart';
 

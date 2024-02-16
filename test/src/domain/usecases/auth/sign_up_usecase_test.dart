@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:locall_app/core/errors/failures.dart';
 import 'package:locall_app/src/domain/entities/user.dart';
 import 'package:locall_app/src/domain/repositories/auth/auth_repo.dart';
+import 'package:locall_app/src/domain/usecases/auth/params/sign_up_params.dart';
 import 'package:locall_app/src/domain/usecases/auth/sign_up_usecase.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
