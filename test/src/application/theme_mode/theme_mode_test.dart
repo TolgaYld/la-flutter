@@ -83,7 +83,7 @@ void main() {
       ' unsuccessful',
       () async {
         when(setUseSystemThemeUsecase(any)).thenAnswer(
-          (_) async => Left(
+          (_) async => const Left(
             CacheFailure(
               message: "Can't cache theme mode",
             ),
@@ -125,7 +125,7 @@ void main() {
       'unsuccessful',
       () async {
         when(setThemeModeUsecase(any)).thenAnswer(
-          (_) async => Left(
+          (_) async => const Left(
             CacheFailure(
               message: "Can't cache theme mode",
             ),
@@ -165,7 +165,7 @@ void main() {
       'unsuccessful',
       () async {
         when(setThemeModeUsecase(any)).thenAnswer(
-          (_) async => Left(
+          (_) async => const Left(
             CacheFailure(
               message: "Can't cache theme mode",
             ),
@@ -225,7 +225,7 @@ void main() {
       ' unsuccessful',
       () async {
         when(setUseSystemThemeUsecase(any)).thenAnswer(
-          (_) async => Left(
+          (_) async => const Left(
             CacheFailure(
               message: "Can't cache theme mode",
             ),

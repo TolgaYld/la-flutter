@@ -55,7 +55,7 @@ void main() {
         'should return [CacheFailure] when call to '
         '[ThemeModeRepo] was unsuccessful', () async {
       when(repo.getUseSystemTheme()).thenAnswer(
-        (_) async => Left(
+        (_) async => const Left(
           CacheFailure(
             message: "Can't fetch bool",
           ),
@@ -66,7 +66,7 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
+        const Left<Failure, dynamic>(
           CacheFailure(
             message: "Can't fetch bool",
           ),

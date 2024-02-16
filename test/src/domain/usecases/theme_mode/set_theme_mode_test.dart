@@ -58,7 +58,7 @@ void main() {
         'should return [CacheFailure] when call to '
         '[ThemeModeRepo] was unsuccessful', () async {
       when(repo.setThemeMode(mode: anyNamed('mode'))).thenAnswer(
-        (_) async => Left(
+        (_) async => const Left(
           CacheFailure(
             message: "Can't set bool",
           ),
@@ -69,7 +69,7 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
+        const Left<Failure, dynamic>(
           CacheFailure(
             message: "Can't set bool",
           ),

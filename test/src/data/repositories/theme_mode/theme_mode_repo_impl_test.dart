@@ -45,7 +45,7 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
+        const Left<Failure, dynamic>(
           CacheFailure(
             message: "Can't fetch bool",
           ),
@@ -83,7 +83,7 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
+        const Left<Failure, dynamic>(
           CacheFailure(
             message: "Can't fetch bool",
           ),
@@ -122,7 +122,7 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
+        const Left<Failure, dynamic>(
           CacheFailure(
             message: "Can't cache bool",
           ),
@@ -175,7 +175,7 @@ void main() {
 
       expect(
         result,
-        Left<Failure, dynamic>(
+        const Left<Failure, dynamic>(
           CacheFailure(
             message: "Can't cache bool",
           ),
