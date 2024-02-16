@@ -8,6 +8,7 @@ import 'package:locall_app/core/common/env/environment.dart';
 import 'package:locall_app/core/common/l10n/l10n.dart';
 import 'package:locall_app/core/services/dependency_injection/injection.dart';
 import 'package:locall_app/src/application/theme_mode/theme_mode.dart';
+import 'package:locall_app/src/presentation/pages/auth/auth_page.dart';
 import 'package:locall_app/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -37,11 +38,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<ThemeModeServiceProvider>(
         builder: (context, themeService, child) {
           return MultiBlocProvider(
-            providers: const [
-              // BlocProvider<AuthModeCubit>(
-              //   create: (context) => AuthModeCubit(),
-              // ),
-            ],
+            providers: const [],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               supportedLocales: L10n.all,
@@ -58,7 +55,7 @@ class MyApp extends StatelessWidget {
                   : themeService.isDarkModeOn
                       ? ThemeMode.dark
                       : ThemeMode.light,
-              home: const Placeholder(),
+              home: const AuthPage(),
             ),
           );
         },
