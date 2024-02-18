@@ -6,8 +6,6 @@ class AppTheme {
   static const Color _lightPrimaryColor = Color(0xffffffff);
   static const Color _lightPrimaryVariantColor = Color(0xfff4b41a);
   static const Color _lightOnPrimaryColor = Color(0xff143d59);
-  // static const Color _thirdColor = Color(0xffe3f6f5);
-  static const Color _fourthColor = Color(0xffbae8e8);
   static const Color _lightTextColorPrimary = _lightOnPrimaryColor;
   static const Color _appbarColorLight = Color(0xff191641);
 
@@ -83,13 +81,13 @@ class AppTheme {
         const TextSelectionThemeData(cursorColor: _lightTextColorPrimary),
     scaffoldBackgroundColor: _lightPrimaryColor,
     appBarTheme: const AppBarTheme(
-      color: _lightOnPrimaryColor,
+      color: _lightPrimaryVariantColor,
       iconTheme: IconThemeData(color: _iconColor),
     ),
     bottomAppBarTheme: const BottomAppBarTheme(color: _appbarColorLight),
     colorScheme: const ColorScheme.light(
       background: _lightOnPrimaryColor,
-      outline: _fourthColor,
+      outline: _lightPrimaryVariantColor,
       onBackground: _lightOnPrimaryColor,
       onSecondary: _lightOnPrimaryColor,
       primary: _lightPrimaryColor,
