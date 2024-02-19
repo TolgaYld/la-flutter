@@ -12,9 +12,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> initThemeMode(GetIt sl) async {
   final prefs = await SharedPreferences.getInstance();
 
-  // Provider
+  // Provider - App Logic
   sl
-    ..registerLazySingleton<ThemeModeServiceProvider>(
+    ..registerFactory<ThemeModeServiceProvider>(
       () => ThemeModeServiceProviderImpl(
         getThemeModeUsecase: sl(),
         getUseSystemThemeUsecase: sl(),
