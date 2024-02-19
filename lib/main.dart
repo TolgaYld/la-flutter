@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive/hive.dart';
 import 'package:locall_app/core/common/env/environment.dart';
 import 'package:locall_app/core/common/l10n/l10n.dart';
 import 'package:locall_app/core/services/dependency_injection/injection.dart';
@@ -15,6 +17,7 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: Enviroment.fileName);
+  Hive.init(Directory.current.path);
   await init();
   await sl<ThemeModeServiceProvider>().init();
   runApp(const MyApp());
@@ -37,26 +40,23 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<ThemeModeServiceProvider>(
         builder: (context, themeService, child) {
-          return MultiBlocProvider(
-            providers: const [],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              supportedLocales: L10n.all,
-              localizationsDelegates: const [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
-              title: 'La-Flutter',
-              theme: AppTheme.lightTheme,
-              themeMode: themeService.useSystemTheme
-                  ? ThemeMode.system
-                  : themeService.isDarkModeOn
-                      ? ThemeMode.dark
-                      : ThemeMode.light,
-              home: const AuthPage(),
-            ),
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            supportedLocales: L10n.all,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            title: 'La-Flutter',
+            theme: AppTheme.lightTheme,
+            themeMode: themeService.useSystemTheme
+                ? ThemeMode.system
+                : themeService.isDarkModeOn
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
+            home: const AuthPage(),
           );
         },
       ),
