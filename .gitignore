@@ -10,11 +10,7 @@
 .svn/
 migrate_working_dir/
 
-# .env files
-**.env.development
-**.env.production
-
-#l10
+# fl10
 untranslated.txt
 
 # FVM
@@ -25,6 +21,9 @@ untranslated.txt
 *.ipr
 *.iws
 .idea/
+
+# VS Code related
+.vscode
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
