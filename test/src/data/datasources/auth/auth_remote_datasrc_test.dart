@@ -5,6 +5,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:locall_app/core/errors/exceptions.dart';
 import 'package:locall_app/core/types/auth_with_provider.dart';
 import 'package:locall_app/core/utils/graphql/auth/gql_mutations.dart';
+import 'package:locall_app/core/utils/graphql/auth/gql_querys.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart';
 import 'package:locall_app/src/data/models/token_model.dart';
@@ -449,6 +450,130 @@ void main() {
       );
 
       verify(client.mutate(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+  });
+
+  group('checkIfEmailExists', () {
+    final data = jsonDecode(
+      fixture('user/check_if_email_exists/email_raw_from_server.json'),
+    ) as DataMap;
+    test(
+        'should return boolean when call to remote source is'
+        ' successful', () async {
+      final options = QueryOptions(
+        document: gql(GqlQuerys.checkEmailExistsQuery),
+        variables: {
+          'email': tUserModel.email,
+        },
+      );
+      when(client.query<dynamic>(any)).thenAnswer(
+        (_) async => QueryResult(
+          data: data,
+          options: options,
+          source: QueryResultSource.network,
+        ),
+      );
+
+      final result = await datasrc.checkIfEmailExists(
+        tUserModel.email,
+      );
+
+      expect(result, isA<bool>());
+
+      verify(client.query(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+
+    test(
+        'should throw an [ApiException] when call to remote source is '
+        'unsuccessful', () async {
+      final options = QueryOptions(
+        document: gql(GqlQuerys.checkEmailExistsQuery),
+        variables: {
+          'email': tUserModel.email,
+        },
+      );
+      when(client.query<dynamic>(any)).thenThrow(
+        const ApiException(message: "Couldn't query email"),
+      );
+
+      final methodCall = datasrc.checkIfEmailExists;
+
+      expect(
+        () => methodCall(
+          tUserModel.email,
+        ),
+        throwsA(
+          const ApiException(message: "Couldn't query email"),
+        ),
+      );
+
+      verify(client.query(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+  });
+
+  group('checkIfUsernameExists', () {
+    final data = jsonDecode(
+      fixture('user/check_if_username_exists/username_raw_from_server.json'),
+    ) as DataMap;
+    test(
+        'should return boolean when call to remote source is'
+        ' successful', () async {
+      final options = QueryOptions(
+        document: gql(GqlQuerys.checkUsernameExistsQuery),
+        variables: {
+          'username': tUserModel.username,
+        },
+      );
+      when(client.query<dynamic>(any)).thenAnswer(
+        (_) async => QueryResult(
+          data: data,
+          options: options,
+          source: QueryResultSource.network,
+        ),
+      );
+
+      final result = await datasrc.checkIfUsernameExists(
+        tUserModel.username,
+      );
+
+      expect(result, isA<bool>());
+
+      verify(client.query(options)).called(1);
+
+      verifyNoMoreInteractions(client);
+    });
+
+    test(
+        'should throw an [ApiException] when call to remote source is '
+        'unsuccessful', () async {
+      final options = QueryOptions(
+        document: gql(GqlQuerys.checkUsernameExistsQuery),
+        variables: {
+          'username': tUserModel.username,
+        },
+      );
+      when(client.query<dynamic>(any)).thenThrow(
+        const ApiException(message: "Couldn't query username"),
+      );
+
+      final methodCall = datasrc.checkIfUsernameExists;
+
+      expect(
+        () => methodCall(
+          tUserModel.username,
+        ),
+        throwsA(
+          const ApiException(message: "Couldn't query username"),
+        ),
+      );
+
+      verify(client.query(options)).called(1);
 
       verifyNoMoreInteractions(client);
     });

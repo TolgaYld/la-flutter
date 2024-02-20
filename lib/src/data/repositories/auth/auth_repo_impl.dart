@@ -143,4 +143,26 @@ class AuthRepoImpl implements AuthRepo {
       return Left(ApiFailure.fromException(e));
     }
   }
+
+  @override
+  ResultFuture<bool> checkIfEmailExists(String email) async {
+    try {
+      final result = await _remoteDatasrc.checkIfEmailExists(email);
+
+      return Right(result);
+    } on ApiException catch (e) {
+      return Left(ApiFailure.fromException(e));
+    }
+  }
+
+  @override
+  ResultFuture<bool> checkIfUsernameExists(String username) async {
+    try {
+      final result = await _remoteDatasrc.checkIfUsernameExists(username);
+
+      return Right(result);
+    } on ApiException catch (e) {
+      return Left(ApiFailure.fromException(e));
+    }
+  }
 }

@@ -197,6 +197,25 @@ class MockAuthRemoteDatasrc extends _i1.Mock implements _i4.AuthRemoteDatasrc {
         returnValue: _i5.Future<void>.value(),
         returnValueForMissingStub: _i5.Future<void>.value(),
       ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<bool> checkIfEmailExists(String? email) => (super.noSuchMethod(
+        Invocation.method(
+          #checkIfEmailExists,
+          [email],
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+
+  @override
+  _i5.Future<bool> checkIfUsernameExists(String? username) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #checkIfUsernameExists,
+          [username],
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
 }
 
 /// A class which mocks [AuthLocalDatasrc].

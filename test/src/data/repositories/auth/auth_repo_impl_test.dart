@@ -719,4 +719,110 @@ void main() {
       verifyNoMoreInteractions(remoteDatasrc);
     });
   });
+
+  group('checkIfEmailExists', () {
+    const tApiException = ApiException(
+      message: "Can't check if e-mail exists",
+    );
+
+    test(
+        'should return bool when call to remote source '
+        'is successful', () async {
+      when(
+        remoteDatasrc.checkIfEmailExists(any),
+      ).thenAnswer((_) async => false);
+
+      final result = await repo.checkIfEmailExists('test123@test.com');
+
+      expect(result, const Right<dynamic, bool>(false));
+
+      verify(
+        remoteDatasrc.checkIfEmailExists(
+          'test123@test.com',
+        ),
+      ).called(1);
+
+      verifyNoMoreInteractions(remoteDatasrc);
+    });
+
+    test(
+        'should return [ApiFailure] when call to remote source is'
+        ' unsuccessful', () async {
+      when(
+        remoteDatasrc.checkIfEmailExists(
+          any,
+        ),
+      ).thenThrow(tApiException);
+
+      final result = await repo.checkIfEmailExists('test123@test.com');
+
+      expect(
+        result,
+        Left<Failure, dynamic>(
+          ApiFailure.fromException(
+            tApiException,
+          ),
+        ),
+      );
+
+      verify(
+        remoteDatasrc.checkIfEmailExists(
+          'test123@test.com',
+        ),
+      ).called(1);
+
+      verifyNoMoreInteractions(remoteDatasrc);
+    });
+  });
+
+  group('checkIfUsernameExists', () {
+    const tApiException = ApiException(
+      message: "Can't check if e-username exists",
+    );
+
+    test(
+        'should return bool when call to remote source '
+        'is successful', () async {
+      when(
+        remoteDatasrc.checkIfUsernameExists(any),
+      ).thenAnswer((_) async => false);
+
+      final result = await repo.checkIfUsernameExists('testusername');
+
+      expect(result, const Right<dynamic, bool>(false));
+
+      verify(
+        remoteDatasrc.checkIfUsernameExists('testusername'),
+      ).called(1);
+
+      verifyNoMoreInteractions(remoteDatasrc);
+    });
+
+    test(
+        'should return [ApiFailure] when call to remote source is'
+        ' unsuccessful', () async {
+      when(
+        remoteDatasrc.checkIfUsernameExists(
+          any,
+        ),
+      ).thenThrow(tApiException);
+
+      final result = await repo.checkIfUsernameExists('testusername');
+
+      expect(
+        result,
+        Left<Failure, dynamic>(
+          ApiFailure.fromException(
+            tApiException,
+          ),
+        ),
+      );
+
+      verify(
+        remoteDatasrc.checkIfUsernameExists('testusername'),
+      ).called(1);
+
+      verifyNoMoreInteractions(remoteDatasrc);
+    });
+  });
 }

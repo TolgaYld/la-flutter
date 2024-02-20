@@ -2,6 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:locall_app/core/errors/exceptions.dart';
 import 'package:locall_app/core/types/auth_with_provider.dart';
 import 'package:locall_app/core/utils/graphql/auth/gql_mutations.dart';
+import 'package:locall_app/core/utils/graphql/auth/gql_querys.dart';
 import 'package:locall_app/core/utils/typedefs.dart';
 import 'package:locall_app/src/data/models/token_model.dart';
 import 'package:locall_app/src/data/models/user_model.dart';
@@ -35,6 +36,10 @@ abstract class AuthRemoteDatasrc {
   });
 
   Future<void> updateUser(UserModel user);
+
+  Future<bool> checkIfEmailExists(String email);
+
+  Future<bool> checkIfUsernameExists(String username);
 }
 
 class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
@@ -217,6 +222,58 @@ class AuthRemoteDatasrcImpl implements AuthRemoteDatasrc {
       );
 
       if (response.hasException) {
+        throw ApiException(
+          message: response.exception!.graphqlErrors.first.message,
+        );
+      }
+    } on ApiException {
+      rethrow;
+    } catch (e) {
+      throw ApiException(message: e.toString());
+    }
+  }
+
+  @override
+  Future<bool> checkIfEmailExists(String email) async {
+    try {
+      final response = await _client.query(
+        QueryOptions(
+          document: gql(GqlQuerys.checkEmailExistsQuery),
+          variables: {
+            'email': email,
+          },
+        ),
+      );
+
+      if (!response.hasException) {
+        return response.data!['checkIfEmailExists'] as bool;
+      } else {
+        throw ApiException(
+          message: response.exception!.graphqlErrors.first.message,
+        );
+      }
+    } on ApiException {
+      rethrow;
+    } catch (e) {
+      throw ApiException(message: e.toString());
+    }
+  }
+
+  @override
+  Future<bool> checkIfUsernameExists(String username) async {
+    try {
+      final response = await _client.query(
+        QueryOptions(
+          document: gql(GqlQuerys.checkUsernameExistsQuery),
+          variables: {
+            'username': username,
+          },
+        ),
+      );
+
+      if (!response.hasException) {
+        return response.data!['checkIfUsernameExists'] as bool;
+      } else {
         throw ApiException(
           message: response.exception!.graphqlErrors.first.message,
         );

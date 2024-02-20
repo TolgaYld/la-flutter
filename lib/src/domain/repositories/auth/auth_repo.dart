@@ -33,4 +33,8 @@ abstract class AuthRepo {
   });
 
   ResultFuture<void> forgotPassword(String email);
+
+  ResultFuture<bool> checkIfUsernameExists(String username);
+
+  ResultFuture<bool> checkIfEmailExists(String email);
 }

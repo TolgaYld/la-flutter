@@ -203,4 +203,39 @@ class MockAuthRepo extends _i1.Mock implements _i3.AuthRepo {
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, void>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, bool>> checkIfUsernameExists(
+          String? username) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #checkIfUsernameExists,
+          [username],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+            _FakeEither_0<_i5.Failure, bool>(
+          this,
+          Invocation.method(
+            #checkIfUsernameExists,
+            [username],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, bool>> checkIfEmailExists(String? email) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #checkIfEmailExists,
+          [email],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+            _FakeEither_0<_i5.Failure, bool>(
+          this,
+          Invocation.method(
+            #checkIfEmailExists,
+            [email],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
 }
