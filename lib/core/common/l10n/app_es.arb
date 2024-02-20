@@ -9,7 +9,7 @@
     "back_to_login": "Atrás para iniciar sesión",
     "sign_in": "Iniciar sesión",
     "sign_up": "Inscribirse",
-    "forgotPassword": "Restablecer su contraseña",
+    "reset_password": "Restablecer su contraseña",
     "not_a_user_yet": "¿Aún no eres Publisher?",
     "already_a_user_yet": "¿Ya eres Publisher?",
     "register": "Inscribirse",

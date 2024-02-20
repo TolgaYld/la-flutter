@@ -12,7 +12,7 @@
     "back_to_login": "Back to Login",
     "sign_in": "Login",
     "sign_up": "Sign Up",
-    "forgotPassword": "Reset password",
+    "reset_password": "Reset password",
     "not_a_user_yet": "Not a publisher yet?",
     "already_a_user_yet": "Already a Publisher?",
     "register": "Register",

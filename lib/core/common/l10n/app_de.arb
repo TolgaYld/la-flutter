@@ -9,7 +9,7 @@
     "back_to_login": "Zurück zum Login",
     "sign_in": "Login",
     "sign_up": "Registrieren",
-    "forgotPassword": "Passwort zurücksetzen",
+    "reset_password": "Passwort zurücksetzen",
     "not_a_user_yet": "Noch kein account?",
     "already_a_user_yet": "Du hast dich schon registriert?",
     "register": "Registrieren",
