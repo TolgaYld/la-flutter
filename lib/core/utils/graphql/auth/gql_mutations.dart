@@ -1,5 +1,5 @@
 mixin GqlMutation {
-  static String signUpMutation = '''
+  static const String signUpMutation = '''
 mutation SignUpUser(\$data: SignUpUserInput!) {
   signUpUser(data: \$data) {
     user {
@@ -29,7 +29,7 @@ mutation SignUpUser(\$data: SignUpUserInput!) {
 }
 ''';
 
-  static String signInMutation = '''
+  static const String signInMutation = '''
 mutation SignInUser(\$data: SignInUserInput!) {
   signInUser(data: \$data) {
     user {
@@ -59,7 +59,7 @@ mutation SignInUser(\$data: SignInUserInput!) {
 }
 ''';
 
-  static String authWithProviderMutation = '''
+  static const String authWithProviderMutation = '''
 mutation AuthUserWithProvider(\$data: AuthUserWithProviderInput) {
   authUserWithProvider(data: \$data) {
     user {
@@ -91,7 +91,7 @@ mutation AuthUserWithProvider(\$data: AuthUserWithProviderInput) {
 }
 ''';
 
-  static String forgotPasswordMutation = '''
+  static const String forgotPasswordMutation = '''
 mutation ResetPassword(\$email: String) {
   resetPassword(email: \$email) {
     email,
@@ -99,7 +99,7 @@ mutation ResetPassword(\$email: String) {
 }
 ''';
 
-  static String updatePasswordMutation = '''
+  static const String updatePasswordMutation = '''
 mutation UpdateUserPassword(\$data: String!) {
   updateUserPassword(data: \$data) {
     tokens {
@@ -110,7 +110,7 @@ mutation UpdateUserPassword(\$data: String!) {
 }
 ''';
 
-  static String updateUserMutation = '''
+  static const String updateUserMutation = '''
 mutation Mutation(\$data: UpdateUserInput) {
   updateUser(data: \$data) {
     user {
