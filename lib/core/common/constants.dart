@@ -8,3 +8,5 @@ const kCachedUseSystemThemeKey = 'CHACHED_USE_SYSTEM_THEME';
 const kCachedTokenKey = 'TOKEN';
 
 const kCachedRefreshTokenKey = 'REFRESHTOKEN';
+
+const kGeneralFailureMessage = 'Something went wrong. Try again. :(';
