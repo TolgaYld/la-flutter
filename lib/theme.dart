@@ -4,8 +4,8 @@ class AppTheme {
   AppTheme._();
 
   static const Color _lightPrimaryColor = Color(0xffffffff);
-  static const Color _lightPrimaryVariantColor = Color(0xfff4b41a);
-  static const Color _lightOnPrimaryColor = Color(0xff143d59);
+  static const Color _lightPrimaryVariantColor = Color(0xff143d59);
+  static const Color _lightOnPrimaryColor = Color(0xfff4b41a);
   static const Color _lightTextColorPrimary = _lightOnPrimaryColor;
   static const Color _appbarColorLight = Color(0xff191641);
 
@@ -22,21 +22,26 @@ class AppTheme {
   static const TextStyle _lightHeadingText = TextStyle(
     color: _lightTextColorPrimary,
     fontFamily: 'Josefin',
-    fontSize: 20,
+    fontSize: 21,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle _lightBodyText = TextStyle(
     color: _lightTextColorPrimary,
     fontFamily: 'Yeseva',
-    fontStyle: FontStyle.italic,
+    fontStyle: FontStyle.normal,
     fontWeight: FontWeight.bold,
-    fontSize: 16,
+    fontSize: 15,
   );
 
-  static const TextTheme _lightTextTheme = TextTheme(
+  static final TextTheme _lightTextTheme = TextTheme(
     displayLarge: _lightHeadingText,
     bodyLarge: _lightBodyText,
+    labelLarge: _lightBodyText,
+    bodyMedium: _lightBodyText.copyWith(fontSize: 14),
+    labelMedium: _lightBodyText.copyWith(fontSize: 14),
+    bodySmall: _lightBodyText.copyWith(fontSize: 12),
+    labelSmall: _lightBodyText.copyWith(fontSize: 12),
   );
 
   static final TextStyle _darkThemeHeadingTextStyle =
@@ -72,8 +77,18 @@ class AppTheme {
     ),
   );
 
+  static final TextButtonThemeData _textButtonTheme = TextButtonThemeData(
+    style: TextButton.styleFrom(
+      textStyle: _lightBodyText,
+      splashFactory: NoSplash.splashFactory,
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    ),
+  );
+
   static final ThemeData lightTheme = ThemeData(
     elevatedButtonTheme: _elevatedButtonTheme,
+    textButtonTheme: _textButtonTheme,
+    primaryTextTheme: _lightTextTheme,
     fontFamily: 'Yeseva',
     useMaterial3: true,
     inputDecorationTheme: _inputDecorationTheme,
@@ -81,7 +96,7 @@ class AppTheme {
         const TextSelectionThemeData(cursorColor: _lightTextColorPrimary),
     scaffoldBackgroundColor: _lightPrimaryColor,
     appBarTheme: const AppBarTheme(
-      color: _lightPrimaryVariantColor,
+      color: _lightOnPrimaryColor,
       iconTheme: IconThemeData(color: _iconColor),
     ),
     bottomAppBarTheme: const BottomAppBarTheme(color: _appbarColorLight),
@@ -92,7 +107,7 @@ class AppTheme {
       onSecondary: _lightOnPrimaryColor,
       primary: _lightPrimaryColor,
       onPrimary: _lightOnPrimaryColor,
-      secondary: _appbarColorLight,
+      secondary: _lightPrimaryVariantColor,
       primaryContainer: _lightPrimaryVariantColor,
     ),
     textTheme: _lightTextTheme,
