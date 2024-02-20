@@ -6,11 +6,14 @@ import 'package:locall_app/core/common/constants.dart';
 import 'package:locall_app/core/common/env/environment.dart';
 import 'package:locall_app/src/application/auth/bloc/auth_bloc.dart';
 import 'package:locall_app/src/application/auth/cubit/auth_mode_cubit.dart';
+import 'package:locall_app/src/application/auth/cubit/check_if_taken_cubit.dart';
 import 'package:locall_app/src/data/datasources/auth/auth_local_datasrc.dart';
 import 'package:locall_app/src/data/datasources/auth/auth_remote_datasrc.dart';
 import 'package:locall_app/src/data/repositories/auth/auth_repo_impl.dart';
 import 'package:locall_app/src/domain/repositories/auth/auth_repo.dart';
 import 'package:locall_app/src/domain/usecases/auth/auth_with_provider_usecase.dart';
+import 'package:locall_app/src/domain/usecases/auth/check_email_exists_usecase.dart';
+import 'package:locall_app/src/domain/usecases/auth/check_username_exists_usecase.dart';
 import 'package:locall_app/src/domain/usecases/auth/forgot_password_usecase.dart';
 import 'package:locall_app/src/domain/usecases/auth/sign_in_usecase.dart';
 import 'package:locall_app/src/domain/usecases/auth/sign_up_usecase.dart';
@@ -21,6 +24,12 @@ Future<void> initAuth(GetIt sl) async {
   // App-Logic
   sl
     ..registerFactory(AuthModeCubit.new)
+    ..registerFactory(
+      () => CheckIfTakenCubit(
+        checkEmailExistsUsecase: sl(),
+        checkUsernameExistsUsecase: sl(),
+      ),
+    )
     ..registerFactory(
       () => AuthBloc(
         signInUsecase: sl(),
@@ -33,6 +42,8 @@ Future<void> initAuth(GetIt sl) async {
     )
 
     // Usecases
+    ..registerLazySingleton(() => CheckEmailExistsUsecase(sl()))
+    ..registerLazySingleton(() => CheckUsernameExistsUsecase(sl()))
     ..registerLazySingleton(() => SignInUsecase(sl()))
     ..registerLazySingleton(() => SignUpUsecase(sl()))
     ..registerLazySingleton(() => AuthWithProviderUsecase(sl()))
