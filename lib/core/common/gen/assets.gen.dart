@@ -39,20 +39,10 @@ class $LibCoreCommonEnvGen {
   const $LibCoreCommonEnvGen();
 
   /// File path: lib/core/common/env/.env.development
-  String get envDevelopment => 'lib/core/common/env/.env.development';
-
-  /// File path: lib/core/common/env/.env.production
-  String get envProduction => 'lib/core/common/env/.env.production';
-
-  /// File path: lib/core/common/env/.env.template
-  String get envTemplate => 'lib/core/common/env/.env.template';
-
-  /// File path: lib/core/common/env/environment.dart
-  String get environment => 'lib/core/common/env/environment.dart';
+  String get env => 'lib/core/common/env/.env.development';
 
   /// List of all assets
-  List<String> get values =>
-      [envDevelopment, envProduction, envTemplate, environment];
+  List<String> get values => [env];
 }
 
 class Assets {
