@@ -28,7 +28,7 @@ class FormBuilderSignUpWidget extends StatelessWidget {
           CustomTextFormFieldWidget(
             name: 'password',
             hintText: 'Password',
-            icon: FontAwesomeIcons.mailchimp,
+            icon: FontAwesomeIcons.lock,
           ),
         ],
       ),
