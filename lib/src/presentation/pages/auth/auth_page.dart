@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:locall_app/core/common/gen/assets.gen.dart';
-import 'package:locall_app/src/presentation/widgets/auth/custom_body_widget.dart';
+import 'package:locall_app/src/presentation/widgets/auth/auth_body_widget.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -17,7 +17,7 @@ class AuthPage extends StatelessWidget {
             .then()
             .shimmer(duration: 210.ms),
       ),
-      body: CustomBodyWidget(),
+      body: AuthBodyWidget(),
     );
   }
 }
