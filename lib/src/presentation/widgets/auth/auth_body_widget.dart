@@ -45,7 +45,9 @@ class AuthBodyWidget extends StatelessWidget {
                   forgotPasswordString: forgotPasswordString,
                 ),
                 signUp: () => FormBuilderSignUpWidget(
-                    key: signUpKey, signUpFormKey: _signUpFormKey),
+                  key: signUpKey,
+                  signUpFormKey: _signUpFormKey,
+                ),
                 forgotPassword: () => FormBuilderForgotPasswordWidget(
                   key: forgotPasswordKey,
                   forgotPasswordFormKey: _forgotPasswordFormKey,
