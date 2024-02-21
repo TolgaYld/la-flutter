@@ -11,5 +11,5 @@ extension ContextExt on BuildContext {
 
   double get height => size.height;
 
-  double get paddingVerticalForTextField => size.width * 0.03;
+  double get paddingVerticalWidgets => size.width * 0.03;
 }
