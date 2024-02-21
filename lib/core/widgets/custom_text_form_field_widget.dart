@@ -30,7 +30,7 @@ class _CustomTextFormFieldWidgetState extends State<CustomTextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     widget.horizontalPaddingValue == null
-        ? widget.horizontalPaddingValue = context.paddingVerticalForTextField
+        ? widget.horizontalPaddingValue = context.paddingVerticalWidgets
         : widget.horizontalPaddingValue = widget.horizontalPaddingValue;
     widget.verticalPaddingValue == null
         ? widget.verticalPaddingValue = 0
