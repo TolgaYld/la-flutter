@@ -10,11 +10,6 @@
 .svn/
 migrate_working_dir/
 
-# fl10
-untranslated.txt
-
-# FVM
-
 # IntelliJ related
 *.iml
 *.ipr
