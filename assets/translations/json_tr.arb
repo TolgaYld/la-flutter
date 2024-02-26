@@ -2,6 +2,7 @@
     "language": "Türkçe",
     "username": "Kullanıcı adın",
     "email_adress": "E-Posta adresi",
+    "email_or_username": "E-Posta yada kullanıcı adı",
     "password": "Şifre",
     "repeat_password": "Şifreni Tekrarla",
     "birthdate": "Doğum tarihi",

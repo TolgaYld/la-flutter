@@ -1,6 +1,7 @@
 {
     "language": "Deutsch",
     "username": "Benutzername",
+    "email_or_username": "Benutzername oder E-Mail",
     "email_adress": "E-Mail Adresse",
     "password": "Passwort",
     "repeat_password": "Passwort wiederholen",

@@ -1,7 +1,8 @@
 {
     "language": "Español",
     "username": "Nombre de usuario",
-    "email_adress": "Dirección de correo electrónicow",
+    "email_adress": "Correo electrónico",
+    "email_or_username": "Nombre de usuario o correo electrónico",
     "password": "Contraseña",
     "repeat_password": "Repite la contraseña",
     "birthdate": "Cumpleaños",

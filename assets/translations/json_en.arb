@@ -4,6 +4,7 @@
         "description": "The current Language"
     },
     "username": "Username",
+    "email_or_username": "Username or E-Mail",
     "email_adress": "E-Mail address",
     "password": "Password",
     "repeat_password": "Repeat Password",
