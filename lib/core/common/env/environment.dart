@@ -8,4 +8,8 @@ class Enviroment {
   static String get permission {
     return const String.fromEnvironment('PERMISSION');
   }
+
+  static String get secretKey {
+    return const String.fromEnvironment('SECRET_KEY');
+  }
 }
