@@ -22,7 +22,9 @@ import 'package:locall_app/src/domain/usecases/auth/update_password_usecase.dart
 import 'package:locall_app/src/domain/usecases/auth/update_user_usecase.dart';
 
 Future<void> initAuth(GetIt sl) async {
+  await initHiveForFlutter();
   final fingerprintData = await FingerprintManager.generateFingerprint();
+
   sl
     ..registerFactory(AuthModeCubit.new)
     ..registerFactory(
