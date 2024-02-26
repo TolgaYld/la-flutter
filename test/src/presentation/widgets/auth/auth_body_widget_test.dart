@@ -19,6 +19,7 @@ void main() async {
     setUp(() {
       authModeCubit = MockAuthModeCubit();
     });
+    tearDown(() => authModeCubit.close());
 
     testWidgets(
       'body should display [FormBuilderSignInWidget]',
