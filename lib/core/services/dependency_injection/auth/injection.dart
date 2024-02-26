@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:locall_app/core/common/constants.dart';
 import 'package:locall_app/core/common/env/environment.dart';
+import 'package:locall_app/core/utils/fingerprint_manager.dart';
 import 'package:locall_app/src/application/auth/bloc/auth_bloc.dart';
 import 'package:locall_app/src/application/auth/cubit/auth_mode_cubit.dart';
 import 'package:locall_app/src/application/auth/cubit/check_if_taken_cubit.dart';
@@ -21,7 +22,7 @@ import 'package:locall_app/src/domain/usecases/auth/update_password_usecase.dart
 import 'package:locall_app/src/domain/usecases/auth/update_user_usecase.dart';
 
 Future<void> initAuth(GetIt sl) async {
-  // App-Logic
+  final fingerprintData = await FingerprintManager.generateFingerprint();
   sl
     ..registerFactory(AuthModeCubit.new)
     ..registerFactory(
@@ -75,7 +76,7 @@ Future<void> initAuth(GetIt sl) async {
   sl
     ..registerLazySingleton(() => ValueNotifier<GraphQLClient>(sl()))
     ..registerLazySingleton(() => GraphQLClient(link: sl(), cache: sl()))
-    ..registerLazySingleton<Link>(
+    ..registerFactory<Link>(
       () => AuthLink(
         getToken: () async => 'Bearer $token',
       ).concat(
@@ -84,10 +85,16 @@ Future<void> initAuth(GetIt sl) async {
           defaultHeaders: refreshToken != null
               ? {
                   'permission': Enviroment.permission,
+                  'X-Fingerprint': fingerprintData['fingerprint']!,
+                  'X-Timestamp': fingerprintData['timestamp']!,
+                  'X-Nonce': fingerprintData['nonce']!,
                   'refreshToken': refreshToken,
                 }
               : {
                   'permission': Enviroment.permission,
+                  'X-Fingerprint': fingerprintData['fingerprint']!,
+                  'X-Timestamp': fingerprintData['timestamp']!,
+                  'X-Nonce': fingerprintData['nonce']!,
                 },
         ),
       ),
