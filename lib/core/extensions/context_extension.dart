@@ -11,5 +11,6 @@ extension ContextExt on BuildContext {
 
   double get height => size.height;
 
-  double get paddingVerticalWidgets => size.width * 0.03;
+  double get paddingVerticalWidgets => width * 0.03;
+  double get paddingHorizontalWidgets => height * 0.03;
 }
