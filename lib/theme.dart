@@ -74,6 +74,7 @@ class AppTheme {
       ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: _lightOnPrimaryColor,
+      splashFactory: NoSplash.splashFactory,
     ),
   );
 
