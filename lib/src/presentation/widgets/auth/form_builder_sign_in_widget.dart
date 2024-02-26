@@ -19,20 +19,23 @@ class FormBuilderSignInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final forgotPasswordString = AppLocalizations.of(context)!.forgot_password;
+    final emailOrUsernameString =
+        AppLocalizations.of(context)!.email_or_username;
+    final passwordString = AppLocalizations.of(context)!.password;
     return FormBuilder(
       key: _signInFormKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomTextFormFieldWidget(
-            name: 'email',
-            hintText: 'E-Mail',
-            icon: FontAwesomeIcons.at,
+            name: 'email_or_username',
+            hintText: emailOrUsernameString,
+            icon: FontAwesomeIcons.solidUser,
           ),
           const CustomVerticalSizedBoxWidget(),
           CustomTextFormFieldWidget(
             name: 'password',
-            hintText: 'Password',
+            hintText: passwordString,
             icon: FontAwesomeIcons.lock,
           ),
           Align(
