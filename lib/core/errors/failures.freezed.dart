@@ -286,3 +286,143 @@ abstract class _ApiFailure implements ApiFailure {
   _$$ApiFailureImplCopyWith<_$ApiFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$LocationStatusFailure {
+  String get message => throw _privateConstructorUsedError;
+  int? get statusCode => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LocationStatusFailureCopyWith<LocationStatusFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocationStatusFailureCopyWith<$Res> {
+  factory $LocationStatusFailureCopyWith(LocationStatusFailure value,
+          $Res Function(LocationStatusFailure) then) =
+      _$LocationStatusFailureCopyWithImpl<$Res, LocationStatusFailure>;
+  @useResult
+  $Res call({String message, int? statusCode});
+}
+
+/// @nodoc
+class _$LocationStatusFailureCopyWithImpl<$Res,
+        $Val extends LocationStatusFailure>
+    implements $LocationStatusFailureCopyWith<$Res> {
+  _$LocationStatusFailureCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+    Object? statusCode = freezed,
+  }) {
+    return _then(_value.copyWith(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LocationStatusFailureImplCopyWith<$Res>
+    implements $LocationStatusFailureCopyWith<$Res> {
+  factory _$$LocationStatusFailureImplCopyWith(
+          _$LocationStatusFailureImpl value,
+          $Res Function(_$LocationStatusFailureImpl) then) =
+      __$$LocationStatusFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message, int? statusCode});
+}
+
+/// @nodoc
+class __$$LocationStatusFailureImplCopyWithImpl<$Res>
+    extends _$LocationStatusFailureCopyWithImpl<$Res,
+        _$LocationStatusFailureImpl>
+    implements _$$LocationStatusFailureImplCopyWith<$Res> {
+  __$$LocationStatusFailureImplCopyWithImpl(_$LocationStatusFailureImpl _value,
+      $Res Function(_$LocationStatusFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+    Object? statusCode = freezed,
+  }) {
+    return _then(_$LocationStatusFailureImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      statusCode: freezed == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocationStatusFailureImpl implements _LocationStatusFailure {
+  const _$LocationStatusFailureImpl({required this.message, this.statusCode});
+
+  @override
+  final String message;
+  @override
+  final int? statusCode;
+
+  @override
+  String toString() {
+    return 'LocationStatusFailure(message: $message, statusCode: $statusCode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocationStatusFailureImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.statusCode, statusCode) ||
+                other.statusCode == statusCode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message, statusCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocationStatusFailureImplCopyWith<_$LocationStatusFailureImpl>
+      get copyWith => __$$LocationStatusFailureImplCopyWithImpl<
+          _$LocationStatusFailureImpl>(this, _$identity);
+}
+
+abstract class _LocationStatusFailure implements LocationStatusFailure {
+  const factory _LocationStatusFailure(
+      {required final String message,
+      final int? statusCode}) = _$LocationStatusFailureImpl;
+
+  @override
+  String get message;
+  @override
+  int? get statusCode;
+  @override
+  @JsonKey(ignore: true)
+  _$$LocationStatusFailureImplCopyWith<_$LocationStatusFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

@@ -34,3 +34,19 @@ class ApiFailure extends Failure with _$ApiFailure {
         statusCode: exception.statusCode,
       );
 }
+
+@freezed
+class LocationStatusFailure extends Failure with _$LocationStatusFailure {
+  const factory LocationStatusFailure({
+    required String message,
+    int? statusCode,
+  }) = _LocationStatusFailure;
+
+  factory LocationStatusFailure.fromException(
+    LocationStatusException exception,
+  ) =>
+      LocationStatusFailure(
+        message: exception.message,
+        statusCode: exception.statusCode,
+      );
+}
