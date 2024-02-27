@@ -17,3 +17,13 @@ class CacheException with _$CacheException implements Exception {
     @Default(500) int statusCode,
   }) = _CacheException;
 }
+
+@freezed
+class LocationStatusException
+    with _$LocationStatusException
+    implements Exception {
+  const factory LocationStatusException({
+    required String message,
+    @Default(500) int statusCode,
+  }) = _LocationStatusException;
+}
