@@ -7,13 +7,13 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:locall_app/core/errors/failures.dart' as _i5;
-import 'package:locall_app/src/domain/usecases/theme_mode/get_theme_mode.dart'
+import 'package:locall_app/src/domain/usecases/theme_mode/get_theme_mode_usecase.dart'
     as _i3;
-import 'package:locall_app/src/domain/usecases/theme_mode/get_use_system_theme.dart'
+import 'package:locall_app/src/domain/usecases/theme_mode/get_use_system_theme_usecase.dart'
     as _i6;
-import 'package:locall_app/src/domain/usecases/theme_mode/set_theme_mode.dart'
+import 'package:locall_app/src/domain/usecases/theme_mode/set_theme_mode_usecase.dart'
     as _i7;
-import 'package:locall_app/src/domain/usecases/theme_mode/set_use_system_theme.dart'
+import 'package:locall_app/src/domain/usecases/theme_mode/set_use_system_theme_usecase.dart'
     as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 

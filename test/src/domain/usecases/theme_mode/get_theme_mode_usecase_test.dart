@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:locall_app/core/errors/failures.dart';
 import 'package:locall_app/src/domain/repositories/theme_mode/theme_mode_repo.dart';
-import 'package:locall_app/src/domain/usecases/theme_mode/get_theme_mode.dart';
+import 'package:locall_app/src/domain/usecases/theme_mode/get_theme_mode_usecase.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'get_theme_mode_test.mocks.dart';
+import 'get_theme_mode_usecase_test.mocks.dart';
 
 @GenerateMocks([ThemeModeRepo])
 void main() {
