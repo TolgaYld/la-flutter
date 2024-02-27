@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:locall_app/src/domain/usecases/theme_mode/get_theme_mode.dart';
-import 'package:locall_app/src/domain/usecases/theme_mode/get_use_system_theme.dart';
-import 'package:locall_app/src/domain/usecases/theme_mode/set_theme_mode.dart';
-import 'package:locall_app/src/domain/usecases/theme_mode/set_use_system_theme.dart';
+import 'package:locall_app/src/domain/usecases/theme_mode/get_theme_mode_usecase.dart';
+import 'package:locall_app/src/domain/usecases/theme_mode/get_use_system_theme_usecase.dart';
+import 'package:locall_app/src/domain/usecases/theme_mode/set_theme_mode_usecase.dart';
+import 'package:locall_app/src/domain/usecases/theme_mode/set_use_system_theme_usecase.dart';
 
 abstract class ThemeModeServiceProvider extends ChangeNotifier {
   late bool isDarkModeOn;
