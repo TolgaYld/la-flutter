@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:locall_app/core/extensions/context_extension.dart';
+import 'package:locall_app/core/utils/core_utils.dart';
 import 'package:locall_app/src/application/auth/bloc/auth_bloc.dart';
 import 'package:locall_app/src/application/auth/cubit/auth_mode_cubit.dart';
 import 'package:locall_app/src/presentation/widgets/auth/auth_text_button_widget.dart';
@@ -31,7 +32,13 @@ class AuthBodyWidget extends StatelessWidget {
     final resetPasswordString = AppLocalizations.of(context)!.reset_password;
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        // TODO: implement listener
+        // TODO: Navigation
+        state.whenOrNull(
+          //   signedUp: (user) => ,
+          //   signedIn: (user) => ,
+          //   authenticatedWithProvider: (user) => ,
+          error: (message) => CoreUtils.showSnackBar(context, message),
+        );
       },
       builder: (context, authState) {
         return BlocBuilder<AuthModeCubit, AuthModeState>(
