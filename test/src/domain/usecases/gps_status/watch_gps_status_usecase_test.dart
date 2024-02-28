@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:locall_app/core/errors/failures.dart';
-import 'package:locall_app/src/domain/entities/gps_status.dart';
 import 'package:locall_app/src/domain/repositories/gps_status/gps_status_repo.dart';
 import 'package:locall_app/src/domain/usecases/gps_status/watch_gps_status_usecase.dart';
 import 'package:mockito/annotations.dart';
@@ -20,16 +20,16 @@ void main() {
   });
 
   group('WatchGpsStatusUsecase', () {
-    final tGpsStatus = GpsStatus.empty();
-    test('should emit a [LocationStatus] if call is successful', () async {
+    const tGpsStatus = ServiceStatus.enabled;
+    test('should emit a [GpsStatus] if call is successful', () async {
       when(repo.watchGpsStatus())
-          .thenAnswer((_) => Stream.fromIterable([Right(tGpsStatus)]));
+          .thenAnswer((_) => Stream.fromIterable([const Right(tGpsStatus)]));
 
       final result = usecase();
 
       await expectLater(
         result,
-        emits(Right<dynamic, GpsStatus>(tGpsStatus)),
+        emits(const Right<dynamic, ServiceStatus>(tGpsStatus)),
       );
       verify(repo.watchGpsStatus()).called(1);
       verifyNoMoreInteractions(repo);

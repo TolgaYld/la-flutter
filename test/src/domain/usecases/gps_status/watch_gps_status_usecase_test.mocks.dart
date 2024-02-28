@@ -6,8 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:dartz/dartz.dart' as _i4;
+import 'package:geolocator/geolocator.dart' as _i6;
 import 'package:locall_app/core/errors/failures.dart' as _i5;
-import 'package:locall_app/src/domain/entities/gps_status.dart' as _i6;
 import 'package:locall_app/src/domain/repositories/gps_status/gps_status_repo.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -34,12 +34,13 @@ class MockGpsStatusRepo extends _i1.Mock implements _i2.GpsStatusRepo {
   }
 
   @override
-  _i3.Stream<_i4.Either<_i5.Failure, _i6.GpsStatus>> watchGpsStatus() =>
+  _i3.Stream<_i4.Either<_i5.Failure, _i6.ServiceStatus>> watchGpsStatus() =>
       (super.noSuchMethod(
         Invocation.method(
           #watchGpsStatus,
           [],
         ),
-        returnValue: _i3.Stream<_i4.Either<_i5.Failure, _i6.GpsStatus>>.empty(),
-      ) as _i3.Stream<_i4.Either<_i5.Failure, _i6.GpsStatus>>);
+        returnValue:
+            _i3.Stream<_i4.Either<_i5.Failure, _i6.ServiceStatus>>.empty(),
+      ) as _i3.Stream<_i4.Either<_i5.Failure, _i6.ServiceStatus>>);
 }
