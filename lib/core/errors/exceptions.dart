@@ -19,11 +19,9 @@ class CacheException with _$CacheException implements Exception {
 }
 
 @freezed
-class LocationStatusException
-    with _$LocationStatusException
-    implements Exception {
-  const factory LocationStatusException({
+class GpsStatusException with _$GpsStatusException implements Exception {
+  const factory GpsStatusException({
     required String message,
     @Default(500) int statusCode,
-  }) = _LocationStatusException;
+  }) = _GpsStatusException;
 }

@@ -36,16 +36,16 @@ class ApiFailure extends Failure with _$ApiFailure {
 }
 
 @freezed
-class LocationStatusFailure extends Failure with _$LocationStatusFailure {
-  const factory LocationStatusFailure({
+class GpsStatusFailure extends Failure with _$GpsStatusFailure {
+  const factory GpsStatusFailure({
     required String message,
     int? statusCode,
-  }) = _LocationStatusFailure;
+  }) = _GpsStatusFailure;
 
-  factory LocationStatusFailure.fromException(
-    LocationStatusException exception,
+  factory GpsStatusFailure.fromException(
+    GpsStatusException exception,
   ) =>
-      LocationStatusFailure(
+      GpsStatusFailure(
         message: exception.message,
         statusCode: exception.statusCode,
       );

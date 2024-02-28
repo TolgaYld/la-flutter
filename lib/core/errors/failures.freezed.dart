@@ -288,29 +288,28 @@ abstract class _ApiFailure implements ApiFailure {
 }
 
 /// @nodoc
-mixin _$LocationStatusFailure {
+mixin _$GpsStatusFailure {
   String get message => throw _privateConstructorUsedError;
   int? get statusCode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LocationStatusFailureCopyWith<LocationStatusFailure> get copyWith =>
+  $GpsStatusFailureCopyWith<GpsStatusFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LocationStatusFailureCopyWith<$Res> {
-  factory $LocationStatusFailureCopyWith(LocationStatusFailure value,
-          $Res Function(LocationStatusFailure) then) =
-      _$LocationStatusFailureCopyWithImpl<$Res, LocationStatusFailure>;
+abstract class $GpsStatusFailureCopyWith<$Res> {
+  factory $GpsStatusFailureCopyWith(
+          GpsStatusFailure value, $Res Function(GpsStatusFailure) then) =
+      _$GpsStatusFailureCopyWithImpl<$Res, GpsStatusFailure>;
   @useResult
   $Res call({String message, int? statusCode});
 }
 
 /// @nodoc
-class _$LocationStatusFailureCopyWithImpl<$Res,
-        $Val extends LocationStatusFailure>
-    implements $LocationStatusFailureCopyWith<$Res> {
-  _$LocationStatusFailureCopyWithImpl(this._value, this._then);
+class _$GpsStatusFailureCopyWithImpl<$Res, $Val extends GpsStatusFailure>
+    implements $GpsStatusFailureCopyWith<$Res> {
+  _$GpsStatusFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -337,24 +336,22 @@ class _$LocationStatusFailureCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$LocationStatusFailureImplCopyWith<$Res>
-    implements $LocationStatusFailureCopyWith<$Res> {
-  factory _$$LocationStatusFailureImplCopyWith(
-          _$LocationStatusFailureImpl value,
-          $Res Function(_$LocationStatusFailureImpl) then) =
-      __$$LocationStatusFailureImplCopyWithImpl<$Res>;
+abstract class _$$GpsStatusFailureImplCopyWith<$Res>
+    implements $GpsStatusFailureCopyWith<$Res> {
+  factory _$$GpsStatusFailureImplCopyWith(_$GpsStatusFailureImpl value,
+          $Res Function(_$GpsStatusFailureImpl) then) =
+      __$$GpsStatusFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, int? statusCode});
 }
 
 /// @nodoc
-class __$$LocationStatusFailureImplCopyWithImpl<$Res>
-    extends _$LocationStatusFailureCopyWithImpl<$Res,
-        _$LocationStatusFailureImpl>
-    implements _$$LocationStatusFailureImplCopyWith<$Res> {
-  __$$LocationStatusFailureImplCopyWithImpl(_$LocationStatusFailureImpl _value,
-      $Res Function(_$LocationStatusFailureImpl) _then)
+class __$$GpsStatusFailureImplCopyWithImpl<$Res>
+    extends _$GpsStatusFailureCopyWithImpl<$Res, _$GpsStatusFailureImpl>
+    implements _$$GpsStatusFailureImplCopyWith<$Res> {
+  __$$GpsStatusFailureImplCopyWithImpl(_$GpsStatusFailureImpl _value,
+      $Res Function(_$GpsStatusFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -363,7 +360,7 @@ class __$$LocationStatusFailureImplCopyWithImpl<$Res>
     Object? message = null,
     Object? statusCode = freezed,
   }) {
-    return _then(_$LocationStatusFailureImpl(
+    return _then(_$GpsStatusFailureImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -378,8 +375,8 @@ class __$$LocationStatusFailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocationStatusFailureImpl implements _LocationStatusFailure {
-  const _$LocationStatusFailureImpl({required this.message, this.statusCode});
+class _$GpsStatusFailureImpl implements _GpsStatusFailure {
+  const _$GpsStatusFailureImpl({required this.message, this.statusCode});
 
   @override
   final String message;
@@ -388,14 +385,14 @@ class _$LocationStatusFailureImpl implements _LocationStatusFailure {
 
   @override
   String toString() {
-    return 'LocationStatusFailure(message: $message, statusCode: $statusCode)';
+    return 'GpsStatusFailure(message: $message, statusCode: $statusCode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocationStatusFailureImpl &&
+            other is _$GpsStatusFailureImpl &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.statusCode, statusCode) ||
                 other.statusCode == statusCode));
@@ -407,15 +404,15 @@ class _$LocationStatusFailureImpl implements _LocationStatusFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocationStatusFailureImplCopyWith<_$LocationStatusFailureImpl>
-      get copyWith => __$$LocationStatusFailureImplCopyWithImpl<
-          _$LocationStatusFailureImpl>(this, _$identity);
+  _$$GpsStatusFailureImplCopyWith<_$GpsStatusFailureImpl> get copyWith =>
+      __$$GpsStatusFailureImplCopyWithImpl<_$GpsStatusFailureImpl>(
+          this, _$identity);
 }
 
-abstract class _LocationStatusFailure implements LocationStatusFailure {
-  const factory _LocationStatusFailure(
+abstract class _GpsStatusFailure implements GpsStatusFailure {
+  const factory _GpsStatusFailure(
       {required final String message,
-      final int? statusCode}) = _$LocationStatusFailureImpl;
+      final int? statusCode}) = _$GpsStatusFailureImpl;
 
   @override
   String get message;
@@ -423,6 +420,6 @@ abstract class _LocationStatusFailure implements LocationStatusFailure {
   int? get statusCode;
   @override
   @JsonKey(ignore: true)
-  _$$LocationStatusFailureImplCopyWith<_$LocationStatusFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$GpsStatusFailureImplCopyWith<_$GpsStatusFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
