@@ -14,7 +14,7 @@ class GpsStatusRepoImpl implements GpsStatusRepo {
   @override
   ResultStream<ServiceStatus> watchGpsStatus() {
     return _datasrc
-        .getServiceStatusStream()
+        .getGeneralServiceStatusStream()
         .map<Either<Failure, ServiceStatus>>(Right.new)
         .onErrorReturnWith(
           (error, stackTrace) => Left(
@@ -23,5 +23,16 @@ class GpsStatusRepoImpl implements GpsStatusRepo {
             ),
           ),
         );
+  }
+
+  @override
+  ResultFuture<LocationPermission> getGpsStatus() async {
+    try {
+      final result = await _datasrc.getServiceStatus();
+
+      return Right(result);
+    } on GpsStatusException catch (e) {
+      return Left(GpsStatusFailure.fromException(e));
+    }
   }
 }

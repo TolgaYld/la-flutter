@@ -1,8 +1,10 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:locall_app/core/errors/exceptions.dart';
 
-// ignore: one_member_abstracts
 abstract class GpsStatusLocalDatasrc {
-  Stream<ServiceStatus> getServiceStatusStream();
+  Stream<ServiceStatus> getGeneralServiceStatusStream();
+
+  Future<LocationPermission> getServiceStatus();
 }
 
 class GpsStatusLocalDatasrcImpl implements GpsStatusLocalDatasrc {
@@ -10,6 +12,16 @@ class GpsStatusLocalDatasrcImpl implements GpsStatusLocalDatasrc {
 
   final GeolocatorPlatform _geolocator;
   @override
-  Stream<ServiceStatus> getServiceStatusStream() =>
+  Stream<ServiceStatus> getGeneralServiceStatusStream() =>
       _geolocator.getServiceStatusStream();
+
+  @override
+  Future<LocationPermission> getServiceStatus() async {
+    try {
+      final result = await _geolocator.checkPermission();
+      return result;
+    } catch (e) {
+      throw GpsStatusException(message: e.toString());
+    }
+  }
 }

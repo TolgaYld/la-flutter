@@ -3,13 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:dartz/dartz.dart' as _i4;
+import 'package:dartz/dartz.dart' as _i2;
 import 'package:geolocator/geolocator.dart' as _i6;
 import 'package:locall_app/core/errors/failures.dart' as _i5;
 import 'package:locall_app/src/domain/repositories/gps_status/gps_status_repo.dart'
-    as _i2;
+    as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -25,22 +25,50 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
+  _FakeEither_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [GpsStatusRepo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGpsStatusRepo extends _i1.Mock implements _i2.GpsStatusRepo {
+class MockGpsStatusRepo extends _i1.Mock implements _i3.GpsStatusRepo {
   MockGpsStatusRepo() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Stream<_i4.Either<_i5.Failure, _i6.ServiceStatus>> watchGpsStatus() =>
+  _i4.Stream<_i2.Either<_i5.Failure, _i6.ServiceStatus>> watchGpsStatus() =>
       (super.noSuchMethod(
         Invocation.method(
           #watchGpsStatus,
           [],
         ),
         returnValue:
-            _i3.Stream<_i4.Either<_i5.Failure, _i6.ServiceStatus>>.empty(),
-      ) as _i3.Stream<_i4.Either<_i5.Failure, _i6.ServiceStatus>>);
+            _i4.Stream<_i2.Either<_i5.Failure, _i6.ServiceStatus>>.empty(),
+      ) as _i4.Stream<_i2.Either<_i5.Failure, _i6.ServiceStatus>>);
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, _i6.LocationPermission>> getGpsStatus() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getGpsStatus,
+          [],
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, _i6.LocationPermission>>.value(
+                _FakeEither_0<_i5.Failure, _i6.LocationPermission>(
+          this,
+          Invocation.method(
+            #getGpsStatus,
+            [],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.LocationPermission>>);
 }

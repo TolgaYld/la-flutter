@@ -33,11 +33,22 @@ class MockGpsStatusLocalDatasrc extends _i1.Mock
   }
 
   @override
-  _i3.Stream<_i4.ServiceStatus> getServiceStatusStream() => (super.noSuchMethod(
+  _i3.Stream<_i4.ServiceStatus> getGeneralServiceStatusStream() =>
+      (super.noSuchMethod(
         Invocation.method(
-          #getServiceStatusStream,
+          #getGeneralServiceStatusStream,
           [],
         ),
         returnValue: _i3.Stream<_i4.ServiceStatus>.empty(),
       ) as _i3.Stream<_i4.ServiceStatus>);
+
+  @override
+  _i3.Future<_i4.LocationPermission> getServiceStatus() => (super.noSuchMethod(
+        Invocation.method(
+          #getServiceStatus,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.LocationPermission>.value(
+            _i4.LocationPermission.denied),
+      ) as _i3.Future<_i4.LocationPermission>);
 }
