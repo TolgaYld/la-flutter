@@ -17,21 +17,27 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$GpsStatusState {
   ServiceStatus get status => throw _privateConstructorUsedError;
+  LocationPermission get permission => throw _privateConstructorUsedError;
   String? get failureMessage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ServiceStatus status, String? failureMessage)
+    required TResult Function(ServiceStatus status,
+            LocationPermission permission, String? failureMessage)
         status,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ServiceStatus status, String? failureMessage)? status,
+    TResult? Function(ServiceStatus status, LocationPermission permission,
+            String? failureMessage)?
+        status,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ServiceStatus status, String? failureMessage)? status,
+    TResult Function(ServiceStatus status, LocationPermission permission,
+            String? failureMessage)?
+        status,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +69,10 @@ abstract class $GpsStatusStateCopyWith<$Res> {
           GpsStatusState value, $Res Function(GpsStatusState) then) =
       _$GpsStatusStateCopyWithImpl<$Res, GpsStatusState>;
   @useResult
-  $Res call({ServiceStatus status, String? failureMessage});
+  $Res call(
+      {ServiceStatus status,
+      LocationPermission permission,
+      String? failureMessage});
 }
 
 /// @nodoc
@@ -80,6 +89,7 @@ class _$GpsStatusStateCopyWithImpl<$Res, $Val extends GpsStatusState>
   @override
   $Res call({
     Object? status = null,
+    Object? permission = null,
     Object? failureMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +97,10 @@ class _$GpsStatusStateCopyWithImpl<$Res, $Val extends GpsStatusState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ServiceStatus,
+      permission: null == permission
+          ? _value.permission
+          : permission // ignore: cast_nullable_to_non_nullable
+              as LocationPermission,
       failureMessage: freezed == failureMessage
           ? _value.failureMessage
           : failureMessage // ignore: cast_nullable_to_non_nullable
@@ -103,7 +117,10 @@ abstract class _$$StatusImplCopyWith<$Res>
       __$$StatusImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ServiceStatus status, String? failureMessage});
+  $Res call(
+      {ServiceStatus status,
+      LocationPermission permission,
+      String? failureMessage});
 }
 
 /// @nodoc
@@ -118,6 +135,7 @@ class __$$StatusImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? permission = null,
     Object? failureMessage = freezed,
   }) {
     return _then(_$StatusImpl(
@@ -125,6 +143,10 @@ class __$$StatusImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ServiceStatus,
+      permission: null == permission
+          ? _value.permission
+          : permission // ignore: cast_nullable_to_non_nullable
+              as LocationPermission,
       failureMessage: freezed == failureMessage
           ? _value.failureMessage
           : failureMessage // ignore: cast_nullable_to_non_nullable
@@ -136,16 +158,19 @@ class __$$StatusImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StatusImpl implements _Status {
-  const _$StatusImpl({required this.status, this.failureMessage});
+  const _$StatusImpl(
+      {required this.status, required this.permission, this.failureMessage});
 
   @override
   final ServiceStatus status;
+  @override
+  final LocationPermission permission;
   @override
   final String? failureMessage;
 
   @override
   String toString() {
-    return 'GpsStatusState.status(status: $status, failureMessage: $failureMessage)';
+    return 'GpsStatusState.status(status: $status, permission: $permission, failureMessage: $failureMessage)';
   }
 
   @override
@@ -154,12 +179,15 @@ class _$StatusImpl implements _Status {
         (other.runtimeType == runtimeType &&
             other is _$StatusImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.permission, permission) ||
+                other.permission == permission) &&
             (identical(other.failureMessage, failureMessage) ||
                 other.failureMessage == failureMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, failureMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, status, permission, failureMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -170,28 +198,33 @@ class _$StatusImpl implements _Status {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ServiceStatus status, String? failureMessage)
+    required TResult Function(ServiceStatus status,
+            LocationPermission permission, String? failureMessage)
         status,
   }) {
-    return status(this.status, failureMessage);
+    return status(this.status, permission, failureMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ServiceStatus status, String? failureMessage)? status,
+    TResult? Function(ServiceStatus status, LocationPermission permission,
+            String? failureMessage)?
+        status,
   }) {
-    return status?.call(this.status, failureMessage);
+    return status?.call(this.status, permission, failureMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ServiceStatus status, String? failureMessage)? status,
+    TResult Function(ServiceStatus status, LocationPermission permission,
+            String? failureMessage)?
+        status,
     required TResult orElse(),
   }) {
     if (status != null) {
-      return status(this.status, failureMessage);
+      return status(this.status, permission, failureMessage);
     }
     return orElse();
   }
@@ -228,10 +261,13 @@ class _$StatusImpl implements _Status {
 abstract class _Status implements GpsStatusState {
   const factory _Status(
       {required final ServiceStatus status,
+      required final LocationPermission permission,
       final String? failureMessage}) = _$StatusImpl;
 
   @override
   ServiceStatus get status;
+  @override
+  LocationPermission get permission;
   @override
   String? get failureMessage;
   @override

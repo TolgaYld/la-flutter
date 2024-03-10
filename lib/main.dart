@@ -18,7 +18,12 @@ Future<void> main() async {
   await init();
   await sl<ThemeModeServiceProvider>().init();
   await Geolocator.requestPermission();
-  runApp(const MyApp());
+  runApp(
+    BlocProvider.value(
+      value: sl<GpsStatusCubit>()..watchLocationStatus(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -51,7 +56,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   Future<void> checkPermission() async {
-    //TODO: checkPermissionBloc
+    await context.read<GpsStatusCubit>().getLocationStatus();
   }
 
   // This widget is the root of application.
@@ -60,38 +65,37 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    return BlocProvider<GpsStatusCubit>(
-      create: (context) => sl<GpsStatusCubit>()..watchLocationStatus(),
-      child: ChangeNotifierProvider.value(
-        value: sl<ThemeModeServiceProvider>(),
-        child: BlocBuilder<GpsStatusCubit, GpsStatusState>(
-          builder: (context, state) {
-            return Consumer<ThemeModeServiceProvider>(
-              builder: (context, themeService, child) {
-                return MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                  ],
-                  supportedLocales: LanguageManager.supportedLocales,
-                  title: 'La-Flutter',
-                  theme: AppTheme.lightTheme,
-                  themeMode: themeService.useSystemTheme
-                      ? ThemeMode.system
-                      : themeService.isDarkModeOn
-                          ? ThemeMode.dark
-                          : ThemeMode.light,
-                  home: state.status == ServiceStatus.enabled
-                      ? const AuthPage()
-                      : const LocationServiceDisabledPage(),
-                );
-              },
-            );
-          },
-        ),
+    return ChangeNotifierProvider.value(
+      value: sl<ThemeModeServiceProvider>(),
+      child: BlocBuilder<GpsStatusCubit, GpsStatusState>(
+        builder: (context, state) {
+          return Consumer<ThemeModeServiceProvider>(
+            builder: (context, themeService, child) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: LanguageManager.supportedLocales,
+                title: 'La-Flutter',
+                theme: AppTheme.lightTheme,
+                themeMode: themeService.useSystemTheme
+                    ? ThemeMode.system
+                    : themeService.isDarkModeOn
+                        ? ThemeMode.dark
+                        : ThemeMode.light,
+                home: state.status == ServiceStatus.enabled &&
+                        (state.permission == LocationPermission.always ||
+                            state.permission == LocationPermission.whileInUse)
+                    ? const AuthPage()
+                    : const LocationServiceDisabledPage(),
+              );
+            },
+          );
+        },
       ),
     );
   }
