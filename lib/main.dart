@@ -9,6 +9,7 @@ import 'package:locall_app/core/utils/l10n/language_manager.dart';
 import 'package:locall_app/src/application/gps_status/cubit/gps_status_cubit.dart';
 import 'package:locall_app/src/application/theme_mode/theme_mode.dart';
 import 'package:locall_app/src/presentation/pages/auth/auth_page.dart';
+import 'package:locall_app/src/presentation/pages/gps_status/location_service_disabled_page.dart';
 import 'package:locall_app/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -16,11 +17,42 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
   await sl<ThemeModeServiceProvider>().init();
+  await Geolocator.requestPermission();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    checkPermission();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // App is in foreground
+      checkPermission();
+    }
+  }
+
+  Future<void> checkPermission() async {
+    //TODO: checkPermissionBloc
+  }
 
   // This widget is the root of application.
   @override
@@ -54,7 +86,7 @@ class MyApp extends StatelessWidget {
                           : ThemeMode.light,
                   home: state.status == ServiceStatus.enabled
                       ? const AuthPage()
-                      : Container(),
+                      : const LocationServiceDisabledPage(),
                 );
               },
             );
