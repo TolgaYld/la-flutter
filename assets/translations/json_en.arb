@@ -31,5 +31,7 @@
     "current_location": "Current location",
     "choose_another_location": "Choose another location",
     "press_to_see_picture": "Press and hold to see the picture",
-    "press_to_see_video": "Press and hold to watch the video"
+    "press_to_see_video": "Press and hold to watch the video",
+    "turn_on_location_service_message": "You must turn on your location services to use ZoneWhisper",
+    "go_to_settings": "Open settings"
 }

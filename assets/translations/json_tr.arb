@@ -28,5 +28,7 @@
     "current_location": "Mevcut konum",
     "choose_another_location": "Başka bir konum seç",
     "press_to_see_picture": "Resmi görmek için basılı tutun",
-    "press_to_see_video": "Videoyu izlemek için basılı tutun"
+    "press_to_see_video": "Videoyu izlemek için basılı tutun",
+    "turn_on_location_service_message": "ZoneWhisper'ı kullanabilmek için konum bilgilerini etkinleştirmelisin",
+    "go_to_settings": "Ayarları aç"
 }

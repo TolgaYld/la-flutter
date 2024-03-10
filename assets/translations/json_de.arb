@@ -28,5 +28,7 @@
     "current_location": "Aktueller Standort",
     "choose_another_location": "Anderen Standort auswählen",
     "press_to_see_picture": "Gedrückt halten um das Bild zu sehen",
-    "press_to_see_video": "Gedrückt halten um das Video zu sehen"
+    "press_to_see_video": "Gedrückt halten um das Video zu sehen",
+    "turn_on_location_service_message": "Du musst deine Ortungsdienste aktivieren, damit du ZoneWhisper benutzen kannst",
+    "go_to_settings": "Einstellungen öffnen"
 }
